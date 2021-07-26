@@ -14,9 +14,8 @@ public class UserService implements IUserService {
 	private IUserMapper mapper;
 
 	@Override
-	public UnivMemberVO checkUnivMember(UnivMemberVO univInfo) {
-		// TODO Auto-generated method stub
-		return null;
+	public UnivMemberVO CheckUnivMember(UnivMemberVO univInfo) {
+		return mapper.CheckUnivMember(univInfo);
 	}
 	
 	@Override

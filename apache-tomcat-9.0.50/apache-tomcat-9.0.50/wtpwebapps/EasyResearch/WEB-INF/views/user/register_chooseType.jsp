@@ -40,6 +40,10 @@
 					</td>
 				</tr>
 				<tr>
+					<td>학번/교번 입력</td>
+					<td><input name="univIdNum"></td>
+				</tr>
+				<tr>
 					<td rowspan="2">
 						<input type="submit" value="다음">
 					</td>
@@ -55,3 +59,11 @@
 
 </body>
 </html>
+
+
+<script>
+	const result = "${msg}"
+	if(result.length > 0){
+		alert(result);
+	}
+</script>

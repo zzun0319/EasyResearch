@@ -25,7 +25,7 @@
 		<result property="permissionRight" column="permission_right"/>
 	</resultMap>
 	
-	<select id="checkUnivMember" resultMap="UnivInfoMap">
+	<select id="CheckUnivMember" resultMap="UnivInfoMap">
 		SELECT * FROM univ_members WHERE id_number = #{idNumber} AND sort = #{sort}
 	</select>
 
