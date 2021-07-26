@@ -1,0 +1,9 @@
+package com.junhee.EasyResearch.Model;
+
+public class AttendeeVO {
+
+	private int attendeeNum;
+	private UserVO student;
+	private ClassVO tClass;
+	
+}

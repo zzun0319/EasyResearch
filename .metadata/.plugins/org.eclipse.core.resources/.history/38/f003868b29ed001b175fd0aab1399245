@@ -1,0 +1,5 @@
+package com.junhee.EasyResearch.Model;
+
+public class UserVO {
+
+}

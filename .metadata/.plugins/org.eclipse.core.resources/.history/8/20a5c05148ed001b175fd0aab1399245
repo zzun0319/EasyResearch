@@ -1,0 +1,9 @@
+package com.junhee.EasyResearch.Model;
+
+public class AttendeeVO {
+
+	private int attendeeNum; // 학생 & 수업 짝 식별번호
+	private UserVO student; // 수강생 정보
+	private ClassVO tClass; // 수업 정보
+	
+}

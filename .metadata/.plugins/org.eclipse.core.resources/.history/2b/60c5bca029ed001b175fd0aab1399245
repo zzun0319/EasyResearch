@@ -1,0 +1,37 @@
+package com.junhee.EasyResearch.Model;
+
+public class UserVO {
+	
+	private String userId; // 아이디
+	private String userPw; // 비밀번호
+	private String univIdNum; // 학번, 교번
+	private String email;
+	private String tel;
+	private String major;
+	private String userType;
+	private boolean participationRight;
+	private boolean setupRight;
+	private boolean classRegiRight;
+	private boolean permissionRight;
+	
+	public UserVO() {}
+
+	public UserVO(String userId, String userPw, String univIdNum, String email, String tel, String major,
+			String userType, boolean participationRight, boolean setupRight, boolean classRegiRight,
+			boolean permissionRight) {
+		this.userId = userId;
+		this.userPw = userPw;
+		this.univIdNum = univIdNum;
+		this.email = email;
+		this.tel = tel;
+		this.major = major;
+		this.userType = userType;
+		this.participationRight = participationRight;
+		this.setupRight = setupRight;
+		this.classRegiRight = classRegiRight;
+		this.permissionRight = permissionRight;
+	}
+	
+	
+
+}
