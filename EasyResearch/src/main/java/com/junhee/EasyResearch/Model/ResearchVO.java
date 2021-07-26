@@ -2,17 +2,17 @@ package com.junhee.EasyResearch.Model;
 
 public class ResearchVO {
 
-	private int researchId; // ¿¬±¸ ½Äº° id
-	private String title; // ¿¬±¸ Á¦¸ñ
-	private String purpose; // ¿¬±¸ ¸ñÀû
-	private String method; // ¿¬±¸ ¹æ¹ı ¹× ÀıÂ÷
-	private UserVO researcher; // ¿¬±¸ÀÚ Á¤º¸
-	private String rewardType; // º¸»ó Å¸ÀÔ - ¿¬±¸ Âü¿© Á¡¼ö, Âü°¡ºñ, ±âÅ¸ 3°³ Áõ ÅÃ 1 
-	private int rewardValue; // º¸»ó Á¤µµ (~Á¡, ~¿ø, ~°³)
-	private int duratiom; // ¿¬±¸ ¼Ò¿ä ½Ã°£
-	private String researchType; // ¿ÀÇÁ¶óÀÎ ½ÇÇè, ¿ÀÇÁ¶óÀÎ ¼³¹®, ¿Â¶óÀÎ ½ÇÇè, ¿Â¶óÀÎ ¼³¹®, ±âÅ¸(¿ÀÇÁ¶óÀÎ), ±âÅ¸(¿Â¶óÀÎ)
-	private boolean permission; // ¿¬±¸ ÁøÇà ½ÂÀÎ ¿©ºÎ
-	private String filePath; // Ã·ºÎÇÑ ÆÄÀÏÀÇ Ã·ºÎ À§Ä¡
+	private int researchId; // ì—°êµ¬ ì‹ë³„ id
+	private String title; // ì—°êµ¬ ì œëª©
+	private String purpose; // ì—°êµ¬ ëª©ì 
+	private String method; // ì—°êµ¬ ë°©ë²• ë° ì ˆì°¨
+	private UserVO researcher; // ì—°êµ¬ì ì •ë³´
+	private String rewardType; // ë³´ìƒ íƒ€ì… - ì—°êµ¬ ì°¸ì—¬ ì ìˆ˜, ì°¸ê°€ë¹„, ê¸°íƒ€ 3ê°œ ì¦ íƒ 1 
+	private int rewardValue; // ë³´ìƒ ì •ë„ (~ì , ~ì›, ~ê°œ)
+	private int duratiom; // ì—°êµ¬ ì†Œìš” ì‹œê°„
+	private String researchType; // ì˜¤í”„ë¼ì¸ ì‹¤í—˜, ì˜¤í”„ë¼ì¸ ì„¤ë¬¸, ì˜¨ë¼ì¸ ì‹¤í—˜, ì˜¨ë¼ì¸ ì„¤ë¬¸, ê¸°íƒ€(ì˜¤í”„ë¼ì¸), ê¸°íƒ€(ì˜¨ë¼ì¸)
+	private boolean permission; // ì—°êµ¬ ì§„í–‰ ìŠ¹ì¸ ì—¬ë¶€
+	private String filePath; // ì²¨ë¶€í•œ íŒŒì¼ì˜ ì²¨ë¶€ ìœ„ì¹˜
 	
 	public ResearchVO() {}
 

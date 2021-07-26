@@ -3,3 +3,17 @@
 0:0:0:0:0:0:0:1 - - [26/Jul/2021:15:57:42 +0900] "GET /EasyResearch/js/jquery-3.5.1.js HTTP/1.1" 404 721
 0:0:0:0:0:0:0:1 - - [26/Jul/2021:15:57:42 +0900] "GET /EasyResearch/css/styles.css;jsessionid=219E657F90EDE78764BE3B9D50C54AAD HTTP/1.1" 200 182945
 0:0:0:0:0:0:0:1 - - [26/Jul/2021:15:57:42 +0900] "GET /EasyResearch/css/styles.css HTTP/1.1" 200 182945
+127.0.0.1 - - [26/Jul/2021:17:10:40 +0900] "GET / HTTP/1.1" 200 11354
+0:0:0:0:0:0:0:1 - - [26/Jul/2021:17:10:42 +0900] "GET /EasyResearch/ HTTP/1.1" 200 4128
+0:0:0:0:0:0:0:1 - - [26/Jul/2021:17:10:42 +0900] "GET /EasyResearch/js/jquery-3.5.1.js HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [26/Jul/2021:17:10:42 +0900] "GET /EasyResearch/css/styles.css HTTP/1.1" 200 182945
+0:0:0:0:0:0:0:1 - - [26/Jul/2021:17:10:44 +0900] "GET /user/register_chooseType HTTP/1.1" 404 835
+127.0.0.1 - - [26/Jul/2021:17:13:00 +0900] "GET / HTTP/1.1" 200 4164
+0:0:0:0:0:0:0:1 - - [26/Jul/2021:17:13:01 +0900] "GET / HTTP/1.1" 200 4164
+0:0:0:0:0:0:0:1 - - [26/Jul/2021:17:13:01 +0900] "GET /js/jquery-3.5.1.js HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [26/Jul/2021:17:13:01 +0900] "GET /css/styles.css;jsessionid=C5EE184C5B0D021ADE4CA79F2B006ED6 HTTP/1.1" 200 182945
+0:0:0:0:0:0:0:1 - - [26/Jul/2021:17:13:01 +0900] "GET /css/styles.css HTTP/1.1" 200 182945
+0:0:0:0:0:0:0:1 - - [26/Jul/2021:17:13:01 +0900] "GET /resources/assets/favicon.ico HTTP/1.1" 200 23462
+0:0:0:0:0:0:0:1 - - [26/Jul/2021:17:13:04 +0900] "GET /user/register_chooseType HTTP/1.1" 200 3260
+0:0:0:0:0:0:0:1 - - [26/Jul/2021:17:13:04 +0900] "GET /js/jquery-3.5.1.js HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [26/Jul/2021:17:13:04 +0900] "GET /assets/favicon.ico HTTP/1.1" 200 23462

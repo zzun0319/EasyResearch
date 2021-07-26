@@ -2,10 +2,10 @@ package com.junhee.EasyResearch.Model;
 
 public class ParticipationVO {
 
-	private int participationNum; // Âü°¡ Á¤º¸ ½Äº°¹øÈ£
-	private UserVO participant; // Âü°¡ÀÚ Á¤º¸
-	private TimeslotVO timeslot; // Å¸ÀÓ½½·Ô Á¤º¸
-	private String partState; // Âü°¡ »óÅÂ - ´ë±â Áß, Âü¿© ¿Ï·á, ºÒÂü, ¹«´Ü ºÒÂü
+	private int participationNum; // ì°¸ê°€ ì •ë³´ ì‹ë³„ë²ˆí˜¸
+	private UserVO participant; // ì°¸ê°€ì ì •ë³´
+	private TimeslotVO timeslot; // íƒ€ì„ìŠ¬ë¡¯ ì •ë³´
+	private String partState; // ì°¸ê°€ ìƒíƒœ - ëŒ€ê¸° ì¤‘, ì°¸ì—¬ ì™„ë£Œ, ë¶ˆì°¸, ë¬´ë‹¨ ë¶ˆì°¸
 	
 	public ParticipationVO() {}
 

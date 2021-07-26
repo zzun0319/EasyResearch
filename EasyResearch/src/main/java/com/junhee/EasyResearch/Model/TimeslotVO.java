@@ -4,11 +4,11 @@ import java.sql.Timestamp;
 
 public class TimeslotVO {
 
-	private int slotNum; // ½½·Ô ½Äº° ¹øÈ£
-	private ResearchVO research; // ¿¬±¸ Á¤º¸
-	private Timestamp startTime; // ¿¬±¸ ½ÃÀÛ ½Ã°£
-	private Timestamp endTime; // ¿¬±¸ Á¾·á ½Ã°£
-	private PlaceVO place; // ¿¬±¸ Àå¼Ò Á¤º¸
+	private int slotNum; // ìŠ¬ë¡¯ ì‹ë³„ ë²ˆí˜¸
+	private ResearchVO research; // ì—°êµ¬ ì •ë³´
+	private Timestamp startTime; // ì—°êµ¬ ì‹œì‘ ì‹œê°„
+	private Timestamp endTime; // ì—°êµ¬ ì¢…ë£Œ ì‹œê°„
+	private PlaceVO place; // ì—°êµ¬ ì¥ì†Œ ì •ë³´
 	
 	public TimeslotVO() {}
 

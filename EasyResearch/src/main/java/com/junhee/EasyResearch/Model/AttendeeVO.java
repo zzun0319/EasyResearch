@@ -2,9 +2,9 @@ package com.junhee.EasyResearch.Model;
 
 public class AttendeeVO {
 
-	private int attendeeNum; // ÇĞ»ı & ¼ö¾÷ Â¦ ½Äº°¹øÈ£
-	private UserVO student; // ¼ö°­»ı Á¤º¸
-	private ClassVO tClass; // ¼ö¾÷ Á¤º¸
+	private int attendeeNum; // í•™ìƒ & ìˆ˜ì—… ì§ ì‹ë³„ë²ˆí˜¸
+	private UserVO student; // ìˆ˜ê°•ìƒ ì •ë³´
+	private ClassVO tClass; // ìˆ˜ì—… ì •ë³´
 	
 	public AttendeeVO() {}
 

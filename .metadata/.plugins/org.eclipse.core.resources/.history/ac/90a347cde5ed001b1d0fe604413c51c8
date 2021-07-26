@@ -1,0 +1,5 @@
+package com.junhee.EasyResearch.Controller;
+
+public class UserController {
+
+}

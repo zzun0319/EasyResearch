@@ -2,17 +2,17 @@ package com.junhee.EasyResearch.Model;
 
 public class UserVO {
 	
-	private String userId; // ¾ÆÀÌµğ
-	private String userPw; // ºñ¹Ğ¹øÈ£
-	private String univIdNum; // ÇĞ¹ø, ±³¹ø
-	private String email; // ÇĞ±³ ÀÌ¸ŞÀÏ
-	private String tel; // ÈŞ´ëÆù ¹øÈ£
-	private String major; // Àü°ø - ¼®»ç, ¹Ú»ç, ±³¼ö, Áöµµ±³¼ö¸¸
-	private String userType; // ÇĞºÎ»ı, ¼®»ç, ¹Ú»ç, °­»ç, ±³¼ö, Áöµµ±³¼ö Áß ÅÃ 1
-	private boolean participationRight; // ½ÇÇè Âü°¡ ±ÇÇÑ
-	private boolean setupRight; // ½ÇÇè °³¼³ ±ÇÇÑ
-	private boolean classRegiRight; // °­ÀÇ¸¦ ¿¬±¸Âü¿©°ú¸ñÀ¸·Î µî·ÏÇÏ´Â ±ÇÇÑ
-	private boolean permissionRight; // °³¼³ÇÑ ¿¬±¸¸¦ ½ÂÀÎÇÏ´Â ±ÇÇÑ
+	private String userId; // ì•„ì´ë””
+	private String userPw; // ë¹„ë°€ë²ˆí˜¸
+	private String univIdNum; // í•™ë²ˆ, êµë²ˆ
+	private String email; // í•™êµ ì´ë©”ì¼
+	private String tel; // íœ´ëŒ€í° ë²ˆí˜¸
+	private String major; // ì „ê³µ - ì„ì‚¬, ë°•ì‚¬, êµìˆ˜, ì§€ë„êµìˆ˜ë§Œ
+	private String userType; // í•™ë¶€ìƒ, ì„ì‚¬, ë°•ì‚¬, ê°•ì‚¬, êµìˆ˜, ì§€ë„êµìˆ˜ ì¤‘ íƒ 1
+	private boolean participationRight; // ì‹¤í—˜ ì°¸ê°€ ê¶Œí•œ
+	private boolean setupRight; // ì‹¤í—˜ ê°œì„¤ ê¶Œí•œ
+	private boolean classRegiRight; // ê°•ì˜ë¥¼ ì—°êµ¬ì°¸ì—¬ê³¼ëª©ìœ¼ë¡œ ë“±ë¡í•˜ëŠ” ê¶Œí•œ
+	private boolean permissionRight; // ê°œì„¤í•œ ì—°êµ¬ë¥¼ ìŠ¹ì¸í•˜ëŠ” ê¶Œí•œ
 	
 	public UserVO() {}
 

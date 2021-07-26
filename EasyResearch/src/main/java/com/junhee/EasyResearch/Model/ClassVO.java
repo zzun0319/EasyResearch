@@ -2,12 +2,12 @@ package com.junhee.EasyResearch.Model;
 
 public class ClassVO {
 
-	private int classId; // °­ÀÇ ½Äº° id
-	private String instructorName; // °­»ç ÀÌ¸§
-	private String instructorId; // °­»ç id
-	private String className; // ¼ö¾÷¸í
-	private String classSchedule; // ¼ö¾÷ ½Ã°£Ç¥
-	private int researchCredit; // Ã¤¿ö¾ß ÇÒ ¿¬±¸ ÇĞÁ¡
+	private int classId; // ê°•ì˜ ì‹ë³„ id
+	private String instructorName; // ê°•ì‚¬ ì´ë¦„
+	private String instructorId; // ê°•ì‚¬ id
+	private String className; // ìˆ˜ì—…ëª…
+	private String classSchedule; // ìˆ˜ì—… ì‹œê°„í‘œ
+	private int researchCredit; // ì±„ì›Œì•¼ í•  ì—°êµ¬ í•™ì 
 	
 	public ClassVO() {}
 

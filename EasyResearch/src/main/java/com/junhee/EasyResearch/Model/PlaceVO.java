@@ -2,8 +2,8 @@ package com.junhee.EasyResearch.Model;
 
 public class PlaceVO {
 
-	private String placeName; // Àå¼Ò¸í
-	private int maxPeople; // °ø°£¿¡ ¼ö¿ë °¡´ÉÇÑ ÀÎ¿ø¼ö
+	private String placeName; // ì¥ì†Œëª…
+	private int maxPeople; // ê³µê°„ì— ìˆ˜ìš© ê°€ëŠ¥í•œ ì¸ì›ìˆ˜
 	
 	public PlaceVO() {}
 	

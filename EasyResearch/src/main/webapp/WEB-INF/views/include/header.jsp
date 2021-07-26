@@ -20,11 +20,11 @@
                     <ul class="navbar-nav ml-auto">
                     	<c:if test="${user == null}">
                         	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/user/login">로그인</a></li>
-                        	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/user/register">회원가입</a></li>
+                        	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/user/register_chooseType">회원가입</a></li>
                         </c:if>
                         <c:if test="${user != null}">
-                        	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/user/login">로그아웃</a></li>
-                        	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/user/register">마이페이지</a></li>
+                        	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/user/logout">로그아웃</a></li>
+                        	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/user/mypage">마이페이지</a></li>
                         </c:if>
                     </ul>
                 </div>
@@ -33,10 +33,11 @@
         <header class="bg-primary text-white">
             <div class="container text-center">
             	<c:if test="${user == null}">
-                <h1>EasyResearch에 방문해주셔서 감사합니다.</h1>
-                <p class="lead">EasyResearch는 연구자, 연구참여자 모두 간편하게 사용할 수 있는 연구 서포트 웹입니다.</p>
+                	<h1>EasyResearch에 방문해주셔서 감사합니다.</h1>
+                	<p class="lead">EasyResearch는 연구자, 연구참여자 모두 간편하게 사용할 수 있는 연구 서포트 웹입니다.</p>
                 </c:if>
                 <c:if test="${user != null}">
+                <ul class="navbar-nav ml-auto">
                 	<c:choose>
                         <c:when test="${user.memberType == '학부생'}">
                         	<a href="/research/showAllResearch" style="color:white;">연구 참여 신청하기</a> <br>
@@ -51,6 +52,7 @@
                        	</c:otherwise>
                     </c:choose>
                     <a href="/user/mypage" style="color:white;">마이페이지</a>
+                </ul>
                 </c:if>
             </div>
         </header>

@@ -1,0 +1,13 @@
+package com.junhee.EasyResearch.Service;
+
+import com.junhee.EasyResearch.Model.UserVO;
+
+public class UserService implements IUserService {
+
+	@Override
+	public void Register(UserVO user) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -22,7 +22,7 @@ public class MySQLConnectionTest {
 	@Test
 	public void testConnection() throws Exception {
 		try(Connection con = ds.getConnection()){
-			System.out.println("Connection Ãâ·Â: " + con + "\n");
+			System.out.println("Connection ì¶œë ¥: " + con + "\n");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
