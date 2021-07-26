@@ -1,0 +1,5 @@
+127.0.0.1 - - [26/Jul/2021:15:57:40 +0900] "GET / HTTP/1.1" 200 11354
+0:0:0:0:0:0:0:1 - - [26/Jul/2021:15:57:42 +0900] "GET /EasyResearch/ HTTP/1.1" 200 4203
+0:0:0:0:0:0:0:1 - - [26/Jul/2021:15:57:42 +0900] "GET /EasyResearch/js/jquery-3.5.1.js HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [26/Jul/2021:15:57:42 +0900] "GET /EasyResearch/css/styles.css;jsessionid=219E657F90EDE78764BE3B9D50C54AAD HTTP/1.1" 200 182945
+0:0:0:0:0:0:0:1 - - [26/Jul/2021:15:57:42 +0900] "GET /EasyResearch/css/styles.css HTTP/1.1" 200 182945

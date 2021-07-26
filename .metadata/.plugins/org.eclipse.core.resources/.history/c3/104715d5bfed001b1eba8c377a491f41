@@ -1,0 +1,5 @@
+package com.junhee.EasyResearch.Repository;
+
+public interface IUserMapper {
+
+}

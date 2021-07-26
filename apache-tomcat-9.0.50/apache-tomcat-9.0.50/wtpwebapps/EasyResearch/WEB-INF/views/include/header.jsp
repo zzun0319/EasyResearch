@@ -32,13 +32,13 @@
         </nav>
         <header class="bg-primary text-white">
             <div class="container text-center">
-            	<c:if test="${member == null}">
+            	<c:if test="${user == null}">
                 <h1>EasyResearch에 방문해주셔서 감사합니다.</h1>
                 <p class="lead">EasyResearch는 연구자, 연구참여자 모두 간편하게 사용할 수 있는 연구 서포트 웹입니다.</p>
                 </c:if>
-                <c:if test="${member != null}">
+                <c:if test="${user != null}">
                 	<c:choose>
-                        <c:when test="${member.memberType == '학부생'}">
+                        <c:when test="${user.memberType == '학부생'}">
                         	<a href="/research/showAllResearch" style="color:white;">연구 참여 신청하기</a> <br>
                         </c:when>
                         <c:when test="${member.memberType == '대학원생'}">
