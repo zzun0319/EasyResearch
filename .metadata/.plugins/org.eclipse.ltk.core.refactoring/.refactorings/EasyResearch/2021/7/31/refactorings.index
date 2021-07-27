@@ -6,3 +6,21 @@
 1627300116369	Move file
 1627316385601	Rename resource 'user.jsp'
 1627316399415	Rename resource 'emailConfirm.jsp'
+1627369360235	Rename resource 'mybatis-config.xml'
+1627369381898	Copy file
+1627380354325	Delete element
+1627380360943	Rename resource 'user-mybatis-config.xml'
+1627380883693	Move compilation units
+1627380895598	Move compilation unit
+1627380907235	Move compilation unit
+1627381505834	Copy package
+1627381526570	Copy package
+1627381556096	Delete element
+1627381578430	Copy package
+1627381603342	Delete elements
+1627381668139	Move compilation units
+1627381674577	Delete element
+1627381780302	Move compilation unit
+1627381786643	Delete element
+1627381794466	Move compilation unit
+1627381800953	Delete element

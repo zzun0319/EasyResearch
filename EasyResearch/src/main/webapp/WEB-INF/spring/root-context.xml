@@ -32,7 +32,7 @@
  		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
 	
-	<mybatis-spring:scan base-package="com.junhee.EasyResearch.Repository.IUserMapper" />
-	<mybatis-spring:scan base-package="com.junhee.EasyResearch.Repository.IResearchMapper" />
+	<mybatis-spring:scan base-package="com.junhee.EasyResearch.User.Repository" />
+	<mybatis-spring:scan base-package="com.junhee.EasyResearch.Research.Repository" />
 		
 </beans>

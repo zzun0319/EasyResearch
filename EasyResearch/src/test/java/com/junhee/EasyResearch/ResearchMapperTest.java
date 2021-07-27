@@ -8,7 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.junhee.EasyResearch.Model.ResearchVO;
 import com.junhee.EasyResearch.Model.UserVO;
-import com.junhee.EasyResearch.Repository.IResearchMapper;
+import com.junhee.EasyResearch.Research.Repository.IResearchMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
@@ -27,13 +27,13 @@ public class ResearchMapperTest {
 		rvo.setMethod("이렇게 해서 저렇게 한 후 그렇게 한다.");
 		rvo.setRewardType("연구 참여 점수");
 		rvo.setRewardValue(2);
-		rvo.setDuratiom(30);
+		rvo.setDuration(30);
 		rvo.setFilePath("d:/upload/연구1.doc");
 		
-		UserVO uvo = new UserVO();
-		uvo.setUserId("master1111");
+		UserVO researcher = new UserVO();
+		researcher.setUserId("master1111");
 		
-		rvo.setResearcher(uvo);
+		rvo.setResearcher(researcher);
 		mapper.RegisterResearch(rvo);
 	}
 

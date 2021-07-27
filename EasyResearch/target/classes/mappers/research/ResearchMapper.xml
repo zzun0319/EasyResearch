@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<mapper namespace="com.junhee.EasyResearch.Repository.IResearchMapper">
+<mapper namespace="com.junhee.EasyResearch.Research.Repository.IResearchMapper">
 
 	<resultMap id="UserMap" type="com.junhee.EasyResearch.Model.UserVO">
 		<id property="userId" column="user_id" />
@@ -32,7 +32,7 @@
 		<association property="researcher" column="researcher" javaType="com.junhee.EasyResearch.Model.UserVO" resultMap="UserMap" />
 	</resultMap>
 	
-	<insert id="registerResearch">
+	<insert id="RegisterResearch">
 		INSERT INTO research (research_type, title, purpose, method, reward_type, reward_value, duration, file_path, researcher) 
 		VALUES (#{researchType},#{title},#{purpose},#{method},#{rewardType},#{rewardValue},#{duration},#{filePath},#{researcher.userId})
 	</insert>
