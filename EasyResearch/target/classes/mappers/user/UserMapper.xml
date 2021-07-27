@@ -9,6 +9,7 @@
 		<result property="registeredName" column="registered_name" />
 		<result property="univEmail" column="univ_email" />
 		<result property="sort" column="sort" />
+		<result property="major" column="major"/>
 	</resultMap>
 
 	<resultMap id="UserMap" type="com.junhee.EasyResearch.Model.UserVO">

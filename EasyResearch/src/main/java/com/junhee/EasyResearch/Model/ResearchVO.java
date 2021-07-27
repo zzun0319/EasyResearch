@@ -3,6 +3,7 @@ package com.junhee.EasyResearch.Model;
 public class ResearchVO {
 
 	private int researchId; // 연구 식별 id
+	private String researchType; // 오프라인 실험, 오프라인 설문, 온라인 실험, 온라인 설문, 기타(오프라인), 기타(온라인)
 	private String title; // 연구 제목
 	private String purpose; // 연구 목적
 	private String method; // 연구 방법 및 절차
@@ -10,7 +11,6 @@ public class ResearchVO {
 	private String rewardType; // 보상 타입 - 연구 참여 점수, 참가비, 기타 3개 증 택 1 
 	private int rewardValue; // 보상 정도 (~점, ~원, ~개)
 	private int duratiom; // 연구 소요 시간
-	private String researchType; // 오프라인 실험, 오프라인 설문, 온라인 실험, 온라인 설문, 기타(오프라인), 기타(온라인)
 	private boolean permission; // 연구 진행 승인 여부
 	private String filePath; // 첨부한 파일의 첨부 위치
 	
@@ -19,6 +19,7 @@ public class ResearchVO {
 	public ResearchVO(int researchId, String title, String purpose, String method, UserVO researcher, String rewardType,
 			int rewardValue, int duratiom, String researchType, boolean permission, String filePath) {
 		this.researchId = researchId;
+		this.researchType = researchType;
 		this.title = title;
 		this.purpose = purpose;
 		this.method = method;
@@ -26,7 +27,6 @@ public class ResearchVO {
 		this.rewardType = rewardType;
 		this.rewardValue = rewardValue;
 		this.duratiom = duratiom;
-		this.researchType = researchType;
 		this.permission = permission;
 		this.filePath = filePath;
 	}
@@ -37,6 +37,14 @@ public class ResearchVO {
 
 	public void setResearchId(int researchId) {
 		this.researchId = researchId;
+	}
+	
+	public String getResearchType() {
+		return researchType;
+	}
+	
+	public void setResearchType(String researchType) {
+		this.researchType = researchType;
 	}
 
 	public String getTitle() {
@@ -95,13 +103,6 @@ public class ResearchVO {
 		this.duratiom = duratiom;
 	}
 
-	public String getResearchType() {
-		return researchType;
-	}
-
-	public void setResearchType(String researchType) {
-		this.researchType = researchType;
-	}
 
 	public boolean isPermission() {
 		return permission;
@@ -121,10 +122,10 @@ public class ResearchVO {
 
 	@Override
 	public String toString() {
-		return "ResearchVO [researchId=" + researchId + ", title=" + title + ", purpose=" + purpose + ", method="
-				+ method + ", researcher=" + researcher + ", rewardType=" + rewardType + ", rewardValue=" + rewardValue
-				+ ", duratiom=" + duratiom + ", researchType=" + researchType + ", permission=" + permission
+		return "ResearchVO [researchId=" + researchId + ", researchType=" + researchType + ", title=" + title
+				+ ", purpose=" + purpose + ", method=" + method + ", researcher=" + researcher + ", rewardType="
+				+ rewardType + ", rewardValue=" + rewardValue + ", duratiom=" + duratiom + ", permission=" + permission
 				+ ", filePath=" + filePath + "]";
 	}
-	
+
 }

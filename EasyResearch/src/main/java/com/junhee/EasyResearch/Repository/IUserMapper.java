@@ -17,7 +17,7 @@ public interface IUserMapper {
 		
 	/*
 	// 로그인 체크 기능 (가입 승인 여부도 체크해야함)
-	UserVO getOneUserInfo(String userId);
+	UserVO GetOneUserInfo(String userId);
 		
 	// 회원 정보 수정 기능
 	void UpdateUserInfo(UserVO user);
@@ -30,12 +30,12 @@ public interface IUserMapper {
 	void DeleteUser(String userId);
 		
 	// 전공 리스트로 얻어오기 기능
-	List<UserVO> getMajors();
+	List<UserVO> GetMajors();
 		
 	// 학번 중복 확인 기능
-	UserVO checkIdNum(String identifiedNum);
+	UserVO CheckIdNum(String identifiedNum);
 		
 	// 지도교수 - 전공 같은 대학원생 가입신청 승인위해 학생정보 가져오기
-	List<UserVO> getGStudentsInfo(String major);
+	List<UserVO> GetGStudentsInfo(String major);
 	*/
 }

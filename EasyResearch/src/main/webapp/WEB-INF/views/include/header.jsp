@@ -39,19 +39,20 @@
                 <c:if test="${user != null}">
                 <ul class="navbar-nav ml-auto">
                 	<c:choose>
-                        <c:when test="${user.memberType == '학부생'}">
-                        	<a href="/research/showAllResearch" style="color:white;">연구 참여 신청하기</a> <br>
+                        <c:when test="${user.participationRight == true}">
+                        	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/research/searchResearch">연구 참여 신청하기</a></li>
                         </c:when>
-                        <c:when test="${member.memberType == '대학원생'}">
-                        	<a href="/research/register1" style="color:white;">연구 개설 신청하기</a> <br>
-                       		<a href="#" style="color:white;">연구 목적 외 장소 예약하기</a> <br>                    		
+                        <c:when test="${member.setupRight == true}">
+                        	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/research/openResearch">연구 개설 신청하기</a></li>
                         </c:when>
-                        <c:otherwise>
-                         	<a href="/research/addClassForResearch" style="color:white;">연구 참여 과목 설정하기</a> <br>  
-                       		<a href="#" style="color:white;">연구 참여 점수 출력하기</a> <br>                         		
-                       	</c:otherwise>
+                        <c:when test="${member.classRegiRight == true}">
+                        	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/class/searchResearch">연구 참여 과목 설정하기</a></li>
+                        	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/class/downloadCreditFile">연구 참여 점수 파일 다운로드</a></li>
+                        </c:when>
+                        <c:when test="${member.permissionRight == true}">
+                        	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/research/permitResearch">개설 연구 승인하기</a></li>
+                        </c:when>
                     </c:choose>
-                    <a href="/user/mypage" style="color:white;">마이페이지</a>
                 </ul>
                 </c:if>
             </div>
