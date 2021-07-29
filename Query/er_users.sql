@@ -13,6 +13,14 @@ CREATE TABLE er_users (
     FOREIGN KEY (univ_id_num) REFERENCES univ_members(id_number) ON DELETE NO ACTION
 );
 
+ALTER TABLE er_users ADD email_hash VARCHAR(64);
+ALTER TABLE er_users ADD email_verification BOOL NOT NULL DEFAULT FALSE;
+ALTER TABLE er_users ADD user_name VARCHAR(5) NOT NULL;
+
+ALTER TABLE er_users DROP userName;
+
+TRUNCATE TABLE er_users;
+
 -- DROP TABLE er_users;
 
 DESC er_users;

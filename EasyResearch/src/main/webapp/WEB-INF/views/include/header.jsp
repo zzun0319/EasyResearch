@@ -20,7 +20,7 @@
                     <ul class="navbar-nav ml-auto">
                     	<c:if test="${user == null}">
                         	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/user/login">로그인</a></li>
-                        	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/user/register_chooseType">회원가입</a></li>
+                        	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/user/register_checkUnivMember">회원가입</a></li>
                         </c:if>
                         <c:if test="${user != null}">
                         	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/user/logout">로그아웃</a></li>

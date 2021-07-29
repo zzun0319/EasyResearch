@@ -7,15 +7,18 @@ public class UnivMemberVO {
 	private String univEmail;
 	private String sort;
 	private String major;
+	private boolean isUsing;
 	
 	public UnivMemberVO() {}
 
-	public UnivMemberVO(String idNumber, String registeredName, String univEmail, String sort, String major) {
+	public UnivMemberVO(String idNumber, String registeredName, String univEmail, String sort, String major,
+			boolean isUsing) {
 		this.idNumber = idNumber;
 		this.registeredName = registeredName;
 		this.univEmail = univEmail;
 		this.sort = sort;
 		this.major = major;
+		this.isUsing = isUsing;
 	}
 
 	public String getIdNumber() {
@@ -57,11 +60,19 @@ public class UnivMemberVO {
 	public void setMajor(String major) {
 		this.major = major;
 	}
+	
+	public boolean isUsing() {
+		return isUsing;
+	}
+
+	public void setUsing(boolean isUsing) {
+		this.isUsing = isUsing;
+	}
 
 	@Override
 	public String toString() {
 		return "UnivMemberVO [idNumber=" + idNumber + ", registeredName=" + registeredName + ", univEmail=" + univEmail
-				+ ", sort=" + sort + ", major=" + major + "]";
+				+ ", sort=" + sort + ", major=" + major + ", isUsing=" + isUsing + "]";
 	}
 
 }

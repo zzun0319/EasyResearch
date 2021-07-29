@@ -7,10 +7,22 @@ import com.junhee.EasyResearch.Model.UserVO;
 
 public interface IUserService {
 	
-	// 회원 가입 전 멤버 유형, 학번으로 1차 검사 - 실제 학교 멤버인지. 일치한다면 학교메일, 이름까지 담아서 가입 2단계로 보내기
-	UnivMemberVO CheckUnivMember(UnivMemberVO univInfo);
+	// 회원 가입 시 입력한 정보가 모두 일치할 경우 다음 페이지에 입력했던 것들을 자동으로 입력시키기 위해 정보를 넘겨줌
+	UnivMemberVO GetUnivMemberInfoByIdNum(String idNumber);
+	
+	// 회원 가입 시 입력한 정보가 학교 쪽에 등록된 정보와 일치하는지 검사하는 메서드
+	String CheckUnivMemberInfo(UnivMemberVO umvo);
 
 	// 회원 가입 기능
 	void Register(UserVO user);
+	
+	// 아이디로 EasyResearch 회원정보 조회
+	UserVO GetERUserInfoById(String userId);
+	
+	// 인증 메일을 보내는 메서드
+	public String AuthenticationMailSend(String userId);
+	
+	// 인증 메일 클릭해서 넘어온 해시값을 비교하여 인증을 완료하는 메서드
+	public String Authentication(String code, UserVO user);
 	
 }

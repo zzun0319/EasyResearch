@@ -9,12 +9,21 @@ import com.junhee.EasyResearch.Model.UserVO;
 
 public interface IUserMapper {
 	
-	// 회원 가입 전 멤버 유형, 학번으로 1차 검사 - 실제 학교 멤버인지. 일치한다면 학교메일, 이름까지 담아서 가입 2단계로 보내기
-	UnivMemberVO CheckUnivMember(UnivMemberVO univInfo);
+	// 학번/교번으로 학교쪽 등록 데이터 조회
+	UnivMemberVO GetUnivMemberInfoByIdNum(String idNumber);
 
+	// 학교쪽 정보 가입 상태 바꾸기 (회원가입: false -> true, 회원탈퇴: true -> false)
+	void UpdateRegiState(@Param("idNumber") String idNumber, @Param("isUsing") boolean isUsing);
+	
 	// 회원 가입 기능
 	void Register(UserVO user);
-		
+	
+	// 아이디로 EasyResearch 회원정보 조회
+	UserVO GetERUserInfoById(String userId);
+	
+	// 이메일 인증 true로 바꾸기
+	public void SetEmailChecked(String userId);
+	
 	/*
 	// 로그인 체크 기능 (가입 승인 여부도 체크해야함)
 	UserVO GetOneUserInfo(String userId);

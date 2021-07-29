@@ -13,12 +13,15 @@ public class UserVO {
 	private boolean setupRight; // 실험 개설 권한
 	private boolean classRegiRight; // 강의를 연구참여과목으로 등록하는 권한
 	private boolean permissionRight; // 개설한 연구를 승인하는 권한
+	private String emailHash; // 이메일로 만드는 해시값
+	private boolean emailVerification; // 이메일 인증여부
+	private String userName;
 	
 	public UserVO() {}
 
 	public UserVO(String userId, String userPw, String univIdNum, String email, String tel, String major,
 			String userType, boolean participationRight, boolean setupRight, boolean classRegiRight,
-			boolean permissionRight) {
+			boolean permissionRight, String emailHash, boolean emailVerification, String userName) {
 		this.userId = userId;
 		this.userPw = userPw;
 		this.univIdNum = univIdNum;
@@ -30,6 +33,9 @@ public class UserVO {
 		this.setupRight = setupRight;
 		this.classRegiRight = classRegiRight;
 		this.permissionRight = permissionRight;
+		this.emailHash = emailHash;
+		this.emailVerification = emailVerification;
+		this.userName = userName;
 	}
 
 	public String getUserId() {
@@ -120,12 +126,37 @@ public class UserVO {
 		this.permissionRight = permissionRight;
 	}
 
+	public String getEmailHash() {
+		return emailHash;
+	}
+
+	public void setEmailHash(String emailHash) {
+		this.emailHash = emailHash;
+	}
+
+	public boolean isEmailVerification() {
+		return emailVerification;
+	}
+
+	public void setEmailVerification(boolean emailVerification) {
+		this.emailVerification = emailVerification;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	@Override
 	public String toString() {
 		return "UserVO [userId=" + userId + ", userPw=" + userPw + ", univIdNum=" + univIdNum + ", email=" + email
 				+ ", tel=" + tel + ", major=" + major + ", userType=" + userType + ", participationRight="
 				+ participationRight + ", setupRight=" + setupRight + ", classRegiRight=" + classRegiRight
-				+ ", permissionRight=" + permissionRight + "]";
+				+ ", permissionRight=" + permissionRight + ", emailHash=" + emailHash + ", emailVerification="
+				+ emailVerification + ", userName=" + userName + "]";
 	}
-	
+
 }
