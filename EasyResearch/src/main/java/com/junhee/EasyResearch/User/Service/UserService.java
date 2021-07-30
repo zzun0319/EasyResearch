@@ -51,6 +51,9 @@ public class UserService implements IUserService {
 			else if(!newUmvo.getUnivEmail().equals(umvo.getUnivEmail())) {
 				result = "입력하신 이메일이 학교계정 이메일과 일치하지 않습니다.";
 			}
+			else if(newUmvo.isUsing()) {
+				result = "이미 가입되어 있습니다.";
+			}
 			else {
 				result = "모든 정보가 일치합니다.";
 			}
@@ -77,6 +80,10 @@ public class UserService implements IUserService {
 		// 해시값 추가
 		user.setEmailHash(SHA256.getSHA256(user.getEmail()));
 		
+		// univ_members에도 사용중으로 바꾸기
+		mapper.UpdateRegiState(user.getUnivIdNum(), true);
+		
+		// 등록
 		mapper.Register(user);
 	}
 
@@ -90,12 +97,12 @@ public class UserService implements IUserService {
 
 		UserVO user = mapper.GetERUserInfoById(userId);
 		
-		String host = "http://localhost:8383/";
+		String host = "http://localhost:8282/";
 		String from = "aer38783@gmail.com"; /* 관리자의 이메일 계정 */
 		String to = user.getEmail(); // 사용자의 이메일 계정
 		String subject = "회원가입 인증 이메일입니다.";
 		String content = "다음 링크에 접속하여 이메일 인증을 진행하세요." +
-			"<a href='" + host + "user/emailCheckAction?code=" + new SHA256().getSHA256(to) + "'> 이메일 인증하기 </a>";
+			"<a href='" + host + "user/emailAuthentication?userId=" + userId + "&code=" + new SHA256().getSHA256(to) + "'> 이메일 인증하기 </a>";
 	
 		Properties p = new Properties();
 		p.put("mail.smtp.user", from);
@@ -130,14 +137,36 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public String Authentication(String code, UserVO user) {
+	public String Authentication(String code, String userId) {
 
+		UserVO user = mapper.GetERUserInfoById(userId);
+		
 		if(code.equals(user.getEmailHash())) {
 			mapper.SetEmailChecked(user.getUserId());
-			mapper.UpdateRegiState(user.getUnivIdNum(), true);
 			return "이메일 인증에 성공했습니다.";
 		}
 		return "이메일 인증에 실패했습니다.";
+	}
+
+	@Override
+	public String Login(UserVO user) {
+		
+		UserVO compareVO = mapper.GetERUserInfoById(user.getUserId());
+		
+		String result = null;
+		
+		if(compareVO == null) {
+			result = "일치하는 아이디가 없습니다.";
+		}
+		else {
+			if(!compareVO.getUserPw().equals(user.getUserPw())) {
+				result = "비밀번호가 일치하지 않습니다.";
+			}
+			else {
+				result = "로그인 성공";
+			}
+		}
+		return result;
 	}
 	
 	

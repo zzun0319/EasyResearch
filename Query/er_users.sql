@@ -26,3 +26,5 @@ TRUNCATE TABLE er_users;
 DESC er_users;
 
 SELECT * FROM er_users;
+
+DELETE FROM er_users WHERE user_id='teacher5';
