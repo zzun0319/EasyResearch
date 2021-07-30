@@ -57,6 +57,10 @@
 	<update id="SetEmailChecked">
 		UPDATE er_users SET email_verification = true WHERE user_id=#{userId}
 	</update>
+	
+	<update id="UpdatePassword" parameterType="String">
+		UPDATE members SET user_pw=#{newPw} WHERE user_id=#{userId}
+	</update>
 
 	<!-- INSERT 문 -->
 	

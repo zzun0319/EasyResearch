@@ -44,7 +44,6 @@
 	
 		<input type="button" value="회원정보 수정" onclick="location.href='/user/updateUserInfo'"><br>
 		<input type="button" value="비밀번호 수정" onclick="location.href='/user/updatePw'"><br>
-		<input type="button" value="로그아웃" onclick="location.href='/user/logout'"><br>
 	</c:if>
 	
 	

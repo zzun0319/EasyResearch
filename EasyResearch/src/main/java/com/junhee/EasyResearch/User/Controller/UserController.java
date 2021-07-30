@@ -56,6 +56,18 @@ public class UserController {
 		System.out.println("회원 탈퇴 페이지로 이동");
 	}
 	
+	@GetMapping("/updatePw")
+	public void UpdatePwPage() {
+		System.out.println("비밀번호 변경 페이지로 이동");
+	}
+	
+	@GetMapping("/logout")
+	public String Logout(HttpSession session, RedirectAttributes ra) {
+		session.invalidate();
+		ra.addFlashAttribute("msg", "로그아웃 되었습니다.");
+		return "redirect:/";
+	}
+	
 	@GetMapping("/sendAuthenticationMail")
 	public String SendAuthenticationMail(String userId, RedirectAttributes ra) {
 		
@@ -137,10 +149,11 @@ public class UserController {
 	}
 	
 	@PostMapping("/updateUserInfo")
-	public String UpdateUserInfo(UserVO user, RedirectAttributes ra) {
+	public String UpdateUserInfo(UserVO user, RedirectAttributes ra, HttpSession session) {
 		
 		System.out.println("회원정보 변경 요청" + user.getUserId());
 		service.UpdateUserInfo(user);
+		session.setAttribute("user", service.GetERUserInfoById(user.getUserId()));
 		ra.addFlashAttribute("msg", "정상적으로 변경되었습니다.");
 		return "redirect:/user/mypage";
 	}
@@ -157,6 +170,20 @@ public class UserController {
 		}
 		else {
 			return "redirect:/user/mypage";
+		}
+	}
+	
+	@PostMapping("/updatePw")
+	public String updatePw2(UserVO user, String newPw, RedirectAttributes ra) {
+		System.out.println("비밀번호 변경 요청" + user.getUserId());
+		
+		String msg = service.UpdatePassword(user, newPw);
+		ra.addFlashAttribute("msg", msg);
+		if(msg.equals("변경 성공")) {
+			return "redirect:/user/mypage";
+		}
+		else {
+			return "redirect:/user/updatePw";
 		}
 	}
 	

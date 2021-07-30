@@ -36,4 +36,7 @@ public interface IUserService {
 	
 	// 이메일 체크 기능
 	public String EmailCheck(String email);
+	
+	// 비밀번호 변경 요청 시 현재 비밀번호 비교, 맞으면 바꿔주는 기능
+	public String UpdatePassword(UserVO user, String newPw);
 }

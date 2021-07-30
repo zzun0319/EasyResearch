@@ -197,6 +197,20 @@ public class UserService implements IUserService {
 			return "NO";
 		}
 	}
+
+	@Override
+	public String UpdatePassword(UserVO user, String newPw) {
+		UserVO compareVO = mapper.GetERUserInfoById(user.getUserId());
+		String result = null;
+		if(!compareVO.getUserPw().equals(user.getUserPw())) {
+			result = "현재 비밀번호가 일치하지 않습니다.";
+		}
+		else {
+			mapper.UpdatePassword(user.getUserId(), newPw);
+			result = "변경 성공";
+		}
+		return result;
+	}
 	
 	
 

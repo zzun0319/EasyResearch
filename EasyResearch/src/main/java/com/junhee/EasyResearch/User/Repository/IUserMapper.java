@@ -33,11 +33,10 @@ public interface IUserMapper {
 	// 이메일 중복 체크
 	public UserVO CheckEmail(String email);
 	
+	// 비밀 번호 수정 기능 : MyBatis는 파라미터를 2개 이상 받을 수 없음. @Param 쓰거나 Map<String,String> 을 이용해서 받거나, 그냥 객체를 통째로 받아야함.
+	void UpdatePassword(@Param("userId") String userId, @Param("newPw") String newPw);
+	
 	/*	
-	// 비밀 번호 수정 기능
-	void UpdatePassword(@Param("userId") String userId, @Param("userPw") String userPw);
-	// MyBatis는 파라미터를 2개 이상 받을 수 없음. @Param 쓰거나 Map<String,String> 을 이용해서 받거나, 그냥 객체를 통째로 받아야함.
-		
 	// 전공 리스트로 얻어오기 기능
 	List<UserVO> GetMajors();
 		
