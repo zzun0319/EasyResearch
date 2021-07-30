@@ -146,9 +146,6 @@
 		
 		const getPhoneNumCheck = RegExp(/^[0-9]{11}$/); // 00000000000 형태만 가능
 		
-		
-		
-		
 		let chk1 = false, chk2 = false, chk3 = false;
 		// chk1: 아이디 체크, chk2: 비밀번호 체크, chk3: 휴대폰 번호 체크
 		
@@ -279,7 +276,7 @@
 			else if(!chk3){
 				console.log("phone문제");
 				alert("휴대폰 번호 입력란에 문제가 있습니다.");
-				reg_form.phoneNum.focus();
+				reg_form.tel.focus();
 				return;
 			}
 			else{

@@ -29,6 +29,10 @@ public interface IUserMapper {
 	
 	// 회원 탈퇴 기능
 	public void DeleteUser(String userId);
+	
+	// 이메일 중복 체크
+	public UserVO CheckEmail(String email);
+	
 	/*	
 	// 비밀 번호 수정 기능
 	void UpdatePassword(@Param("userId") String userId, @Param("userPw") String userPw);

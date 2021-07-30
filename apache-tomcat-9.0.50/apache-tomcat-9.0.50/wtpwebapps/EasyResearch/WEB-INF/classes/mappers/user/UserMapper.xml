@@ -40,6 +40,10 @@
 		SELECT * FROM er_users WHERE user_id=#{userId}
 	</select>
 	
+	<select id="CheckEmail" resultMap="UserMap">
+		SELECT * FROM er_users WHERE email=#{email}
+	</select>
+	
 	<!-- UPDATE 문 -->
 	
 	<update id="UpdateRegiState">

@@ -30,14 +30,15 @@
 				<td><input type="password" name="userPw"></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value="회원 정보 수정"></td>
+			<td colspan="2">
+				<button type="submit">탈퇴하기</button>
+			</td>
 			</tr>
 		</table>
 	</form>
 		<br>
 		<br>
 		<br>
-		 <button id="delete" onclick="location.href='/user/deleteUser'">탈퇴하기</button>
 	<jsp:include page="../include/footer.jsp" />
 </body>
 </html>

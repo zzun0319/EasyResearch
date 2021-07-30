@@ -60,6 +60,15 @@ public class UserMapperTest {
 		System.out.println(mapper.GetERUserInfoById(user.getUserId()));
 	}
 
-	
+	@Test
+	public void CheckEmailTest() {
+		UserVO user = mapper.CheckEmail("dododo@naver.com");
+		if(user == null) {
+			System.out.println("없음");
+		}
+		else {
+			System.out.println("있음");
+		}
+	}
 	
 }

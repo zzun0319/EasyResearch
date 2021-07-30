@@ -146,13 +146,14 @@ public class UserController {
 	}
 	
 	@PostMapping("/deleteUser")
-	public String DeleteUser(UserVO user, RedirectAttributes ra) {
+	public String DeleteUser(UserVO user, HttpSession session, RedirectAttributes ra) {
 		System.out.println("회원 탈퇴 요청" + user.getUserId());
 		
 		String result = service.DeleteUser(user);
 		ra.addFlashAttribute("msg", result);
 		if(result.equals("회원 탈퇴 완료")) {
-			return "redirect:/home";
+			session.invalidate();
+			return "redirect:/";
 		}
 		else {
 			return "redirect:/user/mypage";
@@ -163,7 +164,7 @@ public class UserController {
 	
 	@ResponseBody
 	@PostMapping("/checkId")
-	public String checkId(@RequestParam("id") String id) {
+	public String CheckId(@RequestParam("id") String id) {
 		
 		System.out.println("아이디 중복 체크: " + id);
 		
@@ -173,6 +174,14 @@ public class UserController {
 		else {
 			return "OK";
 		}
+	}
+	
+	@ResponseBody
+	@PostMapping("/checkEmail")
+	public String CheckEmail(@RequestParam("emailModified") String emailModified) {
+		
+		System.out.println("이메일 중복 체크: " + emailModified);
+		return service.EmailCheck(emailModified);
 	}
 	
 }

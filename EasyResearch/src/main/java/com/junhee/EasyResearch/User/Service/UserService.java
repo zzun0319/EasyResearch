@@ -186,6 +186,17 @@ public class UserService implements IUserService {
 			return "비밀번호가 일치하지 않습니다. 회원 탈퇴에 실패했습니다.";
 		}
 	}
+
+	@Override
+	public String EmailCheck(String email) {
+		UserVO user = mapper.CheckEmail(email);
+		if(user == null) {
+			return "OK";
+		}
+		else {
+			return "NO";
+		}
+	}
 	
 	
 

@@ -33,4 +33,7 @@ public interface IUserService {
 	
 	// 회원 탈퇴 기능
 	public String DeleteUser(UserVO user);
+	
+	// 이메일 체크 기능
+	public String EmailCheck(String email);
 }
