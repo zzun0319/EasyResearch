@@ -30,6 +30,8 @@
 		<result property="userName" column="user_name"/>
 	</resultMap>
 	
+	<!-- SELECT 문 -->
+	
 	<select id="GetUnivMemberInfoByIdNum" resultMap="UnivInfoMap">
 		SELECT * FROM univ_members WHERE id_number = #{idNumber}
 	</select>
@@ -38,17 +40,30 @@
 		SELECT * FROM er_users WHERE user_id=#{userId}
 	</select>
 	
+	<!-- UPDATE 문 -->
+	
 	<update id="UpdateRegiState">
 		UPDATE univ_members SET is_using=#{isUsing} WHERE id_number=#{idNumber}
+	</update>
+	
+	<update id="UpdateUserInfo">
+		UPDATE er_users SET email=#{email}, tel=#{tel} WHERE user_id=#{userId}
 	</update>
 	
 	<update id="SetEmailChecked">
 		UPDATE er_users SET email_verification = true WHERE user_id=#{userId}
 	</update>
+
+	<!-- INSERT 문 -->
 	
 	<insert id="Register">
 		INSERT INTO er_users VALUES (#{userId},#{userPw},#{univIdNum},#{email},#{tel},#{major},#{userType},
 			#{participationRight},#{setupRight},#{classRegiRight},#{permissionRight},#{emailHash},#{emailVerification},#{userName})
 	</insert>
+	
+	<!-- DELETE 문 -->
+	<delete id="DeleteUser">
+		DELETE FROM er_users WHERE user_id=#{userId}
+	</delete>
 
 </mapper>

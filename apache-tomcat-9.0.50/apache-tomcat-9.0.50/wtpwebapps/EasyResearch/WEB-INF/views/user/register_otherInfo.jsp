@@ -29,7 +29,7 @@
 		<h2>회원가입 정보를 입력해주세요.</h2>
 		</p>
 		<p>
-		<form action="/user/register_otherInfo" method="post" name="reg_form">
+		<form method="post" name="reg_form">
 			<table>
 				<tr>
 					<td>회원분류</td>

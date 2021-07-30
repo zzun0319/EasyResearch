@@ -46,6 +46,16 @@ public class UserController {
 		System.out.println("마이 페이지로 이동");
 	}
 	
+	@GetMapping("/updateUserInfo")
+	public void UpdateUserInfoPage() {
+		System.out.println("회원 정보 변경 페이지로 이동");
+	}
+	
+	@GetMapping("/deleteUser")
+	public void DeleteUserPage() {
+		System.out.println("회원 탈퇴 페이지로 이동");
+	}
+	
 	@GetMapping("/sendAuthenticationMail")
 	public String SendAuthenticationMail(String userId, RedirectAttributes ra) {
 		
@@ -85,7 +95,7 @@ public class UserController {
 	@PostMapping("/register_checkUnivMember")
 	public String RegisterCheckUnivInfo(UnivMemberVO umvo, Model model, RedirectAttributes ra) {
 		
-		System.out.println("학교 멤버 테이블에 담긴 정보와 일치하는지 검사 요청");
+		System.out.println("학교 멤버 테이블에 담긴 정보와 일치하는지 검사 요청" + umvo.getIdNumber());
 		
 		String result = service.CheckUnivMemberInfo(umvo);
 		ra.addFlashAttribute("msg", result);
@@ -113,7 +123,7 @@ public class UserController {
 	@PostMapping("/login")
 	public String Login(UserVO user, HttpSession session, RedirectAttributes ra) {
 		
-		System.out.println("로그인 요청");
+		System.out.println("로그인 요청" + user.getUserId());
 		
 		String msg = service.Login(user);
 		ra.addFlashAttribute("msg", msg);
@@ -126,6 +136,28 @@ public class UserController {
 		}
 	}
 	
+	@PostMapping("/updateUserInfo")
+	public String UpdateUserInfo(UserVO user, RedirectAttributes ra) {
+		
+		System.out.println("회원정보 변경 요청" + user.getUserId());
+		service.UpdateUserInfo(user);
+		ra.addFlashAttribute("msg", "정상적으로 변경되었습니다.");
+		return "redirect:/user/mypage";
+	}
+	
+	@PostMapping("/deleteUser")
+	public String DeleteUser(UserVO user, RedirectAttributes ra) {
+		System.out.println("회원 탈퇴 요청" + user.getUserId());
+		
+		String result = service.DeleteUser(user);
+		ra.addFlashAttribute("msg", result);
+		if(result.equals("회원 탈퇴 완료")) {
+			return "redirect:/home";
+		}
+		else {
+			return "redirect:/user/mypage";
+		}
+	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -142,8 +174,5 @@ public class UserController {
 			return "OK";
 		}
 	}
-	
-	
-	
 	
 }

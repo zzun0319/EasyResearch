@@ -168,6 +168,24 @@ public class UserService implements IUserService {
 		}
 		return result;
 	}
+
+	@Override
+	public void UpdateUserInfo(UserVO user) {
+		mapper.UpdateUserInfo(user);
+	}
+	
+
+	@Override
+	public String DeleteUser(UserVO user) {
+		UserVO compareVO = mapper.GetERUserInfoById(user.getUserId());
+		if(compareVO.getUserPw().equals(user.getUserPw())) {
+			mapper.DeleteUser(user.getUserId());
+			return "회원 탈퇴 완료";
+		}
+		else {
+			return "비밀번호가 일치하지 않습니다. 회원 탈퇴에 실패했습니다.";
+		}
+	}
 	
 	
 

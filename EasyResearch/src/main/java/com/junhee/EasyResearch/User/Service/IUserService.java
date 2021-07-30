@@ -8,16 +8,16 @@ import com.junhee.EasyResearch.Model.UserVO;
 public interface IUserService {
 	
 	// 회원 가입 시 입력한 정보가 모두 일치할 경우 다음 페이지에 입력했던 것들을 자동으로 입력시키기 위해 정보를 넘겨주는 메서드
-	UnivMemberVO GetUnivMemberInfoByIdNum(String idNumber);
+	public UnivMemberVO GetUnivMemberInfoByIdNum(String idNumber);
 	
 	// 회원 가입 시 입력한 정보가 학교 쪽에 등록된 정보와 일치하는지 검사하는 메서드
-	String CheckUnivMemberInfo(UnivMemberVO umvo);
+	public String CheckUnivMemberInfo(UnivMemberVO umvo);
 
 	// 회원 가입 매서드
-	void Register(UserVO user);
+	public void Register(UserVO user);
 	
 	// 아이디로 EasyResearch 회원정보 조회 메서드
-	UserVO GetERUserInfoById(String userId);
+	public UserVO GetERUserInfoById(String userId);
 	
 	// 인증 메일을 보내는 메서드
 	public String AuthenticationMailSend(String userId);
@@ -27,4 +27,10 @@ public interface IUserService {
 	
 	// 로그인 체크 메서드
 	public String Login(UserVO user);
+	
+	// 회원 정보 수정 기능
+	public void UpdateUserInfo(UserVO user);
+	
+	// 회원 탈퇴 기능
+	public String DeleteUser(UserVO user);
 }

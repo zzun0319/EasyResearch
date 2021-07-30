@@ -59,3 +59,10 @@
         
     </body>
 </html>
+
+<script>
+	const result = "${msg}"
+	if(result.length > 0){
+		alert(result);
+	}
+</script>

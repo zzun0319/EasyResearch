@@ -48,6 +48,17 @@ public class UserMapperTest {
 		mapper.Register(user);
 		System.out.println(mapper.GetERUserInfoById(user.getUserId()));
 	}
+	
+	@Test
+	public void UpdateUserInfoTest() {
+		UserVO user = new UserVO();
+		user.setUserId("doctor1111");
+		System.out.println(mapper.GetERUserInfoById(user.getUserId()));
+		user.setEmail("dododo@naver.com");
+		user.setTel("01090909090");
+		mapper.UpdateUserInfo(user);
+		System.out.println(mapper.GetERUserInfoById(user.getUserId()));
+	}
 
 	
 	
