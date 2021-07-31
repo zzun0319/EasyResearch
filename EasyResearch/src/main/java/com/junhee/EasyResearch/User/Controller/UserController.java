@@ -56,8 +56,13 @@ public class UserController {
 		System.out.println("회원 탈퇴 페이지로 이동");
 	}
 	
-	@GetMapping("/updatePw")
-	public void UpdatePwPage() {
+	@GetMapping("/updatePw_current")
+	public void UpdatePw_CurrentPage() {
+		System.out.println("비밀번호 변경 페이지 / 현재 비밀번호 확인 페이지로 이동");
+	}
+	
+	@GetMapping("/updatePw_new")
+	public void UpdatePw_NewPage() {
 		System.out.println("비밀번호 변경 페이지로 이동");
 	}
 	
@@ -173,18 +178,32 @@ public class UserController {
 		}
 	}
 	
-	@PostMapping("/updatePw")
-	public String updatePw2(UserVO user, String newPw, RedirectAttributes ra) {
-		System.out.println("비밀번호 변경 요청" + user.getUserId());
+	@PostMapping("/updatePw_current")
+	public String updatePwCurrentCheck(UserVO user, RedirectAttributes ra) {
 		
-		String msg = service.UpdatePassword(user, newPw);
-		ra.addFlashAttribute("msg", msg);
-		if(msg.equals("변경 성공")) {
-			return "redirect:/user/mypage";
+		System.out.println("비밀번호 변경 요청, 현재비밀번호 확인" + user.getUserId());
+		
+		String msg = service.Login(user);;
+		if(msg.equals("로그인 성공")) {
+			ra.addFlashAttribute("confirm", "OK");
+			return "redirect:/user/updatePw_new";
 		}
 		else {
-			return "redirect:/user/updatePw";
+			ra.addFlashAttribute("msg", "현재 비밀번호가 일치하지 않습니다.");
+			return "redirect:/user/updatePw_current";
 		}
+	}
+	
+	@PostMapping("/updatePw_new")
+	public String updatePwNew(UserVO user, RedirectAttributes ra) {
+		String result = service.UpdatePassword(user);
+		if(result == null) {
+			ra.addFlashAttribute("msg", "변경 실패");
+		}
+		if(result.equals("변경 성공")) {
+			ra.addFlashAttribute("msg", result);
+		}
+		return "redirect:/user/mypage";
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////

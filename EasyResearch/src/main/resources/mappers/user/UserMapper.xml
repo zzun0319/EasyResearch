@@ -59,7 +59,7 @@
 	</update>
 	
 	<update id="UpdatePassword" parameterType="String">
-		UPDATE members SET user_pw=#{newPw} WHERE user_id=#{userId}
+		UPDATE er_users SET user_pw=#{userPw} WHERE user_id=#{userId}
 	</update>
 
 	<!-- INSERT 문 -->
