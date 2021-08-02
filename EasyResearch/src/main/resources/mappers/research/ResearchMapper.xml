@@ -28,13 +28,14 @@
 		<result property="rewardValue" column="reward_value" />
 		<result property="duration" column="duration" />
 		<result property="permission" column="permission" />
-		<result property="filePath" column="file_path" />
+		<result property="uploadFileName" column="upload_file_name" />
+		<result property="savedFileName" column="saved_file_name" />
 		<association property="researcher" column="researcher" javaType="com.junhee.EasyResearch.Model.UserVO" resultMap="UserMap" />
 	</resultMap>
 	
 	<insert id="RegisterResearch">
-		INSERT INTO research (research_type, title, purpose, method, reward_type, reward_value, duration, file_path, researcher) 
-		VALUES (#{researchType},#{title},#{purpose},#{method},#{rewardType},#{rewardValue},#{duration},#{filePath},#{researcher.userId})
+		INSERT INTO research (research_type, title, purpose, method, reward_type, reward_value, duration, upload_file_name, saved_file_name, researcher) 
+		VALUES (#{researchType},#{title},#{purpose},#{method},#{rewardType},#{rewardValue},#{duration},#{uploadFileName}, #{savedFileName}, #{researcher.userId})
 	</insert>
 
 </mapper>

@@ -25,25 +25,30 @@
 	<c:if test="${!user.emailVerification}"> <!-- 메일 인증 안 받은 상태 -->
 		<h3><a href="/user/sendAuthenticationMail?userId=${user.userId}"> 인증 메일 발송하기 </a></h3>
 	</c:if>
-	
-	<c:if test="${user.emailVerification}"> <!-- 메일 인증 안 받은 상태 -->
+	<br><br><br>
+	<c:if test="${user.emailVerification}"> <!-- 메일 인증 받은 상태 -->
 		<c:if test="${user.participationRight}">
-			<input type="button" value="수강 중인 과목 체크하기" onclick="location.href='/research/studentAddClass?studentId=${user.userId}'"><br>
+			<input type="button" value="수강 중인 과목 체크하기" onclick="location.href='/research/studentAddClass?studentId=${user.userId}'"><br><br>
 			<input type="button" value="나의 연구 참여 신청 현황" onclick="location.href='/research/showMyApply?studentId=${user.userId}'"><br>
+		<br><br>
 		</c:if>
 		<c:if test="${user.setupRight}">
-			<input type="button" value="내 연구 보기" onclick="location.href='/research/showMyResearch?researcher.userId=${user.userId}'"><br>
+			<input type="button" value="내 연구 보기" onclick="location.href='/research/showMyResearch?researcher.userId=${user.userId}'"><br><br>
 			<input type="button" value="예약 중인 장소 보기" onclick="location.href='#'"><br>
+		<br><br>
 		</c:if>
 		<c:if test="${user.classRegiRight}">
 			<input type="button" value="연구 참여 중인 과목 보기" onclick="location.href='/research/showMyClasses?instructorId=${user.userId}'"><br>
+		<br><br>
 		</c:if>
 		<c:if test="${user.permissionRight}">
 			<input type="button" value="개설 연구 승인하기" onclick="location.href='/research/acceptResearch?major=${user.major}'"><br>
+		<br><br>
 		</c:if>
 	
-		<input type="button" value="회원정보 수정" onclick="location.href='/user/updateUserInfo'"><br>
+		<input type="button" value="회원정보 수정" onclick="location.href='/user/updateUserInfo'"><br><br>
 		<input type="button" value="비밀번호 수정" onclick="location.href='/user/updatePw_current'"><br>
+		<br><br><br>
 	</c:if>
 	
 	

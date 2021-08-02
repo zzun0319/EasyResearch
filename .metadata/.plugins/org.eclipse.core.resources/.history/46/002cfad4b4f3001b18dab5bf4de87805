@@ -1,0 +1,20 @@
+package com.junhee.EasyResearch.Model;
+
+public class ResearchVO {
+
+	private int researchId; // 연구 식별 id
+	private String researchType; // 오프라인 실험, 오프라인 설문, 온라인 실험, 온라인 설문, 기타(오프라인), 기타(온라인)
+	private String title; // 연구 제목
+	private String purpose; // 연구 목적
+	private String method; // 연구 방법 및 절차
+	private UserVO researcher; // 연구자 정보
+	private String rewardType; // 보상 타입 - 연구 참여 점수, 참가비, 기타 3개 증 택 1 
+	private int rewardValue; // 보상 정도 (~점, ~원, ~개)
+	private int duration; // 연구 소요 시간
+	private boolean permission; // 연구 진행 승인 여부
+	private String uploadFileName; // 업로드한 파일 이름
+	private String savedFileName; // 파일 이름이 같을 경우 구분하기 위해 uuid를 붙인 파일 이름
+	
+	
+
+}

@@ -9,11 +9,15 @@ CREATE TABLE research (
 	reward_value INT NOT NULL,
     duration INT NOT NULL,
     permission BOOL NOT NULL,
-    file_path VARCHAR(200) NOT NULL,
+    upload_file_name VARCHAR(200),
     FOREIGN KEY (researcher) REFERENCES er_users(user_id) ON DELETE RESTRICT
 );
 ALTER TABLE research MODIFY reward_type VARCHAR(8) NOT NULL;
 ALTER TABLE research MODIFY permission BOOL NOT NULL DEFAULT FALSE;
+ALTER TABLE research ADD saved_file_name VARCHAR(300);
+
+
+
 COMMIT;
 -- DROP TABLE research;
 DESC research;

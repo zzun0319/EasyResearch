@@ -12,12 +12,14 @@ public class ResearchVO {
 	private int rewardValue; // 보상 정도 (~점, ~원, ~개)
 	private int duration; // 연구 소요 시간
 	private boolean permission; // 연구 진행 승인 여부
-	private String filePath; // 첨부한 파일의 첨부 위치
+	private String uploadFileName; // 업로드한 파일 이름
+	private String savedFileName; // 파일 이름이 같을 경우 구분하기 위해 uuid를 붙인 파일 이름
 	
 	public ResearchVO() {}
 
-	public ResearchVO(int researchId, String title, String purpose, String method, UserVO researcher, String rewardType,
-			int rewardValue, int duration, String researchType, boolean permission, String filePath) {
+	public ResearchVO(int researchId, String researchType, String title, String purpose, String method,
+			UserVO researcher, String rewardType, int rewardValue, int duration, boolean permission,
+			String uploadFileName, String savedFileName) {
 		this.researchId = researchId;
 		this.researchType = researchType;
 		this.title = title;
@@ -28,7 +30,8 @@ public class ResearchVO {
 		this.rewardValue = rewardValue;
 		this.duration = duration;
 		this.permission = permission;
-		this.filePath = filePath;
+		this.uploadFileName = uploadFileName;
+		this.savedFileName = savedFileName;
 	}
 
 	public int getResearchId() {
@@ -38,11 +41,11 @@ public class ResearchVO {
 	public void setResearchId(int researchId) {
 		this.researchId = researchId;
 	}
-	
+
 	public String getResearchType() {
 		return researchType;
 	}
-	
+
 	public void setResearchType(String researchType) {
 		this.researchType = researchType;
 	}
@@ -103,7 +106,6 @@ public class ResearchVO {
 		this.duration = duration;
 	}
 
-
 	public boolean isPermission() {
 		return permission;
 	}
@@ -112,12 +114,20 @@ public class ResearchVO {
 		this.permission = permission;
 	}
 
-	public String getFilePath() {
-		return filePath;
+	public String getUploadFileName() {
+		return uploadFileName;
 	}
 
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
+	public void setUploadFileName(String uploadFileName) {
+		this.uploadFileName = uploadFileName;
+	}
+
+	public String getSavedFileName() {
+		return savedFileName;
+	}
+
+	public void setSavedFileName(String savedFileName) {
+		this.savedFileName = savedFileName;
 	}
 
 	@Override
@@ -125,7 +135,7 @@ public class ResearchVO {
 		return "ResearchVO [researchId=" + researchId + ", researchType=" + researchType + ", title=" + title
 				+ ", purpose=" + purpose + ", method=" + method + ", researcher=" + researcher + ", rewardType="
 				+ rewardType + ", rewardValue=" + rewardValue + ", duration=" + duration + ", permission=" + permission
-				+ ", filePath=" + filePath + "]";
+				+ ", uploadFileName=" + uploadFileName + ", savedFileName=" + savedFileName + "]";
 	}
 
 }

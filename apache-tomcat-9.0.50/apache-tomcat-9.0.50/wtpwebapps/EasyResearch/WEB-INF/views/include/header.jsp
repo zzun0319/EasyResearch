@@ -37,23 +37,23 @@
                 	<p class="lead">EasyResearch는 연구자, 연구참여자 모두 간편하게 사용할 수 있는 연구 서포트 웹입니다.</p>
                 </c:if>
                 <c:if test="${user != null}">
-                <ul class="navbar-nav ml-auto">
-                	<c:choose>
-                        <c:when test="${user.participationRight == true}">
-                        	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/research/searchResearch">연구 참여 신청하기</a></li>
-                        </c:when>
-                        <c:when test="${member.setupRight == true}">
-                        	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/research/openResearch">연구 개설 신청하기</a></li>
-                        </c:when>
-                        <c:when test="${member.classRegiRight == true}">
-                        	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/class/searchResearch">연구 참여 과목 설정하기</a></li>
-                        	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/class/downloadCreditFile">연구 참여 점수 파일 다운로드</a></li>
-                        </c:when>
-                        <c:when test="${member.permissionRight == true}">
-                        	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/research/permitResearch">개설 연구 승인하기</a></li>
-                        </c:when>
-                    </c:choose>
-                </ul>
+                        <c:if test="${user.participationRight}">
+                        	<input type="button" value="연구 참여 신청하기" onclick="location.href='/research/searchResearch'">
+                        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </c:if>
+                        <c:if test="${user.setupRight}">
+                        	<input type="button" value="연구 개설 신청하기" onclick="location.href='/research/openResearch'">
+                        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </c:if>
+                        <c:if test="${user.classRegiRight}">
+                        	<input type="button" value="연구 참여 과목 설정하기" onclick="location.href='/class/searchResearch'">
+                        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        	<input type="button" value="연구 참여 점수 파일 다운로드" onclick="location.href='/class/downloadCreditFile'">
+                        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </c:if>
+                        <c:if test="${user.permissionRight}">
+                        	<input type="button" value="개설 연구 승인하기" onclick="location.href='/research/permitResearch'">
+                        </c:if>
                 </c:if>
             </div>
         </header>

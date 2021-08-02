@@ -28,7 +28,7 @@ public class ResearchMapperTest {
 		rvo.setRewardType("연구 참여 점수");
 		rvo.setRewardValue(2);
 		rvo.setDuration(30);
-		rvo.setFilePath("d:/upload/연구1.doc");
+		rvo.setUploadFileName("d:/upload/연구1.doc");
 		
 		UserVO researcher = new UserVO();
 		researcher.setUserId("master1111");
