@@ -1,22 +1,31 @@
 package com.junhee.EasyResearch.Research.Controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
+import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriUtils;
@@ -46,6 +55,7 @@ public class ResearchController {
 		model.addAttribute("selectedResearch", service.GetResearchInfo(researchId));
 	}
 	
+	// 이 방법도 되고 
 	@GetMapping("/download/{researchId}")
 	private ResponseEntity<Resource> DownloadAttachedFile(@PathVariable int researchId) throws MalformedURLException{
 		
@@ -53,7 +63,8 @@ public class ResearchController {
 		String savedFileName = rvo.getSavedFileName();
 		String uploadFileName = rvo.getUploadFileName();
 		
-		Resource resource = new FileSystemResource(service.GetFullPath(savedFileName));
+		UrlResource resource = new UrlResource("file:" + service.GetFullPath(savedFileName));
+		
 		
 		String encodedUploadFileName = UriUtils.encode(uploadFileName, StandardCharsets.UTF_8);
 		String contentDisposition = "attachment; filename=\"" + encodedUploadFileName + "\"";
@@ -61,6 +72,27 @@ public class ResearchController {
 		return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, contentDisposition).body(resource);
 		
 	}
+	
+	/* 이 방법도 된다.
+	@ResponseBody
+	@PostMapping("/download")
+	private byte[] DownloadAttachedFile(HttpServletResponse response, int researchId) throws IOException {
+		
+		ResearchVO rvo = service.GetResearchInfo(researchId);
+		String savedFileName = rvo.getSavedFileName();
+		String uploadFileName = rvo.getUploadFileName();
+		
+		File file = new File(service.GetFullPath(savedFileName));		
+		
+		byte[] bytes = FileCopyUtils.copyToByteArray(file);
+		
+		String fn = new String(rvo.getUploadFileName().getBytes(), "utf-8");
+		System.out.println(fn);
+		response.setHeader("Content-Disposition", "attachment;filename=\"" + fn + "\"");
+		response.setContentLength(bytes.length);
+		return bytes;
+	}
+	*/
 	
 	//////////////////////////////////////////////////////////////
 	

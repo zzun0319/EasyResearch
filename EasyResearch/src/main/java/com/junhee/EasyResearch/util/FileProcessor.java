@@ -36,13 +36,11 @@ public class FileProcessor {
 	}
 	
 	// 파일을 실제 파일저장소에 저장하는 메서드
-	public String StoreFile(MultipartFile file) throws IllegalStateException, IOException {
+	public String StoreFile(MultipartFile file, String savedFileName) throws IllegalStateException, IOException {
 		if(file.isEmpty()) {
 			return "파일이 비어있습니다.";
 		}
 		else {
-			String originalFileName = file.getOriginalFilename();
-			String savedFileName = GetSavedFileName(originalFileName);
 			file.transferTo(new File(GetFullPath(savedFileName)));
 			return "파일 저장 성공";
 		}

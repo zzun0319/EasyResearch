@@ -35,12 +35,19 @@ public class ResearchService implements IResearchService {
 				rvo.setRewardValue(4);
 			}
 		}
-
-		String result = fileProcessor.StoreFile(file);
-		if(result.equals("파일 저장 성공")) {
-			String originalFileName = file.getOriginalFilename();
+		
+		String originalFileName = null;
+		String savedFileName = null;
+		
+		if(!file.isEmpty()) {
+			originalFileName = file.getOriginalFilename();
+			savedFileName = fileProcessor.GetSavedFileName(originalFileName);
 			rvo.setUploadFileName(originalFileName);
-			rvo.setSavedFileName(fileProcessor.GetSavedFileName(originalFileName));
+			rvo.setSavedFileName(savedFileName);
+		}
+
+		String result = fileProcessor.StoreFile(file, savedFileName);
+		if(result.equals("파일 저장 성공")) {
 			result = "연구 개설이 완료되었습니다. 연구 승인 후 타임슬롯을 열 수 있습니다. (file O)";
 		}
 		else {

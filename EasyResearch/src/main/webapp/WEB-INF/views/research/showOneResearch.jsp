@@ -19,7 +19,6 @@
 
 *{padding:0; margin:0}
 
-input{width: 100%;}
 textarea{width: 100%; height: 100px;}
 
 td{width:40%;}
@@ -50,9 +49,12 @@ td{width:40%;}
 	 - 소요 시간: ${selectedResearch.duration} <br>
 	 - 보상 종류: ${selectedResearch.rewardType} <br>
 	 - 보상: ${selectedResearch.rewardValue} ${selectedResearch.rewardType == "학점" ?  "점" : selectedResearch.rewardType == "참가비" ? "원" : "개"}<br>
-	 <c:if test="${user.setupRight || user.classRegiRight || user.permissionRight}">	 
-	 - 첨부파일: <a href="/research/download/${selectedResearch.researchId}">${selectedResearch.uploadFileName}</a>
+	 <c:if test="${user.setupRight || user.classRegiRight || user.permissionRight}">
+	 	<c:if test="${selectedResearch.uploadFileName != null}">
+	 - 첨부파일: <a href="/research/download/${selectedResearch.researchId}">${selectedResearch.uploadFileName}</a> <br>
+	 	</c:if>
 	 </c:if>
+	 <br><br>
 	 	&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:history.back(-1)"> 뒤로 가기 </a>
 	 
 	<jsp:include page="../include/footer.jsp" />
