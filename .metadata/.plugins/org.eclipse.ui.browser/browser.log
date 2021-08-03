@@ -6,3 +6,23 @@
 8월 03, 2021 02:20:31.57 [12328:16804:0803/022031.057:ERROR:device_event_log_impl.cc(214)] [02:20:31.056] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
 8월 03, 2021 02:20:31.58 [12328:16804:0803/022031.057:ERROR:device_event_log_impl.cc(214)] [02:20:31.057] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
 8월 03, 2021 02:20:31.59 [12328:16804:0803/022031.058:ERROR:device_event_log_impl.cc(214)] [02:20:31.058] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+
+8월 03, 2021 10:22:48.342 NEW SESSION
+8월 03, 2021 10:22:48.342 [15240:11168:0803/102248.340:ERROR:device_event_log_impl.cc(214)] [10:22:48.340] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+8월 03, 2021 10:22:48.342 [15240:11168:0803/102248.340:ERROR:device_event_log_impl.cc(214)] [10:22:48.341] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+8월 03, 2021 10:22:48.343 [15240:11168:0803/102248.341:ERROR:device_event_log_impl.cc(214)] [10:22:48.342] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+8월 03, 2021 11:11:12.471 [15240:11168:0803/111112.470:ERROR:device_event_log_impl.cc(214)] [11:11:12.467] USB: usb_service_win.cc:258 Failed to get device driver name: 요소가 없습니다. (0x490)
+
+8월 03, 2021 16:22:34.41 NEW SESSION
+8월 03, 2021 16:22:34.41 [11020:9212:0803/162234.039:ERROR:device_event_log_impl.cc(214)] [16:22:34.039] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+8월 03, 2021 16:22:34.41 [11020:9212:0803/162234.040:ERROR:device_event_log_impl.cc(214)] [16:22:34.040] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+8월 03, 2021 16:22:34.42 [11020:9212:0803/162234.041:ERROR:device_event_log_impl.cc(214)] [16:22:34.041] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+8월 03, 2021 16:27:32.955 [17572:11932:0803/162732.954:ERROR:device_event_log_impl.cc(214)] [16:27:32.954] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+8월 03, 2021 16:27:32.955 [17572:11932:0803/162732.955:ERROR:device_event_log_impl.cc(214)] [16:27:32.955] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+8월 03, 2021 16:27:32.956 [17572:11932:0803/162732.956:ERROR:device_event_log_impl.cc(214)] [16:27:32.956] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+8월 03, 2021 16:30:13.462 [17572:11932:0803/163013.461:ERROR:CONSOLE(1)] "Session is unregistering, can't dispatch pending call to DOM.getDocument", source: devtools://devtools/bundled/core/sdk/sdk.js (1)
+8월 03, 2021 16:30:14.551 [17572:11932:0803/163014.550:ERROR:CONSOLE(1)] "Session is unregistering, can't dispatch pending call to DOM.getDocument", source: devtools://devtools/bundled/core/sdk/sdk.js (1)
+8월 03, 2021 16:30:16.409 [17572:11932:0803/163016.408:ERROR:CONSOLE(1)] "Session is unregistering, can't dispatch pending call to DOM.getDocument", source: devtools://devtools/bundled/core/sdk/sdk.js (1)
+8월 03, 2021 16:30:18.513 [17572:11932:0803/163018.512:ERROR:CONSOLE(1)] "Session is unregistering, can't dispatch pending call to DOM.getDocument", source: devtools://devtools/bundled/core/sdk/sdk.js (1)
+8월 03, 2021 20:46:56.439 [16868:8832:0803/204656.438:ERROR:device_event_log_impl.cc(214)] [20:46:56.437] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)
+8월 03, 2021 20:46:56.439 [16868:8832:0803/204656.438:ERROR:device_event_log_impl.cc(214)] [20:46:56.437] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: 시스템에 부착된 장치가 작동하지 않습니다. (0x1F)

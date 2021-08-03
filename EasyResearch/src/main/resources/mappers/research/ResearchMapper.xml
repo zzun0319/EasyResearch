@@ -37,5 +37,13 @@
 		INSERT INTO research (research_type, title, purpose, method, reward_type, reward_value, duration, upload_file_name, saved_file_name, researcher) 
 		VALUES (#{researchType},#{title},#{purpose},#{method},#{rewardType},#{rewardValue},#{duration},#{uploadFileName}, #{savedFileName}, #{researcher.userId})
 	</insert>
+	
+	<select id="GetMyResearch" resultMap="ResearchMap">
+		SELECT * FROM research WHERE researcher=#{userId}
+	</select>
+	
+	<select id="GetResearchInfo" resultMap="ResearchMap">
+		SELECT * FROM research WHERE research_id=#{researchId}
+	</select>
 
 </mapper>

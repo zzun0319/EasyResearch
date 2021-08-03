@@ -33,7 +33,7 @@
 		<br><br>
 		</c:if>
 		<c:if test="${user.setupRight}">
-			<input type="button" value="내 연구 보기" onclick="location.href='/research/showMyResearch?researcher.userId=${user.userId}'"><br><br>
+			<input type="button" value="내 연구 보기" onclick="location.href='/research/showMyResearch?userId=${user.userId}'"><br><br>
 			<input type="button" value="예약 중인 장소 보기" onclick="location.href='#'"><br>
 		<br><br>
 		</c:if>

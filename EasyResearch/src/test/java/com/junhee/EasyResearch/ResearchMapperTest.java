@@ -1,5 +1,7 @@
 package com.junhee.EasyResearch;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +37,20 @@ public class ResearchMapperTest {
 		
 		rvo.setResearcher(researcher);
 		mapper.RegisterResearch(rvo);
+	}
+	
+	@Test
+	public void GetMyResearchTest() {
+		
+		List<ResearchVO> list = mapper.GetMyResearch("master1111");
+		for(ResearchVO rvo : list) {
+			System.out.println(rvo);
+		}
+	}
+	
+	@Test
+	public void GetResearchInfoTest() {
+		System.out.println(mapper.GetResearchInfo(3));
 	}
 
 }

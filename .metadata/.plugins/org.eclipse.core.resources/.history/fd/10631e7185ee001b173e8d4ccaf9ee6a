@@ -1,5 +1,0 @@
-package com.junhee.EasyResearch.Service;
-
-public interface IResearchService {
-
-}

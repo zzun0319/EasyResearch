@@ -16,7 +16,7 @@ ALTER TABLE research MODIFY reward_type VARCHAR(8) NOT NULL;
 ALTER TABLE research MODIFY permission BOOL NOT NULL DEFAULT FALSE;
 ALTER TABLE research ADD saved_file_name VARCHAR(300);
 
-
+SELECT * FROM research;
 
 COMMIT;
 -- DROP TABLE research;

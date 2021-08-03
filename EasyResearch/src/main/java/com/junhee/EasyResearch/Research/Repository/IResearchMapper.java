@@ -1,18 +1,20 @@
 package com.junhee.EasyResearch.Research.Repository;
 
+import java.util.List;
+
 import com.junhee.EasyResearch.Model.ResearchVO;
 
 public interface IResearchMapper {
 	
 	// 연구 개설
-	void RegisterResearch(ResearchVO rvo);
-	/*
+	public void RegisterResearch(ResearchVO rvo);
+	
 	// 내가 개설한 연구 보기
-	List<ResearchVO> GetMyResearch(String researcher);
-		
+	public List<ResearchVO> GetMyResearch(String userId);
+	
 	// 연구 상세 보기
-	ResearchVO GetResearchInfo(int researchId);
-		
+	public ResearchVO GetResearchInfo(int researchId);
+	/*	
 	// 모든 연구 보기
 	List<ResearchVO> GetAllResearch();
 		

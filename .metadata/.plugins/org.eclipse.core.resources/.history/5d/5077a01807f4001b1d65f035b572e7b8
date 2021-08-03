@@ -1,0 +1,18 @@
+package com.junhee.EasyResearch.util;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
+public class FileProcessor {
+	
+	@Autowired
+	@Qualifier("uploadPath")
+	private String uploadPath;
+
+	public String GetFullPath(String fileName) {
+		return uploadPath + fileName;
+	}
+	
+}
