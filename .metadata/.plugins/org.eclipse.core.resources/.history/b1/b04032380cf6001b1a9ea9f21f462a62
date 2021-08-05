@@ -1,0 +1,14 @@
+package com.junhee.EasyResearch.Model;
+
+import java.sql.Timestamp;
+
+public class CommentVO {
+	
+	private long commentId;
+	private UserVO writer; // 글쓴이 정보, 아이디 + 이름까지 필요해서 UserVO로 선언
+	private int researchId; // 연구 번호
+	private String content; // 피드백 내용
+	private Timestamp
+	
+	
+}

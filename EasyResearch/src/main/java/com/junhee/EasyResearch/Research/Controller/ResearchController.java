@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
+import java.net.URLEncoder;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 
@@ -25,11 +26,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriUtils;
 
+import com.junhee.EasyResearch.Model.CommentVO;
 import com.junhee.EasyResearch.Model.ResearchVO;
 import com.junhee.EasyResearch.Research.Service.ResearchService;
 
@@ -54,12 +57,13 @@ public class ResearchController {
 	@GetMapping("/showOneResearch")
 	private void ShowOneResearchPage(int researchId, Model model) {
 		System.out.println(researchId + "번 연구 상세 보기 페이지로 이동");
-		System.out.println(service.GetResearchInfo(researchId));
 		model.addAttribute("selectedResearch", service.GetResearchInfo(researchId));
+		model.addAttribute("comments", service.GetResearchComments(researchId));
 	}
 	
 	@GetMapping("/acceptResearch")
-	private void AccecptResearchPage(String major, Model model) {
+	private void AccecptResearchPage(@RequestParam("major") String major, Model model) {
+		System.out.println("왜 전공이 안 찍혀: " + major);
 		model.addAttribute("registedResearchList", service.GetSameMajorResearch(major));
 	}
 	
@@ -116,5 +120,36 @@ public class ResearchController {
 		String result = service.RegisterResearch(research, file);
 		ra.addFlashAttribute("msg", result);
 		return "redirect:/user/mypage";
+	}
+	
+	@PostMapping("/permitResearch")
+	private String PermitResearch(ResearchVO research, String major, String userType, String content, RedirectAttributes ra) 
+			throws UnsupportedEncodingException {
+		
+		System.out.println("연구 승인 / 피드백");
+		System.out.println(research);
+		if(userType.equals("지도교수")) {
+			String msg = service.PermitResearch(research);
+		}
+		
+		CommentVO cvo = new CommentVO();
+		cvo.setContent(content);
+		cvo.setResearchId(research.getResearchId());
+		cvo.setWriter(research.getResearcher());
+		service.RegisterComment(cvo);
+		
+		String url = "";
+		
+		if(userType.equals("지도교수")) {
+			major = URLEncoder.encode(major, "UTF-8");
+			url = "redirect:/research/acceptResearch?major=" + major;
+		}
+		else {
+			url = "redirect:/research/showMyResearch?userId=" + research.getResearcher().getUserId();
+		}
+		
+		ra.addFlashAttribute("msg", "댓글이 등록되었습니다.");
+		
+		return url;
 	}
 }

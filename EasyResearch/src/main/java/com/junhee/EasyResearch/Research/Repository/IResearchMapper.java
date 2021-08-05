@@ -2,6 +2,7 @@ package com.junhee.EasyResearch.Research.Repository;
 
 import java.util.List;
 
+import com.junhee.EasyResearch.Model.CommentVO;
 import com.junhee.EasyResearch.Model.ResearchVO;
 
 public interface IResearchMapper {
@@ -17,6 +18,15 @@ public interface IResearchMapper {
 	
 	// 연구 승인 위해 지도교수 전공과 같은 대학원생의 연구만 얻어오기
 	public List<ResearchVO> GetSameMajorResearch(String major);
+	
+	// 연구 승인하기
+	public void PermitResearch(ResearchVO rvo);
+	
+	// 피드백(댓글) 등록
+	public void RegisterComment(CommentVO cvo);
+	
+	// 연구에 달린 피드백 리스트 얻기
+	public List<CommentVO> GetResearchComments(int researchId);
 	
 	/*	
 	// 모든 연구 보기

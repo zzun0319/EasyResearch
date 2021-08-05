@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.junhee.EasyResearch.Model.CommentVO;
 import com.junhee.EasyResearch.Model.ResearchVO;
 import com.junhee.EasyResearch.Model.UserVO;
 import com.junhee.EasyResearch.Research.Repository.IResearchMapper;
@@ -52,5 +53,54 @@ public class ResearchMapperTest {
 	public void GetResearchInfoTest() {
 		System.out.println(mapper.GetResearchInfo(3));
 	}
+	
+	@Test
+	public void GetSameMajorResearchTest() {
+		
+		for(ResearchVO rvo : mapper.GetSameMajorResearch("응용인지심리")) {
+			System.out.println(rvo);
+		}
+		
+	}
+	
+	@Test
+	public void PermitResearchTest() {
+		ResearchVO rvo = new ResearchVO();
+		rvo.setResearchId(4);
+		rvo.setPermission(true);
+		System.out.println(mapper.GetResearchInfo(4));
+		mapper.PermitResearch(rvo);
+		System.out.println(mapper.GetResearchInfo(4));
+		
+	}
 
+	@Test
+	public void RegisterCommentTest() {
+		/*
+		CommentVO cvo = new CommentVO();
+		cvo.setContent("연구 방법을 좀 더 구체적으로 써야겠구나");
+		cvo.setResearchId(4);
+		UserVO uvo = new UserVO();
+		uvo.setUserId("prof1111");
+		cvo.setWriter(uvo);
+		mapper.RegisterComment(cvo);
+		*/
+		CommentVO cvo = new CommentVO();
+		cvo.setContent("연구 방법을 좀 더 구체적으로 수정했습니다");
+		cvo.setResearchId(4);
+		UserVO uvo = new UserVO();
+		uvo.setUserId("master1111");
+		cvo.setWriter(uvo);
+		mapper.RegisterComment(cvo);
+	}
+	
+	@Test
+	public void GetResearchCommentsTest() {
+		
+		for(CommentVO cvo : mapper.GetResearchComments(4)) {
+			System.out.println(cvo);
+		}
+		
+	}
+	
 }

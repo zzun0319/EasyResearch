@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.junhee.EasyResearch.Model.CommentVO;
 import com.junhee.EasyResearch.Model.ResearchVO;
 import com.junhee.EasyResearch.Research.Repository.IResearchMapper;
 import com.junhee.EasyResearch.util.FileProcessor;
@@ -75,6 +76,29 @@ public class ResearchService implements IResearchService {
 	@Override
 	public List<ResearchVO> GetSameMajorResearch(String major) {
 		return mapper.GetSameMajorResearch(major);
+	}
+
+	@Override
+	public String PermitResearch(ResearchVO rvo) {
+		mapper.PermitResearch(rvo);
+		return "연구 승인 정보가 변경되었습니다.";
+	}
+
+	@Override
+	public int RegisterComment(CommentVO cvo) {
+		
+		int resultNum = 0;
+		if(cvo != null) {
+			mapper.RegisterComment(cvo);
+			resultNum = 1;
+		}
+		
+		return resultNum;
+	}
+
+	@Override
+	public List<CommentVO> GetResearchComments(int researchId) {
+		return mapper.GetResearchComments(researchId);
 	}
 
 }

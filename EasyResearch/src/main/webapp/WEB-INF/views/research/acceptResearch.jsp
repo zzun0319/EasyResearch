@@ -40,27 +40,30 @@
 	
 		<h2> [개설 연구 승인하기] </h2>
 		<p>
-			<form method="post" action="/research/changePermission">
-				<table border="1">
+			<table border="1">
+				<tr>
+					<td>연구 제목</td>
+					<td>연구자 이름</td>
+					<td>승인 상태</td>
+				</tr>
+				<c:forEach var="research" items="${registedResearchList}" varStatus="status">
 					<tr>
-						<td>연구 제목</td>
-						<td>연구자 id</td>
-						<td>승인 상태</td>
+						<td><a href="/research/showOneResearch?researchId=${research.researchId}">${research.title}</a></td>
+						<td>${research.researcher.userName}</td>
+						<td>${research.permission ? '승인' : '승인대기'}</td>
 					</tr>
-					<c:forEach var="research" items="${registedResearchList}" varStatus="status">
-						<input type="hidden" name="researchId" value="${research.researchId}">
-						<tr>
-							<td><a href="/research/showOneResearch?researchId=${research.researchId}">${research.title}</a></td>
-							<td>${research.researcher.userName}</td>
-							<td>${research.permission ? '승인' : '승인대기'}</td>
-						</tr>
-					</c:forEach>
-				</table>
-				<input type="submit" value="저장">
-			</form>
+				</c:forEach>
+			</table>
 		</p>
 	
 	<jsp:include page="../include/footer.jsp" />
 
 </body>
 </html>
+
+<script>
+	const result = "${msg}"
+	if(result.length > 0){
+		alert(result);
+	}
+</script>
