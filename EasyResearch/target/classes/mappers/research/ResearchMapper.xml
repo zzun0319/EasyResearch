@@ -43,7 +43,11 @@
 	</select>
 	
 	<select id="GetResearchInfo" resultMap="ResearchMap">
-		SELECT * FROM research WHERE research_id=#{researchId}
+		SELECT r.*, u.user_id FROM research r JOIN er_users u WHERE r.research_id=#{researchId} AND u.user_id = r.researcher
+	</select>
+	
+	<select id="GetSameMajorResearch" resultMap="ResearchMap">
+		SELECT r.*, u.user_id, u.user_name FROM research r WHERE r.researcher IN (SELECT u.user_id FROM er_users u WHERE u.major=#{major} AND u.user_type IN ('석사과정대학원생','박사과정대학원생'))
 	</select>
 
 </mapper>

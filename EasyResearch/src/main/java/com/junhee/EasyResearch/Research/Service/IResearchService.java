@@ -20,4 +20,7 @@ public interface IResearchService {
 	
 	// 파일 저장 경로 리턴
 	public String GetFullPath(String fileName);
+	
+	// 연구 승인 위해 지도교수 전공과 같은 대학원생의 연구만 얻어오기
+	public List<ResearchVO> GetSameMajorResearch(String major);
 }

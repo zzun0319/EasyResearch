@@ -47,16 +47,24 @@ public class ResearchController {
 	
 	@GetMapping("/showMyResearch")
 	private void ShowMyReseachPage(String userId, Model model) {
+		System.out.println("내 연구 보기 페이지로 이동");
 		model.addAttribute("myResearchList", service.GetMyResearch(userId));
 	}
 	
 	@GetMapping("/showOneResearch")
 	private void ShowOneResearchPage(int researchId, Model model) {
+		System.out.println(researchId + "번 연구 상세 보기 페이지로 이동");
+		System.out.println(service.GetResearchInfo(researchId));
 		model.addAttribute("selectedResearch", service.GetResearchInfo(researchId));
 	}
 	
+	@GetMapping("/acceptResearch/{major}")
+	private void AccecptResearchPage(@PathVariable String major, Model model) {
+		model.addAttribute("registedResearchList", service.GetSameMajorResearch(major));
+	}
+	
 	// 이 방법도 되고 
-	@GetMapping("/download/{researchId}")
+	@GetMapping("/download/{researchId}") // 파일 다운로드 메서드
 	private ResponseEntity<Resource> DownloadAttachedFile(@PathVariable int researchId) throws MalformedURLException{
 		
 		ResearchVO rvo = service.GetResearchInfo(researchId);

@@ -14,12 +14,13 @@ public interface IResearchMapper {
 	
 	// 연구 상세 보기
 	public ResearchVO GetResearchInfo(int researchId);
+	
+	// 연구 승인 위해 지도교수 전공과 같은 대학원생의 연구만 얻어오기
+	public List<ResearchVO> GetSameMajorResearch(String major);
+	
 	/*	
 	// 모든 연구 보기
 	List<ResearchVO> GetAllResearch();
-		
-	// 연구 승인 위해 지도교수 전공과 같은 대학원생의 연구만 얻어오기
-	List<ResearchVO> GetSameMajorResearch(String major);
 	
 	// 연구 승인 상태 변경
 	void ChangePermitStatus(ResearchVO rvo);

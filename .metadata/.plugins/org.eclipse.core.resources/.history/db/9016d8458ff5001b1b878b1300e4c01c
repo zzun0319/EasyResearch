@@ -1,0 +1,15 @@
+package com.junhee.EasyResearch.commons;
+
+public class PageCreator {
+
+	private PageVO pageInfo; // 몇 페이지인지, 페이지 당 보여줄 연구 or 타임슬롯의 개수
+	private int totalCnt; // 뷰에 보여줄 연구 or 타임슬롯의 전체 개수
+	private int endPageNum; // 뷰에 보여질 페이지 숫자들 중 마지막 숫자
+	private int startPageNum; // 뷰에 보여질 페이지 숫자들 중 첫번째 숫자
+	private boolean prev; // '이전' 버튼 활성화 여부
+	private boolean next; // '다음' 버튼 활성화 여부
+	
+	private final int displayPageNumCnt = 10;
+	
+	
+}

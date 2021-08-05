@@ -72,4 +72,9 @@ public class ResearchService implements IResearchService {
 		return fileProcessor.GetFullPath(fileName);
 	}
 
+	@Override
+	public List<ResearchVO> GetSameMajorResearch(String major) {
+		return mapper.GetSameMajorResearch(major);
+	}
+
 }
