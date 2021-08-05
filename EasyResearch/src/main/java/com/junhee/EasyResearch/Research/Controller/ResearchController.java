@@ -58,8 +58,8 @@ public class ResearchController {
 		model.addAttribute("selectedResearch", service.GetResearchInfo(researchId));
 	}
 	
-	@GetMapping("/acceptResearch/{major}")
-	private void AccecptResearchPage(@PathVariable String major, Model model) {
+	@GetMapping("/acceptResearch")
+	private void AccecptResearchPage(String major, Model model) {
 		model.addAttribute("registedResearchList", service.GetSameMajorResearch(major));
 	}
 	

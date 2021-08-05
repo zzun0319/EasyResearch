@@ -29,10 +29,10 @@
 			location.href="/user/login";
 		</script>
 	</c:if>
-	<c:if test="${user.permissionRight}">
+	<c:if test="${!user.permissionRight}">
 		<script>
 			alert("해당 페이지 접근 권한이 없습니다.");
-			location.href="/user/login";
+			location.href="/user/mypage";
 		</script>
 	</c:if>
 
@@ -40,7 +40,7 @@
 	
 		<h2> [개설 연구 승인하기] </h2>
 		<p>
-			<form method="post" action="/research/acceptResearch2">
+			<form method="post" action="/research/changePermission">
 				<table border="1">
 					<tr>
 						<td>연구 제목</td>
@@ -48,16 +48,11 @@
 						<td>승인 상태</td>
 					</tr>
 					<c:forEach var="research" items="${registedResearchList}" varStatus="status">
-						<input type="hidden" name="rList[${status.index}].researchId" value="${research.researchId}">
+						<input type="hidden" name="researchId" value="${research.researchId}">
 						<tr>
 							<td><a href="/research/showOneResearch?researchId=${research.researchId}">${research.title}</a></td>
 							<td>${research.researcher.userName}</td>
-							<td>
-								<select name="rList[${status.index}].permit">
-								<option value="false" ${!research.permission ? 'selected' : ''}>승인대기</option>
-								<option style="color:blue;" value="true" ${research.permission ? 'selected' : ''}>승인허가</option>
-								</select>
-							</td>
+							<td>${research.permission ? '승인' : '승인대기'}</td>
 						</tr>
 					</c:forEach>
 				</table>

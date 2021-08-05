@@ -102,8 +102,8 @@
 					<tr>
 						<td>전공</td>
 						<td id="rightColumn">
-							<input style="width:60%;" value="${umvo.sort}" disabled>
-							<input type="hidden" name="major" value="${umvo.sort}">
+							<input style="width:60%;" value="${umvo.major}" disabled>
+							<input type="hidden" name="major" value="${umvo.major}">
 						</td>
 					</tr>
 				</c:if>
