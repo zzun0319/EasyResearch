@@ -65,6 +65,12 @@ public class ResearchController {
 		model.addAttribute("comments", service.GetResearchComments(researchId));
 	}
 	
+	@GetMapping("/makeTimeSlot/{researchId}")
+	private void MakeTimeslotPage(@PathVariable int researchId, Model model) {
+		System.out.println("타임슬롯 만들기 페이지, 연구번호: " + researchId);
+		model.addAttribute("researchInfo", service.GetResearchInfo(researchId));
+	}
+	
 	@GetMapping("/acceptResearch")
 	private void AccecptResearchPage(MajorSearchVO msvo, Model model) {
 		System.out.println("대학원생 개설 연구 리스트 페이지로 이동");

@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.junhee.EasyResearch.Model.CommentVO;
+import com.junhee.EasyResearch.Model.PlaceVO;
 import com.junhee.EasyResearch.Model.ResearchVO;
 import com.junhee.EasyResearch.Model.UserVO;
 import com.junhee.EasyResearch.Research.Repository.IResearchMapper;
@@ -120,6 +121,20 @@ public class ResearchMapperTest {
 		msvo.setKeyword("mas");
 		int totalNum = mapper.GetTotalSameMajorResearchCnt(msvo);
 		System.out.println(totalNum);
+	}
+	
+	@Test
+	public void GetAllLocationInfoTest() {
+		
+		for(PlaceVO pvo : mapper.GetAllLocationInfo()) {
+			System.out.println(pvo);
+		}
+		
+	}
+	
+	@Test
+	public void GetTimeslotsByResearchIdTest() {
+		
 	}
 	
 }

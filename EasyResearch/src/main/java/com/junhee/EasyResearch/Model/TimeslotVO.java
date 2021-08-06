@@ -9,15 +9,18 @@ public class TimeslotVO {
 	private Timestamp startTime; // 연구 시작 시간
 	private Timestamp endTime; // 연구 종료 시간
 	private PlaceVO place; // 연구 장소 정보
+	private int applyCnt; // 참가 신청한 사람의 수
 	
 	public TimeslotVO() {}
 
-	public TimeslotVO(int slotNum, ResearchVO research, Timestamp startTime, Timestamp endTime, PlaceVO place) {
+	public TimeslotVO(int slotNum, ResearchVO research, Timestamp startTime, Timestamp endTime, PlaceVO place,
+			int applyCnt) {
 		this.slotNum = slotNum;
 		this.research = research;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.place = place;
+		this.applyCnt = applyCnt;
 	}
 
 	public int getSlotNum() {
@@ -60,10 +63,20 @@ public class TimeslotVO {
 		this.place = place;
 	}
 
+	public int getApplyCnt() {
+		return applyCnt;
+	}
+	
+	public void setApplyCnt(int applyCnt) {
+		this.applyCnt = applyCnt;
+	}
+
 	@Override
 	public String toString() {
 		return "TimeslotVO [slotNum=" + slotNum + ", research=" + research + ", startTime=" + startTime + ", endTime="
-				+ endTime + ", place=" + place + "]";
+				+ endTime + ", place=" + place + ", applyCnt=" + applyCnt + "]";
 	}
+	
+	
 	
 }

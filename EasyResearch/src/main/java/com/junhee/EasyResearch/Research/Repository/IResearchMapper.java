@@ -3,7 +3,9 @@ package com.junhee.EasyResearch.Research.Repository;
 import java.util.List;
 
 import com.junhee.EasyResearch.Model.CommentVO;
+import com.junhee.EasyResearch.Model.PlaceVO;
 import com.junhee.EasyResearch.Model.ResearchVO;
+import com.junhee.EasyResearch.Model.TimeslotVO;
 import com.junhee.EasyResearch.commons.MajorSearchVO;
 
 public interface IResearchMapper {
@@ -32,13 +34,13 @@ public interface IResearchMapper {
 	// 연구에 달린 피드백 리스트 얻기
 	public List<CommentVO> GetResearchComments(int researchId);
 	
+	// 모든 장소 정보 가져오기
+	List<PlaceVO> GetAllLocationInfo();
+	
+	// 연구별 타임슬롯 가져오기
+	List<TimeslotVO> GetTimeslotsByResearchId(int researchId);
+	
 	/*	
-	// 모든 연구 보기
-	List<ResearchVO> GetAllResearch();
-	
-	// 연구 승인 상태 변경
-	void ChangePermitStatus(ResearchVO rvo);
-	
 	// 연구 참여 과목 등록
 	void RegisterClass(ClassVO cvo);
 	
@@ -60,17 +62,11 @@ public interface IResearchMapper {
 	// 수강 중인 클래스 정보 얻기
 	List<TakingClassVO> GetTakingClassList(String studentId);
 	
-	// 모든 장소 정보 가져오기
-	List<LocationVO> GetAllLocationInfo();
-	
 	// 연구 타임슬롯 등록하기
 	void RegisterTimeslot(TimeSlotVO tsvo);
 	
 	// 장소 최대인원 불러오기
 	int GetMaxLimitPeople(String locationName);
-	
-	// 연구별 타임슬롯 가져오기
-	List<TimeSlotVO> GetTimeslotsByResearchId(int researchId);
 	
 	// 날짜 기간 사이에 예약된 타임슬롯 리스트 가져오기
 	List<TimeSlotVO> GetTimeslotListsByPeriod(Map<String, String> periods);

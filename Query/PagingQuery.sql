@@ -23,8 +23,9 @@ LIMIT 10 OFFSET 5;
 SELECT r.*, u.user_id, u.user_name FROM research r
 JOIN er_users u ON r.researcher = u.user_id
 WHERE u.major = '응용인지심리' AND u.user_type IN ('석사과정대학원생', '박사과정대학원생')
+AND title LIKE '%박사%'
 ORDER BY research_id DESC
-LIMIT 10 OFFSET 5;
+LIMIT 10 OFFSET 0;
 
 SELECT r.*, u.user_id, u.user_name FROM research r
 JOIN er_users u ON r.researcher = u.user_id

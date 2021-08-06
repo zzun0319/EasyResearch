@@ -109,7 +109,7 @@ li {
 		$("#searchBtn").click(function() {
 			const keyword = $("#keywordInput").val();
 			const condition = $("#condition option:selected").val();
-			location.href = "/research/acceptResearch?keyword=" + keyword + "&condition=" + condition;
+			location.href = "/research/acceptResearch?keyword=" + keyword + "&condition=" + condition + "&major=${user.major}";
 		})
 		
 		$("#keywordInput").keydown(function(key) {

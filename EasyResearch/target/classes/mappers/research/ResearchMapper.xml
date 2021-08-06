@@ -42,6 +42,22 @@
 		<association property="writer" column="writer" javaType="com.junhee.EasyResearch.Model.UserVO" resultMap="UserMap" />
 	</resultMap>
 	
+	<resultMap id="PlaceMap" type="com.junhee.EasyResearch.Model.PlaceVO">
+		<id property="placeName" column="place_name" />
+		<result property="maxPeople" column="max_people"/>
+	</resultMap>
+	
+	<resultMap id="TimeslotMap" type="com.junhee.EasyResearch.Model.TimeslotVO">
+		<id property="slotNum" column="slot_num" />
+		<result property="startTime" column="start_time"/>
+		<result property="endTime" column="end_time"/>
+		<result property="applyCnt" column="apply_cnt"/>
+		<association property="research" column="research_id" javaType="com.junhee.EasyResearch.Model.ResearchVO" resultMap="ResearchMap" />
+		<association property="place" column="place_name" javaType="com.junhee.EasyResearch.Model.PlaceVO" resultMap="PlaceMap" />
+	</resultMap>
+	
+	<!-- /////////////////////////////////////////////////////////////////////////////////////// -->
+	
 	<sql id="search">
 		<if test="condition == 'title'">
 			AND r.title LIKE CONCAT('%',#{keyword},'%')
@@ -96,6 +112,14 @@
 		SELECT COUNT(*) FROM research r JOIN er_users u ON r.researcher = u.user_id
 		WHERE u.major = #{major} AND u.user_type IN ('석사과정대학원생', '박사과정대학원생')
 		<include refid="search" />
+	</select>
+	
+	<select id="GetAllLocationInfo" resultMap="PlaceMap">
+		SELECT * FROM research_place;
+	</select>
+	
+	<select id="GetTimeslotsByResearchId" resultMap="TimeslotMap">
+		SELECT t.* FROM timeslot t JOIN research r ON t.research_id = r.research_id WHERE r.research_id=#{researchId}
 	</select>
 	
 	<update id="PermitResearch">

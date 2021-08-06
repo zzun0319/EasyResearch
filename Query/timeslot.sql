@@ -8,6 +8,8 @@ CREATE TABLE timeslot(
     FOREIGN KEY (place_name) REFERENCES research_place(place_name) ON DELETE NO ACTION
 );
 
+ALTER TABLE timeslot ADD apply_cnt INT NOT NULL DEFAULT 0;
+
 DESC timeslot;
 
 SELECT * FROM timeslot;
