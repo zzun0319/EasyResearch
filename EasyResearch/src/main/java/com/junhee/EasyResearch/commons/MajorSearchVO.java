@@ -3,6 +3,10 @@ package com.junhee.EasyResearch.commons;
 public class MajorSearchVO extends SearchVO {
 
 	private String major;
+	
+	public MajorSearchVO() {
+		super();
+	}
 
 	public MajorSearchVO(String major) {
 		super();

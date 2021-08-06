@@ -7,6 +7,7 @@ import java.net.MalformedURLException;
 import java.net.URLEncoder;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -67,14 +68,20 @@ public class ResearchController {
 	@GetMapping("/acceptResearch")
 	private void AccecptResearchPage(MajorSearchVO msvo, Model model) {
 		System.out.println("대학원생 개설 연구 리스트 페이지로 이동");
-		System.out.println(msvo.getPageNum());
+		System.out.println("페이지번호:" + msvo.getPageNum());
+		System.out.println("검색어: " + msvo.getKeyword());
+		System.out.println("검색조건: " + msvo.getCondition());
 		
 		PageCreator pc = new PageCreator();
 		pc.setPageInfo(msvo);
 		pc.setTotalCnt(service.GetTotalSameMajorResearchCnt(msvo));
 		model.addAttribute("pc", pc);
 		model.addAttribute("registedResearchList", service.GetSameMajorResearch(msvo));
-		
+		List<ResearchVO> list = service.GetSameMajorResearch(msvo);
+		System.out.println("리스트 사이즈: " + list.size());
+		for(ResearchVO rvo : list) {
+			System.out.println(rvo);
+		}
 	}
 	
 	// 이 방법도 되고 

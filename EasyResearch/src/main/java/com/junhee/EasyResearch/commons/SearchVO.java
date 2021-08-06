@@ -6,6 +6,7 @@ public class SearchVO extends PageVO{
 	private String condition; // 연구자 이름, 연구 제목, 보상 종류
 	
 	public SearchVO() {
+		super();
 		this.keyword = "";
 		this.condition = "";
 	}

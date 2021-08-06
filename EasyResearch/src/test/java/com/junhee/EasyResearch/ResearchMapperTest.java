@@ -62,9 +62,8 @@ public class ResearchMapperTest {
 		
 		
 		MajorSearchVO msvo = new MajorSearchVO("응용인지심리");
-		msvo.setCondition("researcher");
-		msvo.setKeyword("mas");
-		msvo.setPageNum(1);
+		msvo.setCondition("title");
+		msvo.setKeyword("박사");
 		
 		for(ResearchVO rvo : mapper.GetSameMajorResearch(msvo)) {
 			System.out.println(rvo);

@@ -94,8 +94,14 @@ td{width:40%;}
 	 </c:if>
 	 
 	 <br><br>
-	 	&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:history.back(-1)"> 뒤로 가기 </a> <br><br><br>
-	 
+	 	<c:choose>
+	 		<c:when test="${user.userType == '지도교수'}">
+	 		&nbsp;&nbsp;&nbsp;&nbsp;<a href="/research/acceptResearch?pageNum=${msvo.pageNum}&cntPerPage=${msvo.cntPerPage}&condition=${msvo.condition}&keyword=${msvo.keyword}&major=${msvo.major}"> 뒤로 가기 </a> <br><br><br>
+	 		</c:when>
+	 		<c:otherwise>
+	 		&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:history.back(-1)"> 뒤로 가기 </a> <br><br><br>
+	 		</c:otherwise>
+	 	</c:choose>
 	<jsp:include page="../include/footer.jsp" />
 
 </body>

@@ -83,7 +83,7 @@
 		JOIN er_users u ON r.researcher = u.user_id
 		WHERE u.major = #{major} AND u.user_type IN ('석사과정대학원생', '박사과정대학원생')
 		<include refid="search" />
-		ORDER BY research_id DESC
+		ORDER BY r.research_id DESC
 		LIMIT 10 OFFSET #{offset}
 	</select>
 	

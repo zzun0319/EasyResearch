@@ -14,14 +14,14 @@
 <script type="text/javascript" src="<c:url value="/js/jquery-3.5.1.js" />"></script>
 
 <style type="text/css">
-#rightColumn{
-	width: 100%;
-}
+#rightColumn{width: 100%;}
 
 li {
 	list-style: none;
 	display: inline;
 }
+
+.page-active{background-color: #643691;}
 
 </style>
 
@@ -53,7 +53,7 @@ li {
 				</tr>
 				<c:forEach var="research" items="${registedResearchList}" varStatus="status">
 					<tr>
-						<td><a href="/research/showOneResearch${param.pageNum == null ? pc.MakeURI(1) : pc.MakeURI(param.pageNum)}&researchId=${research.researchId}">${research.title}</a></td>
+						<td><a href="/research/showOneResearch${param.pageNum == null ? pc.MakeURI(1) : pc.MakeURI(param.pageNum)}&researchId=${research.researchId}&major=${user.major}">${research.title}</a></td>
 						<td>${research.researcher.userName}</td>
 						<td>${research.permission ? '승인' : '승인대기'}</td>
 					</tr>
@@ -71,9 +71,10 @@ li {
 				
 				<c:forEach var="pageNum" begin="${pc.startPageNum}" end="${pc.endPageNum}">
 					<li>
-					<a href="/research/acceptResearch${pc.MakeURI(pageNum)}&major=${user.major}" style="margin-top: 0; height: 40px; color: pink; border: 1px solid #643691;">${pageNum}</a>
+					<a href="/research/acceptResearch${pc.MakeURI(pageNum)}&major=${user.major}" class="numBtn ${(pc.pageInfo.pageNum == pageNum) ? 'page-active' : ''}" style="margin-top: 0; height: 40px; color: pink; border: 1px solid #643691;">${pageNum}</a>
 					</li>
 				</c:forEach>
+				
 			<c:if test="${pc.next}">	
 				<li>
 				<a href="/research/acceptResearch${pc.MakeURI(pc.endPageNum + 1)}&major=${user.major}" style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">다음</a>
@@ -84,9 +85,9 @@ li {
 		</div>
 		
 		<div><!-- 검색 기능 처리 -->
-			<select id="condition" name="condition">
-				<option value="title" ${param.condition == 'title' ? 'selected' : ''}>연구제</option>
-				<option value="researcher" ${param.condition == 'researcher' ? 'selected' : ''}>연구제</option>
+			<select id="condition" name="condition" style="width: 250px;">
+				<option value="title" ${param.condition == 'title' ? 'selected' : ''}>연구제목</option>
+				<option value="researcher" ${param.condition == 'researcher' ? 'selected' : ''}>연구자</option>
 			</select> &nbsp;&nbsp;&nbsp;&nbsp;
 			<input id="keywordInput" name="keyword" placeholder="검색어를 입력하세요."> &nbsp;&nbsp;&nbsp;&nbsp;
 			<input type="button" value="검색" id="searchBtn">
@@ -102,4 +103,20 @@ li {
 	if(result.length > 0){
 		alert(result);
 	}
+	
+	$(function() { // JQuery 시작
+		
+		$("#searchBtn").click(function() {
+			const keyword = $("#keywordInput").val();
+			const condition = $("#condition option:selected").val();
+			location.href = "/research/acceptResearch?keyword=" + keyword + "&condition=" + condition;
+		})
+		
+		$("#keywordInput").keydown(function(key) {
+			if(key.keyCode == 13){
+				$("#searchBtn").click();
+			}
+		})
+		
+	})
 </script>
