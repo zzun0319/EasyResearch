@@ -43,21 +43,21 @@
 	</resultMap>
 	
 	<sql id="search">
-		<if test="condition == 'title'">
-			AND r.title LIKE CONCAT('%',#{keyword},'%')
+		<if test="condition.equals('title')">
+			AND r.title LIKE '%'||#{keyword}||'%'
 		</if>
 		<if test="condition == 'researcher'">
-			AND r.researcher LIKE CONCAT('%',#{keyword},'%')
+			AND r.researcher LIKE '%'||#{keyword}||'%'
 		</if>
 		<if test="condition == 'researchType'">
-			AND r.research_type LIKE CONCAT('%',#{keyword},'%')
+			AND r.research_type LIKE '%'||#{keyword}||'%'
 		</if>
 		<if test="condition == 'rewardType'">
-			AND r.reward_type LIKE CONCAT('%',#{keyword},'%')
+			AND r.reward_type LIKE '%'||#{keyword}||'%'
 		</if>
 		<if test="condition == 'all'">
-			AND (r.title LIKE CONCAT('%',#{keyword},'%') OR r.researcher LIKE CONCAT('%',#{keyword},'%') OR 
-			r.research_type LIKE CONCAT('%',#{keyword},'%') OR r.reward_type LIKE CONCAT('%',#{keyword},'%'))
+			AND (r.title LIKE '%'||#{keyword}||'%' OR r.researcher LIKE '%'||#{keyword}||'%' OR 
+			r.research_type LIKE '%'||#{keyword}||'%' OR r.reward_type LIKE '%'||#{keyword}||'%')
 		</if>
 	</sql>
 	

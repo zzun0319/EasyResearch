@@ -44,20 +44,20 @@
 	
 	<sql id="search">
 		<if test="condition == 'title'">
-			AND title LIKE '%'||#{keyword}||'%'
+			AND r.title LIKE CONCAT('%',#{keyword},'%')
 		</if>
 		<if test="condition == 'researcher'">
-			AND researcher LIKE '%'||#{keyword}||'%'
+			AND r.researcher LIKE CONCAT('%',#{keyword},'%')
 		</if>
 		<if test="condition == 'researchType'">
-			AND research_type LIKE '%'||#{keyword}||'%'
+			AND r.research_type LIKE CONCAT('%',#{keyword},'%')
 		</if>
 		<if test="condition == 'rewardType'">
-			AND reward_type LIKE '%'||#{keyword}||'%'
+			AND r.reward_type LIKE CONCAT('%',#{keyword},'%')
 		</if>
 		<if test="condition == 'all'">
-			AND (title LIKE '%'||#{keyword}||'%' OR researcher LIKE '%'||#{keyword}||'%' OR 
-			research_type LIKE '%'||#{keyword}||'%' OR reward_type LIKE '%'||#{keyword}||'%')
+			AND (r.title LIKE CONCAT('%',#{keyword},'%') OR r.researcher LIKE CONCAT('%',#{keyword},'%') OR 
+			r.research_type LIKE CONCAT('%',#{keyword},'%') OR r.reward_type LIKE CONCAT('%',#{keyword},'%'))
 		</if>
 	</sql>
 	
