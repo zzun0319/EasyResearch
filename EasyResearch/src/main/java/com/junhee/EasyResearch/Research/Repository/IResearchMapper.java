@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.junhee.EasyResearch.Model.CommentVO;
 import com.junhee.EasyResearch.Model.ResearchVO;
+import com.junhee.EasyResearch.commons.MajorSearchVO;
 
 public interface IResearchMapper {
 	
@@ -17,7 +18,10 @@ public interface IResearchMapper {
 	public ResearchVO GetResearchInfo(int researchId);
 	
 	// 연구 승인 위해 지도교수 전공과 같은 대학원생의 연구만 얻어오기
-	public List<ResearchVO> GetSameMajorResearch(String major);
+	public List<ResearchVO> GetSameMajorResearch(MajorSearchVO msvo);
+	
+	// 조회된 전체 연구 수 구하기
+	public int GetTotalSameMajorResearchCnt(MajorSearchVO msvo);
 	
 	// 연구 승인하기
 	public void PermitResearch(ResearchVO rvo);

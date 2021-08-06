@@ -35,6 +35,9 @@ import org.springframework.web.util.UriUtils;
 import com.junhee.EasyResearch.Model.CommentVO;
 import com.junhee.EasyResearch.Model.ResearchVO;
 import com.junhee.EasyResearch.Research.Service.ResearchService;
+import com.junhee.EasyResearch.commons.MajorSearchVO;
+import com.junhee.EasyResearch.commons.PageCreator;
+import com.junhee.EasyResearch.commons.SearchVO;
 
 @Controller
 @RequestMapping("/research")
@@ -55,16 +58,23 @@ public class ResearchController {
 	}
 	
 	@GetMapping("/showOneResearch")
-	private void ShowOneResearchPage(int researchId, Model model) {
+	private void ShowOneResearchPage(int researchId, Model model, @ModelAttribute("msvo") MajorSearchVO msvo) {
 		System.out.println(researchId + "번 연구 상세 보기 페이지로 이동");
 		model.addAttribute("selectedResearch", service.GetResearchInfo(researchId));
 		model.addAttribute("comments", service.GetResearchComments(researchId));
 	}
 	
 	@GetMapping("/acceptResearch")
-	private void AccecptResearchPage(@RequestParam("major") String major, Model model) {
-		System.out.println("왜 전공이 안 찍혀: " + major);
-		model.addAttribute("registedResearchList", service.GetSameMajorResearch(major));
+	private void AccecptResearchPage(MajorSearchVO msvo, Model model) {
+		System.out.println("대학원생 개설 연구 리스트 페이지로 이동");
+		System.out.println(msvo.getPageNum());
+		
+		PageCreator pc = new PageCreator();
+		pc.setPageInfo(msvo);
+		pc.setTotalCnt(service.GetTotalSameMajorResearchCnt(msvo));
+		model.addAttribute("pc", pc);
+		model.addAttribute("registedResearchList", service.GetSameMajorResearch(msvo));
+		
 	}
 	
 	// 이 방법도 되고 

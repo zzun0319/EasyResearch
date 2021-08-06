@@ -18,6 +18,11 @@
 	width: 100%;
 }
 
+li {
+	list-style: none;
+	display: inline;
+}
+
 </style>
 
 </head>
@@ -48,15 +53,53 @@
 				</tr>
 				<c:forEach var="research" items="${registedResearchList}" varStatus="status">
 					<tr>
-						<td><a href="/research/showOneResearch?researchId=${research.researchId}">${research.title}</a></td>
+						<td><a href="/research/showOneResearch${param.pageNum == null ? pc.MakeURI(1) : pc.MakeURI(param.pageNum)}&researchId=${research.researchId}">${research.title}</a></td>
 						<td>${research.researcher.userName}</td>
 						<td>${research.permission ? '승인' : '승인대기'}</td>
 					</tr>
 				</c:forEach>
 			</table>
 		</p>
+		
+		<div> <!-- 페이징 처리 -->
+			<ul>
+			<c:if test="${pc.prev}">
+				<li>
+				<a href="/research/acceptResearch${pc.MakeURI(pc.startPageNum - 1)}&major=${user.major}" style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">이전</a>
+				</li>
+			</c:if>
+				
+				<c:forEach var="pageNum" begin="${pc.startPageNum}" end="${pc.endPageNum}">
+					<li>
+					<a href="/research/acceptResearch${pc.MakeURI(pageNum)}&major=${user.major}" style="margin-top: 0; height: 40px; color: pink; border: 1px solid #643691;">${pageNum}</a>
+					</li>
+				</c:forEach>
+			<c:if test="${pc.next}">	
+				<li>
+				<a href="/research/acceptResearch${pc.MakeURI(pc.endPageNum + 1)}&major=${user.major}" style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">다음</a>
+				</li>
+			</c:if>
+				
+			</ul>
+		</div>
+		
+		<div><!-- 검색 기능 처리 -->
+			<select id="condition" name="condition">
+				<option value="title" ${param.condition == 'title' ? 'selected' : ''}>연구제</option>
+				<option value="researcher" ${param.condition == 'researcher' ? 'selected' : ''}>연구제</option>
+			</select> &nbsp;&nbsp;&nbsp;&nbsp;
+			<input id="keywordInput" name="keyword" placeholder="검색어를 입력하세요."> &nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="button" value="검색" id="searchBtn">
+		</div>
 	
 	<jsp:include page="../include/footer.jsp" />
 
 </body>
 </html>
+
+<script>
+	const result = "${msg}"
+	if(result.length > 0){
+		alert(result);
+	}
+</script>

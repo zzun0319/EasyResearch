@@ -42,6 +42,25 @@
 		<association property="writer" column="writer" javaType="com.junhee.EasyResearch.Model.UserVO" resultMap="UserMap" />
 	</resultMap>
 	
+	<sql id="search">
+		<if test="condition == 'title'">
+			AND title LIKE '%'||#{keyword}||'%'
+		</if>
+		<if test="condition == 'researcher'">
+			AND researcher LIKE '%'||#{keyword}||'%'
+		</if>
+		<if test="condition == 'researchType'">
+			AND research_type LIKE '%'||#{keyword}||'%'
+		</if>
+		<if test="condition == 'rewardType'">
+			AND reward_type LIKE '%'||#{keyword}||'%'
+		</if>
+		<if test="condition == 'all'">
+			AND (title LIKE '%'||#{keyword}||'%' OR researcher LIKE '%'||#{keyword}||'%' OR 
+			research_type LIKE '%'||#{keyword}||'%' OR reward_type LIKE '%'||#{keyword}||'%')
+		</if>
+	</sql>
+	
 	<insert id="RegisterResearch">
 		INSERT INTO research (research_type, title, purpose, method, reward_type, reward_value, duration, upload_file_name, saved_file_name, researcher) 
 		VALUES (#{researchType},#{title},#{purpose},#{method},#{rewardType},#{rewardValue},#{duration},#{uploadFileName}, #{savedFileName}, #{researcher.userId})
@@ -60,13 +79,23 @@
 	</select>
 	
 	<select id="GetSameMajorResearch" resultMap="ResearchMap">
-		SELECT r.*, u.user_id, u.user_name FROM research r JOIN er_users u 
-		ON r.researcher = u.user_id WHERE u.major = #{major} AND u.user_type IN ('석사과정대학원생', '박사과정대학원생')
+		SELECT r.*, u.user_id, u.user_name FROM research r
+		JOIN er_users u ON r.researcher = u.user_id
+		WHERE u.major = #{major} AND u.user_type IN ('석사과정대학원생', '박사과정대학원생')
+		<include refid="search" />
+		ORDER BY research_id DESC
+		LIMIT 10 OFFSET #{offset}
 	</select>
 	
 	<select id="GetResearchComments" resultMap="CommentMap">
 		SELECT C.*, u.user_id, u.user_name FROM comments c JOIN er_users u 
 		ON c.writer = u.user_id WHERE c.research_id=#{researchId} ORDER BY write_date DESC
+	</select>
+	
+	<select id="GetTotalSameMajorResearchCnt" resultType="int">
+		SELECT COUNT(*) FROM research r JOIN er_users u ON r.researcher = u.user_id
+		WHERE u.major = #{major} AND u.user_type IN ('석사과정대학원생', '박사과정대학원생')
+		<include refid="search" />
 	</select>
 	
 	<update id="PermitResearch">

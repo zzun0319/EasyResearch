@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.junhee.EasyResearch.Model.CommentVO;
 import com.junhee.EasyResearch.Model.ResearchVO;
 import com.junhee.EasyResearch.Research.Repository.IResearchMapper;
+import com.junhee.EasyResearch.commons.MajorSearchVO;
 import com.junhee.EasyResearch.util.FileProcessor;
 
 @Service
@@ -74,8 +75,13 @@ public class ResearchService implements IResearchService {
 	}
 
 	@Override
-	public List<ResearchVO> GetSameMajorResearch(String major) {
-		return mapper.GetSameMajorResearch(major);
+	public List<ResearchVO> GetSameMajorResearch(MajorSearchVO msvo) {
+		return mapper.GetSameMajorResearch(msvo);
+	}
+	
+	@Override
+	public int GetTotalSameMajorResearchCnt(MajorSearchVO msvo) {
+		return mapper.GetTotalSameMajorResearchCnt(msvo);
 	}
 
 	@Override
@@ -100,5 +106,6 @@ public class ResearchService implements IResearchService {
 	public List<CommentVO> GetResearchComments(int researchId) {
 		return mapper.GetResearchComments(researchId);
 	}
+
 
 }

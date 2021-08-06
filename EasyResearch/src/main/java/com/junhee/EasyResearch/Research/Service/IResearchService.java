@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.junhee.EasyResearch.Model.CommentVO;
 import com.junhee.EasyResearch.Model.ResearchVO;
+import com.junhee.EasyResearch.commons.MajorSearchVO;
 
 public interface IResearchService {
 	
@@ -22,8 +23,11 @@ public interface IResearchService {
 	// 파일 저장 경로 리턴
 	public String GetFullPath(String fileName);
 	
-	// 연구 승인 위해 지도교수 전공과 같은 대학원생의 연구만 얻어오기
-	public List<ResearchVO> GetSameMajorResearch(String major);
+	// 연구 승인 위해 지도교수 전공과 같은 대학원생의 연구만 얻어오기 + 페이징, 검색 기능 추가
+	public List<ResearchVO> GetSameMajorResearch(MajorSearchVO msvo);
+	
+	// 조회된 전체 연구 수 구하기
+	public int GetTotalSameMajorResearchCnt(MajorSearchVO msvo);
 	
 	// 연구 승인하기
 	public String PermitResearch(ResearchVO rvo);

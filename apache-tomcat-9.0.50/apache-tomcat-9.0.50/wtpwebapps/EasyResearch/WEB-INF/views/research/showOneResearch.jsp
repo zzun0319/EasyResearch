@@ -58,8 +58,8 @@ td{width:40%;}
 	 			<input type="hidden" name="userType" value="${user.userType}">
 	 			<input type="hidden" name="researcher.userId" value="${user.userId}">
 	 			<textarea name="content" placeholder="피드백을 입력하세요." style="width:60%;"></textarea> <br>
-	 			<input type="radio" name="permission" value=true> 승인 <br>
-	 			<input type="radio" name="permission" value=false> 승인 대기 <br>
+	 			<input type="radio" name="permission" value=true ${selectedResearch.permission ? 'checked' : ''}> 승인 <br>
+	 			<input type="radio" name="permission" value=false ${!selectedResearch.permission ? 'checked' : ''}> 승인 대기 <br>
 	 			<input type="submit" value="저장">
 	 		</form>
 	 </c:if>

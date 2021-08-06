@@ -12,6 +12,7 @@ import com.junhee.EasyResearch.Model.CommentVO;
 import com.junhee.EasyResearch.Model.ResearchVO;
 import com.junhee.EasyResearch.Model.UserVO;
 import com.junhee.EasyResearch.Research.Repository.IResearchMapper;
+import com.junhee.EasyResearch.commons.MajorSearchVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
@@ -23,21 +24,23 @@ public class ResearchMapperTest {
 	@Test
 	public void RegisterResearchTest() {
 		
+		for(int i = 8; i < 59; i++) {
+			
 		ResearchVO rvo = new ResearchVO();
 		rvo.setResearchType("오프라인 실험");
-		rvo.setTitle("연구1");
-		rvo.setPurpose("그냥1");
-		rvo.setMethod("이렇게 해서 저렇게 한 후 그렇게 한다.");
-		rvo.setRewardType("연구 참여 점수");
-		rvo.setRewardValue(2);
+		rvo.setTitle("연구" + i);
+		rvo.setPurpose("목적" + i);
+		rvo.setMethod("이렇게 해서 저렇게 한 후 그렇게 한다." + i);
+		rvo.setRewardType("학점");
+		rvo.setRewardValue(1);
 		rvo.setDuration(30);
-		rvo.setUploadFileName("d:/upload/연구1.doc");
 		
 		UserVO researcher = new UserVO();
 		researcher.setUserId("master1111");
 		
 		rvo.setResearcher(researcher);
 		mapper.RegisterResearch(rvo);
+		}
 	}
 	
 	@Test
@@ -57,7 +60,13 @@ public class ResearchMapperTest {
 	@Test
 	public void GetSameMajorResearchTest() {
 		
-		for(ResearchVO rvo : mapper.GetSameMajorResearch("응용인지심리")) {
+		
+		MajorSearchVO msvo = new MajorSearchVO("응용인지심리");
+		msvo.setCondition("researcher");
+		msvo.setKeyword("mas");
+		msvo.setPageNum(1);
+		
+		for(ResearchVO rvo : mapper.GetSameMajorResearch(msvo)) {
 			System.out.println(rvo);
 		}
 		
@@ -101,6 +110,17 @@ public class ResearchMapperTest {
 			System.out.println(cvo);
 		}
 		
+	}
+	
+	
+	@Test
+	public void GetTotalSameMajorResearchCntTest() {
+		
+		MajorSearchVO msvo = new MajorSearchVO("응용인지심리");
+		msvo.setCondition("researcher");
+		msvo.setKeyword("mas");
+		int totalNum = mapper.GetTotalSameMajorResearchCnt(msvo);
+		System.out.println(totalNum);
 	}
 	
 }
