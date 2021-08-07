@@ -1,6 +1,7 @@
 package com.junhee.EasyResearch.Research.Service;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -9,6 +10,7 @@ import com.junhee.EasyResearch.Model.CommentVO;
 import com.junhee.EasyResearch.Model.PlaceVO;
 import com.junhee.EasyResearch.Model.ResearchVO;
 import com.junhee.EasyResearch.Model.TimeslotVO;
+import com.junhee.EasyResearch.Model.TmpDateTimeDTO;
 import com.junhee.EasyResearch.commons.MajorSearchVO;
 
 public interface IResearchService {
@@ -47,5 +49,5 @@ public interface IResearchService {
 	public List<TimeslotVO> GetTimeslotsByResearchId(int researchId);
 	
 	// 연구 타임슬롯 등록하기
-	public String RegisterTimeslot(TimeslotVO tsvo);
+	public String RegisterTimeslot(TimeslotVO tsvo, TmpDateTimeDTO tdt);
 }

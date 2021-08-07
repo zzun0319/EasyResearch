@@ -1,0 +1,16 @@
+127.0.0.1 - - [08/Aug/2021:03:16:26 +0900] "GET / HTTP/1.1" 200 4358
+0:0:0:0:0:0:0:1 - - [08/Aug/2021:03:16:28 +0900] "GET / HTTP/1.1" 200 4358
+0:0:0:0:0:0:0:1 - - [08/Aug/2021:03:16:28 +0900] "GET /css/styles.css;jsessionid=F69652DC0E3D88A11B75D1069F633807 HTTP/1.1" 200 182945
+0:0:0:0:0:0:0:1 - - [08/Aug/2021:03:16:30 +0900] "GET /user/login HTTP/1.1" 200 3195
+0:0:0:0:0:0:0:1 - - [08/Aug/2021:03:16:39 +0900] "POST /user/login HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [08/Aug/2021:03:16:39 +0900] "GET /user/mypage HTTP/1.1" 200 3822
+0:0:0:0:0:0:0:1 - - [08/Aug/2021:03:16:43 +0900] "GET /research/showMyResearch?userId=master1111 HTTP/1.1" 200 14342
+0:0:0:0:0:0:0:1 - - [08/Aug/2021:03:16:46 +0900] "GET /research/makeTimeslot/4 HTTP/1.1" 200 5872
+0:0:0:0:0:0:0:1 - - [08/Aug/2021:03:17:37 +0900] "POST /research/makeTimeslot HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [08/Aug/2021:03:17:37 +0900] "GET /research/openResearch HTTP/1.1" 200 4003
+0:0:0:0:0:0:0:1 - - [08/Aug/2021:03:17:46 +0900] "GET / HTTP/1.1" 200 4623
+0:0:0:0:0:0:0:1 - - [08/Aug/2021:03:17:49 +0900] "GET /user/mypage HTTP/1.1" 200 3806
+0:0:0:0:0:0:0:1 - - [08/Aug/2021:03:17:51 +0900] "GET /research/showMyResearch?userId=master1111 HTTP/1.1" 200 14342
+0:0:0:0:0:0:0:1 - - [08/Aug/2021:03:17:53 +0900] "GET /research/makeTimeslot/4 HTTP/1.1" 200 5872
+0:0:0:0:0:0:0:1 - - [08/Aug/2021:03:18:09 +0900] "POST /research/makeTimeslot HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [08/Aug/2021:03:18:09 +0900] "GET /user/mypage HTTP/1.1" 200 3844

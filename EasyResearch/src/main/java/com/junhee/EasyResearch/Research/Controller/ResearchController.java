@@ -183,14 +183,20 @@ public class ResearchController {
 	}
 	
 	@PostMapping("/makeTimeslot")
-	public String MakeTimeslot(TmpDateTimeDTO tdt, TimeslotVO tsvo) {
+	public String MakeTimeslot(TmpDateTimeDTO tdt, TimeslotVO tsvo, RedirectAttributes ra) {
 		System.out.println("타임 슬롯 만들기 요청");
 		tdt.setResearchTimestamps(); // 시작, 종료 타임스탬프 만들고
+		tdt.setResearchPlace(tsvo.getPlace().getPlaceName()); // 장소명 넣어주기
 		tsvo.setStartTime(tdt.getStartTimestamp()); // 시작시간 넣어주고
 		tsvo.setEndTime(tdt.getEndTimeStamp()); // 종료시간 넣어주고
 		
-		String result = service.RegisterTimeslot(tsvo);
-		
-		return "/home";
+		String result = service.RegisterTimeslot(tsvo, tdt);
+		ra.addFlashAttribute("msg", result);
+		if(result.equals("타임슬롯이 생성되었습니다.")) {
+			return "redirect:/user/mypage";
+		}
+		else {
+			return "redirect:/research/openResearch";
+		}
 	}
 }

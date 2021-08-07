@@ -127,10 +127,24 @@
 		SELECT t.* FROM timeslot t JOIN research r ON t.research_id = r.research_id WHERE r.research_id=#{researchId}
 	</select>
 	
-	<select id="GetTimeslotsAfterTomorrow" resultMap="TimeslotMap">
-		SELECT * FROM timeslot WHERE DATE(start_time) >= DATE(#{tomorrow})
+	<select id="TimeslotsAfterTomorrowCnt" resultType="int">
+		SELECT COUNT(*) FROM timeslot
+		<![CDATA[
+		WHERE TIMESTAMP(start_time) >= TIMESTAMP(#{tomorrow}) AND place_name=#{researchPlace}
+		]]>
 	</select>
 	
+	<select id="NotOvelapCnt" resultType="int">
+		<![CDATA[
+		SELECT COUNT(*) FROM
+		(
+			SELECT * FROM timeslot 
+			WHERE TIMESTAMP(start_time) >= TIMESTAMP(#{tomorrow}) AND place_name=#{researchPlace}
+		)ts
+		WHERE (  ( (TIMESTAMP(#{startTimestamp}) <= TIMESTAMP(start_time)) AND (TIMESTAMP(#{endTimeStamp}) <= TIMESTAMP(start_time)) ) 
+		OR ( (TIMESTAMP(#{startTimestamp}) >= TIMESTAMP(end_time)) AND (TIMESTAMP(#{endTimeStamp}) >= TIMESTAMP(end_time)) )  )
+		]]>
+	</select>
 	
 	
 	<update id="PermitResearch">

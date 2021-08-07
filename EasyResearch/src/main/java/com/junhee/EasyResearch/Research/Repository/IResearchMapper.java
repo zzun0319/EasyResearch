@@ -7,6 +7,7 @@ import com.junhee.EasyResearch.Model.CommentVO;
 import com.junhee.EasyResearch.Model.PlaceVO;
 import com.junhee.EasyResearch.Model.ResearchVO;
 import com.junhee.EasyResearch.Model.TimeslotVO;
+import com.junhee.EasyResearch.Model.TmpDateTimeDTO;
 import com.junhee.EasyResearch.commons.MajorSearchVO;
 
 public interface IResearchMapper {
@@ -44,8 +45,11 @@ public interface IResearchMapper {
 	// 연구 타임슬롯 등록하기
 	public void RegisterTimeslot(TimeslotVO tsvo);
 	
-	// 24시간 이후의 모든 타임슬롯 가져오기
-	public List<TimeslotVO> GetTimeslotsAfterTomorrow(Timestamp tomorrow);
+	// 24시간 이후의 해당 장소에 예약된 모든 타임슬롯의 개수
+	public int TimeslotsAfterTomorrowCnt(TmpDateTimeDTO tdt);
+	
+	// 24시간 이후의 해당 장소에 내가 삽입하려는 타임슬롯과 겹치는 타임슬롯을 제외한 개수
+	public int NotOvelapCnt(TmpDateTimeDTO tdt);
 	
 	// 타임 슬롯 검색, 페이징
 	

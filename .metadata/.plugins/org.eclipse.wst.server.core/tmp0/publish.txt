@@ -1,4 +1,4 @@
 #Tomcat publish data
-#Sat Aug 07 22:30:38 KST 2021
+#Sun Aug 08 03:16:17 KST 2021
 org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\\uAE40\uC900\uD76C\\.m2\\repository\\org\\springframework\\spring-web\\5.2.9.RELEASE\\spring-web-5.2.9.RELEASE.jar=D\:\\PersonalProject_Spring\\apache-tomcat-9.0.50\\apache-tomcat-9.0.50\\wtpwebapps\\EasyResearch\\WEB-INF\\lib\\spring-web-5.2.9.RELEASE.jar
 org.eclipse.jst.jee.server\:EasyResearch=D\:\\PersonalProject_Spring\\apache-tomcat-9.0.50\\apache-tomcat-9.0.50\\wtpwebapps\\EasyResearch

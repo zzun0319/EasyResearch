@@ -44,7 +44,7 @@ textarea{width: 100%; height: 100px;}
 		<h4>날짜 및 장소 별 예약 현황 조회</h4>
 		<form action="/research/inquireTimeslotsByPeriod" method="post"><!-- 페이징.. 검색.. 구현 -->
 			<input type="hidden" name="researchId" value="${researchInfo.researchId}">
-			언제부터 : <input type="date" name="startDate"> ~ 언제까지: <input type="date" name="endDate"> 
+			언제부터 : <input type="date" name="startDate" id="start_date"> ~ 언제까지: <input type="date" name="endDate" id="end_date"> 
 			<input type="submit" value="조회하기">
 		</form>
 		</div>
@@ -158,4 +158,12 @@ textarea{width: 100%; height: 100px;}
 	if(result != "" && result.length > 0){
 		alert(result);
 	}
+</script>
+
+<script>
+	$(function() { // JQuery 시작
+		
+		$("#start_date")
+		
+	}) // JQuery 끝
 </script>

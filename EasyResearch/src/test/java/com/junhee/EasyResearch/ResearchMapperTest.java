@@ -13,6 +13,7 @@ import com.junhee.EasyResearch.Model.CommentVO;
 import com.junhee.EasyResearch.Model.PlaceVO;
 import com.junhee.EasyResearch.Model.ResearchVO;
 import com.junhee.EasyResearch.Model.TimeslotVO;
+import com.junhee.EasyResearch.Model.TmpDateTimeDTO;
 import com.junhee.EasyResearch.Model.UserVO;
 import com.junhee.EasyResearch.Research.Repository.IResearchMapper;
 import com.junhee.EasyResearch.commons.MajorSearchVO;
@@ -156,11 +157,18 @@ public class ResearchMapperTest {
 	}
 	
 	@Test
-	public void GetTimeslotsAfterTomorrowTest() {
-		List<TimeslotVO> list = mapper.GetTimeslotsAfterTomorrow(Timestamp.valueOf("2021-08-09 00:00:00"));
-		for(TimeslotVO tsvo : list) {
-			System.out.println(tsvo);
-		}
+	public void TimeslotsAfterTomorrowCntTest() {
+		
+		TmpDateTimeDTO tdt = new TmpDateTimeDTO();
+		tdt.setStartTimestamp(Timestamp.valueOf("2021-08-11 02:05:00"));
+		tdt.setEndTimeStamp(Timestamp.valueOf("2021-08-11 02:51:00"));
+		tdt.setResearchPlace("율곡관 371호");
+		
+		System.out.println(mapper.TimeslotsAfterTomorrowCnt(tdt));
+		System.out.println(mapper.NotOvelapCnt(tdt));
+		
+		System.out.println();
 	}
+	
 	
 }

@@ -13,9 +13,13 @@ public class TmpDateTimeDTO {
 	private Timestamp startTimestamp;
 	private Timestamp endTimeStamp;
 	
-	int duration; // 실험 소요 시간
+	private int duration; // 실험 소요 시간
+	private Timestamp tomorrow; // 현재 시간으로부터 24시간 후 타임스탬프
+	private String researchPlace;
 	
-	public TmpDateTimeDTO() {}
+	public TmpDateTimeDTO() { // 빈 생성자 생성시 바로 24시간 후의 타임스탬프 계산하기
+		tomorrow = new Timestamp(System.currentTimeMillis() + (24 * 60 * 60 * 1000));
+	}
 
 	////////// 장소를 사용 중인 날짜 조회 시 사용할 생성자 //////////////////////////////////////////////////////////
 	/*
@@ -167,6 +171,22 @@ public class TmpDateTimeDTO {
 	
 	public void setDuration(int duration) {
 		this.duration = duration;
+	}
+	
+	public void setTomorrow(Timestamp tomorrow) {
+		this.tomorrow = tomorrow;
+	}
+	
+	public Timestamp getTomorrow() {
+		return tomorrow;
+	}
+	
+	public void setResearchPlace(String researchPlace) {
+		this.researchPlace = researchPlace;
+	}
+	
+	public String getResearchPlace() {
+		return researchPlace;
 	}
 
 	@Override

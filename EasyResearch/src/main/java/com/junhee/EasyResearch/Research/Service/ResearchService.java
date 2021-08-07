@@ -14,6 +14,7 @@ import com.junhee.EasyResearch.Model.CommentVO;
 import com.junhee.EasyResearch.Model.PlaceVO;
 import com.junhee.EasyResearch.Model.ResearchVO;
 import com.junhee.EasyResearch.Model.TimeslotVO;
+import com.junhee.EasyResearch.Model.TmpDateTimeDTO;
 import com.junhee.EasyResearch.Research.Repository.IResearchMapper;
 import com.junhee.EasyResearch.commons.MajorSearchVO;
 import com.junhee.EasyResearch.util.FileProcessor;
@@ -122,39 +123,26 @@ public class ResearchService implements IResearchService {
 	}
 
 	@Override
-	public String RegisterTimeslot(TimeslotVO tsvo) {
+	public String RegisterTimeslot(TimeslotVO tsvo, TmpDateTimeDTO tdt) {
 		
 		String result = "";
 		
-		long tomorrowMilSec = System.currentTimeMillis() + (24 * 60 * 60 * 1000);
-		Timestamp tomorrow = new Timestamp(tomorrowMilSec); // 내일 날짜
-		
-		if(tsvo.getStartTime().getTime() < tomorrowMilSec) {
+		if(tsvo.getStartTime().before(tdt.getTomorrow())) {
 			result = "연구 시작 시간은 현재 시간으로부터 24시간 이후부터 설정가능합니다.";
 		}
-		else if(IsOverlap(tsvo, tomorrow)) {
-			
+		
+		if(mapper.TimeslotsAfterTomorrowCnt(tdt) != mapper.NotOvelapCnt(tdt)) { // 장소와 시간이 중복되는 타임슬롯이 있으면 
+			result = "이미 존재하는 타임슬롯과 연구 기한 또는 장소가 겹칩니다. 타임슬롯을 만들 수 없습니다.";
 		}
+		else {
+			mapper.RegisterTimeslot(tsvo);
+			result = "타임슬롯이 생성되었습니다.";
+		}
+		
+		//if() 최대수용가능인원 넘으면 타임슬롯 생성안되도록
 		
 		return result;
 	}
 	
-	private boolean IsOverlap(TimeslotVO tsvo, Timestamp tomorrow) {
-		
-		boolean isOverlap = true;
-		
-		for(TimeslotVO compareTsvo : mapper.GetTimeslotsAfterTomorrow(tomorrow)) {
-			
-			// 비교대상과
-			if(tsvo.getPlace().getPlaceName().equals(compareTsvo.getPlace().getPlaceName())) {
-				
-			}
-		
-		}
-		
-		
-		return isOverlap;
-	}
-
 
 }

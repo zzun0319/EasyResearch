@@ -41,7 +41,6 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
     <fullyQualifiedTypeName name="java.net.URLEncoder"/>
     <fullyQualifiedTypeName name="com.junhee.EasyResearch.Model.CommentVO"/>
-    <fullyQualifiedTypeName name="org.springframework.web.servlet.mvc.support.RedirectAttributes"/>
     <fullyQualifiedTypeName name="com.junhee.EasyResearch.commons.SearchVO"/>
     <fullyQualifiedTypeName name="com.junhee.EasyResearch.commons.PageCreator"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
@@ -53,11 +52,12 @@
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="java.sql.Time"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
-    <fullyQualifiedTypeName name="com.junhee.EasyResearch.Model.TmpDateTimeDTO"/>
     <fullyQualifiedTypeName name="com.junhee.EasyResearch.Model.PlaceVO"/>
     <fullyQualifiedTypeName name="com.junhee.EasyResearch.Model.ResearchVO"/>
-    <fullyQualifiedTypeName name="org.junit.Test"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="com.junhee.EasyResearch.Model.TimeslotVO"/>
     <fullyQualifiedTypeName name="java.sql.Timestamp"/>
+    <fullyQualifiedTypeName name="org.junit.Test"/>
+    <fullyQualifiedTypeName name="com.junhee.EasyResearch.Model.TmpDateTimeDTO"/>
+    <fullyQualifiedTypeName name="org.springframework.web.servlet.mvc.support.RedirectAttributes"/>
 </qualifiedTypeNameHistroy>

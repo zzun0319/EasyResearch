@@ -86,6 +86,11 @@
 		INSERT INTO comments (research_id, content, writer) VALUES (#{researchId},#{content},#{writer.userId})
 	</insert>
 	
+	<insert id="RegisterTimeslot">
+		INSERT INTO timeslot (research_id, start_time, end_time, place_name, apply_cnt) 
+		VALUES (#{research.researchId},#{startTime},#{endTime},#{place.placeName},#{applyCnt})
+	</insert>
+	
 	<select id="GetMyResearch" resultMap="ResearchMap">
 		SELECT * FROM research WHERE researcher=#{userId}
 	</select>
@@ -121,6 +126,26 @@
 	<select id="GetTimeslotsByResearchId" resultMap="TimeslotMap">
 		SELECT t.* FROM timeslot t JOIN research r ON t.research_id = r.research_id WHERE r.research_id=#{researchId}
 	</select>
+	
+	<select id="TimeslotsAfterTomorrowCnt" resultType="int">
+		SELECT COUNT(*) FROM timeslot
+		<![CDATA[
+		WHERE TIMESTAMP(start_time) >= TIMESTAMP(#{tomorrow}) AND place_name=#{researchPlace}
+		]]>
+	</select>
+	
+	<select id="NotOvelapCnt" resultType="int">
+		<![CDATA[
+		SELECT COUNT(*) FROM
+		(
+			SELECT * FROM timeslot 
+			WHERE TIMESTAMP(start_time) >= TIMESTAMP(#{tomorrow}) AND place_name=#{researchPlace}
+		)ts
+		WHERE (  ( (TIMESTAMP(#{startTimestamp}) <= TIMESTAMP(start_time)) AND (TIMESTAMP(#{endTimeStamp}) <= TIMESTAMP(start_time)) ) 
+		OR ( (TIMESTAMP(#{startTimestamp}) >= TIMESTAMP(end_time)) AND (TIMESTAMP(#{endTimeStamp}) >= TIMESTAMP(end_time)) )  )
+		]]>
+	</select>
+	
 	
 	<update id="PermitResearch">
 		UPDATE research SET permission=#{permission} WHERE research_id=#{researchId}

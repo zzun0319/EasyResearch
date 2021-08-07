@@ -14,8 +14,18 @@ DESC timeslot;
 
 SELECT * FROM timeslot;
 
-SELECT * FROM
+SELECT COUNT(*) FROM
+(
+	SELECT * FROM timeslot WHERE TIMESTAMP(start_time) >= TIMESTAMP("2021-08-09 03:07:00") AND place_name = '율곡관 371호'
+)ts
+WHERE ((TIMESTAMP("2021-08-11 02:05:00") < TIMESTAMP(start_time)) AND (TIMESTAMP("2021-08-11 02:51:00") < TIMESTAMP(start_time)) 
+OR (TIMESTAMP("2021-08-11 02:05:00") > TIMESTAMP(end_time)) AND (TIMESTAMP("2021-08-11 02:51:00") > TIMESTAMP(end_time)));
+
+
+
+SELECT COUNT(*) FROM
 (
 	SELECT * FROM timeslot WHERE TIMESTAMP(start_time) >= TIMESTAMP("2021-08-09 02:00:00") AND place_name = '율곡관 371호'
-)
-WHERE TIMESTAMP(start_time) < TIMESTAMP("2021-08-11 11:11:00");
+)ts;
+
+SELECT COUNT(*) FROM timeslot WHERE TIMESTAMP(start_time) >= TIMESTAMP("2021-08-09 03:07:00") AND place_name = '율곡관 371호';
