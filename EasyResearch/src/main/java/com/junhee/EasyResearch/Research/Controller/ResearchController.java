@@ -7,6 +7,8 @@ import java.net.MalformedURLException;
 import java.net.URLEncoder;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -35,6 +37,7 @@ import org.springframework.web.util.UriUtils;
 
 import com.junhee.EasyResearch.Model.CommentVO;
 import com.junhee.EasyResearch.Model.ResearchVO;
+import com.junhee.EasyResearch.Model.TmpDateTimeDTO;
 import com.junhee.EasyResearch.Research.Service.ResearchService;
 import com.junhee.EasyResearch.commons.MajorSearchVO;
 import com.junhee.EasyResearch.commons.PageCreator;
@@ -65,10 +68,12 @@ public class ResearchController {
 		model.addAttribute("comments", service.GetResearchComments(researchId));
 	}
 	
-	@GetMapping("/makeTimeSlot/{researchId}")
-	private void MakeTimeslotPage(@PathVariable int researchId, Model model) {
+	@GetMapping("/makeTimeslot/{researchId}")
+	private String MakeTimeslotPage(@PathVariable int researchId, Model model) {
 		System.out.println("타임슬롯 만들기 페이지, 연구번호: " + researchId);
 		model.addAttribute("researchInfo", service.GetResearchInfo(researchId));
+		model.addAttribute("locations", service.GetAllLocationInfo());
+		return "research/makeTimeslot";
 	}
 	
 	@GetMapping("/acceptResearch")
@@ -174,5 +179,14 @@ public class ResearchController {
 		ra.addFlashAttribute("msg", "댓글이 등록되었습니다.");
 		
 		return url;
+	}
+	
+	@PostMapping("/makeTimeslot")
+	public String MakeTimeslot(TmpDateTimeDTO tdt) {
+		System.out.println("타임 슬롯 만들기 요청");
+		System.out.println("1:" + tdt);
+		tdt.setResearchTimestamps();
+		System.out.println("2:" + tdt);
+		return "/home";
 	}
 }

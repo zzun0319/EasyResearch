@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.junhee.EasyResearch.Model.CommentVO;
+import com.junhee.EasyResearch.Model.PlaceVO;
 import com.junhee.EasyResearch.Model.ResearchVO;
+import com.junhee.EasyResearch.Model.TimeslotVO;
 import com.junhee.EasyResearch.Research.Repository.IResearchMapper;
 import com.junhee.EasyResearch.commons.MajorSearchVO;
 import com.junhee.EasyResearch.util.FileProcessor;
@@ -105,6 +107,16 @@ public class ResearchService implements IResearchService {
 	@Override
 	public List<CommentVO> GetResearchComments(int researchId) {
 		return mapper.GetResearchComments(researchId);
+	}
+
+	@Override
+	public List<PlaceVO> GetAllLocationInfo() {
+		return mapper.GetAllLocationInfo();
+	}
+
+	@Override
+	public List<TimeslotVO> GetTimeslotsByResearchId(int researchId) {
+		return mapper.GetTimeslotsByResearchId(researchId);
 	}
 
 

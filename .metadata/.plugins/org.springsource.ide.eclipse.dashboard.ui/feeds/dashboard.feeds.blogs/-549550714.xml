@@ -49,7 +49,6 @@
   &lt;li&gt;&lt;a href="https://github.com/cassandre-tech/cassandre-trading-bot"&gt;Cassandre is an open-source framework that makes it easy to create your crypto trading bot in Java. Our Spring boot starter takes care of exchange connections, accounts, orders, trades, and positions so you can focus &lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href="https://github.com/spring-projects/spring-security-samples/tree/main/servlet/spring-boot/java/oauth2/authorization-server"&gt;Check out this Spring Security Authorization Server example&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Join Confluent Developer advocate Viktor Gamov for this look at &lt;a href="https://www.youtube.com/watch?v=iIjeIhavxrw"&gt;Spring and Apache Kafka 101&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href="https://dzone.com/articles/tracing-logs-in-microservices-architecture-spring-cloud-sleuth"&gt;Tracing logs with Spring Cloud Sleuth&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Here&amp;rsquo;s another interesting look &lt;a href="https://josdem.io/techtalk/spring/spring_swagger_boot_configuration/"&gt;at using Spring Boot with Swagger&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Did y&amp;rsquo;all see &lt;a href="https://www.youtube.com/watch?v=pQwMws6we6I"&gt;the latest installment of the SpringOne Tour&lt;/a&gt;. This was my favorite installment yet!&lt;/li&gt;
   &lt;li&gt;&lt;a href="https://blogs.vmware.com/vmworld/2021/07/flight-status-oracle-cloud-vmware-solution.html"&gt;Flight Status: Oracle Cloud VMware Solution&lt;/a&gt;&lt;/li&gt;

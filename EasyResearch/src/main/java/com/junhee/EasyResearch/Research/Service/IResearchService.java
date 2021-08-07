@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.junhee.EasyResearch.Model.CommentVO;
+import com.junhee.EasyResearch.Model.PlaceVO;
 import com.junhee.EasyResearch.Model.ResearchVO;
+import com.junhee.EasyResearch.Model.TimeslotVO;
 import com.junhee.EasyResearch.commons.MajorSearchVO;
 
 public interface IResearchService {
@@ -37,4 +39,10 @@ public interface IResearchService {
 		
 	// 연구에 달린 피드백 리스트 얻기
 	public List<CommentVO> GetResearchComments(int researchId);
+	
+	// 모든 장소 정보 가져오기
+	public List<PlaceVO> GetAllLocationInfo();
+		
+		// 연구별 타임슬롯 가져오기
+	public List<TimeslotVO> GetTimeslotsByResearchId(int researchId);
 }

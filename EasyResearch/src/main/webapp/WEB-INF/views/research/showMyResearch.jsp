@@ -59,7 +59,7 @@ td{width:40%;}
 					<tr>
 						<td><a href="/research/showOneResearch?researchId=${research.researchId}">${research.title}</a></td>
 						<td>${research.permission ? "승인 완료" : "승인 대기중"}</td>
-						<td><a href="/research/makeTimeSlot/{research.researchId}">${research.permission ? "스케줄 보기" : ""}</a></td>
+						<td><a href="/research/makeTimeslot/${research.researchId}">${research.permission ? "스케줄 보기" : ""}</a></td>
 					</tr>
 				</c:forEach>
 			</table>

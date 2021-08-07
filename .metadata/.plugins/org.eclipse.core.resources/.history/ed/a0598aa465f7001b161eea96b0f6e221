@@ -1,0 +1,198 @@
+package com.junhee.EasyResearch.Model;
+
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
+
+public class TmpDateTimeDTO {
+
+	private Date researchDate;
+	private Date sDate;
+	private Date eDate;
+	private String sTime; // jsp파일에서 넘어오는 time은 String으로 받아야함. 연구 시작 시간
+	private String eTime;
+	private Timestamp sTimestamp;
+	private Timestamp eTimeStamp;
+	
+	int duration; // 실험 소요 시간
+	
+	public TmpDateTimeDTO() {}
+
+	////////// 장소를 사용 중인 날짜 조회 시 사용할 생성자 //////////////////////////////////////////////////////////
+	
+	public TmpDateTimeDTO(Date sDate, Date eDate) {
+		this.sDate = sDate;
+		this.eDate = eDate;
+		setPeriodForInquiry();
+	}
+	
+	public void setPeriodForInquiry() { // 두 날짜를 입력 받으면 그 날짜들을 타임스탬프 형식으로 만들어주는 메서드
+		sTimestamp = Timestamp.valueOf(sDate + " 00:00:00");
+		eTimeStamp = Timestamp.valueOf(eDate + " 00:00:00");
+	}
+	
+	
+	
+	
+	////////// 연구 타임 슬롯 만들 때 받는 연구날짜, 시작시간, 종료시간 ///////////////////////////////////////////////
+	
+	public TmpDateTimeDTO(Date researchDate, String sTime, String eTime, int duration) {
+		
+		this.researchDate = researchDate;
+		this.sDate = researchDate;
+		
+		this.sTime = sTime + ":00";
+		this.eTime = eTime + ":00";
+		
+		this.duration = duration;
+		
+		setResearchTimestamps();
+	}
+
+	public void setResearchTimestamps() { // Timeslot객체에 넣어주기 위한 Timestamp들을 만들어주는 메서드
+		sTimestamp = Timestamp.valueOf(sDate + " " + sTime);
+		calEndTimeEndDate();
+	}
+	
+	
+	public void calEndTimeEndDate() {
+		
+		String times[] = sTime.split(":");
+		int startHour = Integer.parseInt(times[0]);
+		int startMinute = Integer.parseInt(times[1]);
+		
+		int endHour = startHour;
+		int endMinute = startMinute + duration;
+		eDate = sDate;
+		String dates[] = eDate.toString().split(":");
+		int endYear = Integer.parseInt(dates[0]);
+		int endMonth = Integer.parseInt(dates[1]);
+		int endDay = Integer.parseInt(dates[2]);
+		
+		
+		if(endMinute >= 60) {
+			int hours = endMinute / 60;
+			endMinute -= (60 * hours);
+			endHour += hours;
+			
+			if(endHour >= 24) {
+				int days = endHour / 24;
+				endHour -= 24 * days;
+				endDay += days;
+				
+				int daysPerMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+				
+				if(CalcLeapYear(endYear)) { // 윤년이라면
+					daysPerMonth[1] = 29; // 2월달을 29일까지로 바꿔주고
+				}
+				
+				if(endDay > daysPerMonth[endMonth - 1]) {
+					// int months 이렇게까지 한 타임슬롯이 긴 건 배제하는걸로.. 입력하는 부분에 제약 걸겠음.
+					endDay = 1;
+					endMonth += 1;
+					
+					if(endMonth > 12) {
+						endMonth = 1;
+						endYear += 1;
+					}
+				}
+			}
+		}
+		
+		
+		return "";
+	}
+	
+	public boolean CalcLeapYear(int year) { // 윤년인지 판별
+		if((year % 4 == 0) && (year % 100 == 0) && (year % 400 == 0)) {
+			return true;
+		}
+		else if((year % 4 == 0) && (year % 100 == 0)) {
+			return false;
+		}
+		else if(year % 4 == 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////
+
+	public Date getResearchDate() {
+		return researchDate;
+	}
+
+	public void setResearchDate(Date researchDate) {
+		this.researchDate = researchDate;
+	}
+
+	public Date getsDate() {
+		return sDate;
+	}
+
+	public void setsDate(Date sDate) {
+		this.sDate = sDate;
+		sTimestamp = Timestamp.valueOf(sDate + " 00:00:00");
+	}
+
+	public Date geteDate() {
+		return eDate;
+	}
+
+	public void seteDate(Date eDate) {
+		this.eDate = eDate;
+	}
+
+	public String getsTime_str() {
+		return sTime_str;
+	}
+
+	public void setsTime_str(String sTime_str) {
+		this.sTime_str = sTime_str + ":00";
+		this.sTime = Time.valueOf(eTime_str);
+	}
+
+	public String geteTime_str() {
+		return eTime_str;
+	}
+
+	public void seteTime_str(String eTime_str) {
+		this.eTime_str = eTime_str + ":00";
+		this.eTime = Time.valueOf(eTime_str);
+	}
+
+	public Time getsTime() {
+		return sTime;
+	}
+
+	public void setsTime(Time sTime) {
+		this.sTime = sTime;
+	}
+
+	public Time geteTime() {
+		return eTime;
+	}
+
+	public void seteTime(Time eTime) {
+		this.eTime = eTime;
+	}
+
+	public Timestamp getsTimestamp() {
+		return sTimestamp;
+	}
+
+	public void setsTimestamp(Timestamp sTimestamp) {
+		this.sTimestamp = sTimestamp;
+	}
+
+	public Timestamp geteTimeStamp() {
+		return eTimeStamp;
+	}
+
+	public void seteTimeStamp(Timestamp eTimeStamp) {
+		this.eTimeStamp = eTimeStamp;
+	}
+
+}
