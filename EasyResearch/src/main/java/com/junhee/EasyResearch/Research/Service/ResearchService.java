@@ -1,6 +1,8 @@
 package com.junhee.EasyResearch.Research.Service;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -117,6 +119,41 @@ public class ResearchService implements IResearchService {
 	@Override
 	public List<TimeslotVO> GetTimeslotsByResearchId(int researchId) {
 		return mapper.GetTimeslotsByResearchId(researchId);
+	}
+
+	@Override
+	public String RegisterTimeslot(TimeslotVO tsvo) {
+		
+		String result = "";
+		
+		long tomorrowMilSec = System.currentTimeMillis() + (24 * 60 * 60 * 1000);
+		Timestamp tomorrow = new Timestamp(tomorrowMilSec); // 내일 날짜
+		
+		if(tsvo.getStartTime().getTime() < tomorrowMilSec) {
+			result = "연구 시작 시간은 현재 시간으로부터 24시간 이후부터 설정가능합니다.";
+		}
+		else if(IsOverlap(tsvo, tomorrow)) {
+			
+		}
+		
+		return result;
+	}
+	
+	private boolean IsOverlap(TimeslotVO tsvo, Timestamp tomorrow) {
+		
+		boolean isOverlap = true;
+		
+		for(TimeslotVO compareTsvo : mapper.GetTimeslotsAfterTomorrow(tomorrow)) {
+			
+			// 비교대상과
+			if(tsvo.getPlace().getPlaceName().equals(compareTsvo.getPlace().getPlaceName())) {
+				
+			}
+		
+		}
+		
+		
+		return isOverlap;
 	}
 
 

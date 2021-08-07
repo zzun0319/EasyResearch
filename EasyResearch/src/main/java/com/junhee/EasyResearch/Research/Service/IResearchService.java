@@ -43,6 +43,9 @@ public interface IResearchService {
 	// 모든 장소 정보 가져오기
 	public List<PlaceVO> GetAllLocationInfo();
 		
-		// 연구별 타임슬롯 가져오기
+	// 연구별 타임슬롯 가져오기
 	public List<TimeslotVO> GetTimeslotsByResearchId(int researchId);
+	
+	// 연구 타임슬롯 등록하기
+	public String RegisterTimeslot(TimeslotVO tsvo);
 }

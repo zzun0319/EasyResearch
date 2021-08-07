@@ -8,8 +8,8 @@ public class TmpDateTimeDTO {
 	private Date researchDate;
 	private Date startDate;
 	private Date endDate;
-	private String startTime; // jsp파일에서 넘어오는 time은 String으로 받아야함. 연구 시작 시간
-	private String endTime;
+	private String sTime; // jsp파일에서 넘어오는 time은 String으로 받아야함. 연구 시작 시간
+	private String eTime;
 	private Timestamp startTimestamp;
 	private Timestamp endTimeStamp;
 	
@@ -33,14 +33,14 @@ public class TmpDateTimeDTO {
 	////////// 연구 타임 슬롯 만들 때 받는 연구날짜, 시작시간, 종료시간 ///////////////////////////////////////////////
 
 	public void setResearchTimestamps() { // Timeslot객체에 넣어주기 위한 Timestamp들을 만들어주는 메서드
-		startTimestamp = Timestamp.valueOf(startDate + " " + startTime);
+		startTimestamp = Timestamp.valueOf(startDate + " " + sTime);
 		calEndTimeEndDateEndTimestamp();
 	}
 	
 	
 	public void calEndTimeEndDateEndTimestamp() {
 		
-		String times[] = startTime.split(":");
+		String times[] = sTime.split(":");
 		int startHour = Integer.parseInt(times[0]);
 		int startMinute = Integer.parseInt(times[1]);
 		
@@ -81,9 +81,9 @@ public class TmpDateTimeDTO {
 				}
 			}
 		}
-		endTime = endHour + ":" + endMinute + ":00";
+		eTime = endHour + ":" + endMinute + ":00";
 		endDate = Date.valueOf(endYear + "-" + endMonth + "-" + endDay);
-		endTimeStamp = Timestamp.valueOf(endDate + " " + endTime);
+		endTimeStamp = Timestamp.valueOf(endDate + " " + eTime);
 	}
 	
 	public boolean CalcLeapYear(int year) { // 윤년인지 판별
@@ -129,20 +129,20 @@ public class TmpDateTimeDTO {
 		this.endDate = endDate;
 	}
 
-	public String getStartTime() {
-		return startTime;
+	public String getSTime() {
+		return sTime;
 	}
 
-	public void setStartTime(String startTime) {
-		this.startTime = startTime + ":00";
+	public void setSTime(String sTime) {
+		this.sTime = sTime + ":00";
 	}
 
-	public String getEndTime() {
-		return endTime;
+	public String getETime() {
+		return eTime;
 	}
 
-	public void setEndTime(String endTime) {
-		this.endTime = endTime + ":00";
+	public void setEndTime(String eTime) {
+		this.eTime = eTime + ":00";
 	}
 
 	public Timestamp getStartTimestamp() {
@@ -172,7 +172,7 @@ public class TmpDateTimeDTO {
 	@Override
 	public String toString() {
 		return "TmpDateTimeDTO [researchDate=" + researchDate + ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", startTime=" + startTime + ", endTime=" + endTime + ", startTimestamp=" + startTimestamp
+				+ ", sTime=" + sTime + ", eTime=" + eTime + ", startTimestamp=" + startTimestamp
 				+ ", endTimeStamp=" + endTimeStamp + ", duration=" + duration + "]";
 	}
 

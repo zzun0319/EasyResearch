@@ -13,3 +13,9 @@ ALTER TABLE timeslot ADD apply_cnt INT NOT NULL DEFAULT 0;
 DESC timeslot;
 
 SELECT * FROM timeslot;
+
+SELECT * FROM
+(
+	SELECT * FROM timeslot WHERE TIMESTAMP(start_time) >= TIMESTAMP("2021-08-09 02:00:00") AND place_name = '율곡관 371호'
+)
+WHERE TIMESTAMP(start_time) < TIMESTAMP("2021-08-11 11:11:00");

@@ -37,6 +37,7 @@ import org.springframework.web.util.UriUtils;
 
 import com.junhee.EasyResearch.Model.CommentVO;
 import com.junhee.EasyResearch.Model.ResearchVO;
+import com.junhee.EasyResearch.Model.TimeslotVO;
 import com.junhee.EasyResearch.Model.TmpDateTimeDTO;
 import com.junhee.EasyResearch.Research.Service.ResearchService;
 import com.junhee.EasyResearch.commons.MajorSearchVO;
@@ -182,11 +183,14 @@ public class ResearchController {
 	}
 	
 	@PostMapping("/makeTimeslot")
-	public String MakeTimeslot(TmpDateTimeDTO tdt) {
+	public String MakeTimeslot(TmpDateTimeDTO tdt, TimeslotVO tsvo) {
 		System.out.println("타임 슬롯 만들기 요청");
-		System.out.println("1:" + tdt);
-		tdt.setResearchTimestamps();
-		System.out.println("2:" + tdt);
+		tdt.setResearchTimestamps(); // 시작, 종료 타임스탬프 만들고
+		tsvo.setStartTime(tdt.getStartTimestamp()); // 시작시간 넣어주고
+		tsvo.setEndTime(tdt.getEndTimeStamp()); // 종료시간 넣어주고
+		
+		String result = service.RegisterTimeslot(tsvo);
+		
 		return "/home";
 	}
 }

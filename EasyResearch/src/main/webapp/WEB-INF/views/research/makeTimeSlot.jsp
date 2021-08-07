@@ -43,8 +43,9 @@ textarea{width: 100%; height: 100px;}
 		<div>
 		<h4>날짜 및 장소 별 예약 현황 조회</h4>
 		<form action="/research/inquireTimeslotsByPeriod" method="post"><!-- 페이징.. 검색.. 구현 -->
-		<input type="hidden" name="researchId" value="${researchInfo.researchId}">
-			언제부터 : <input type="datetime" name="startDate"> ~ 언제까지: <input type="date" name="endDate"> <input type="submit" value="조회하기">
+			<input type="hidden" name="researchId" value="${researchInfo.researchId}">
+			언제부터 : <input type="date" name="startDate" id="start_date"> ~ 언제까지: <input type="date" name="endDate" id="end_date"> 
+			<input type="submit" value="조회하기">
 		</form>
 		</div>
 		
@@ -79,7 +80,6 @@ textarea{width: 100%; height: 100px;}
 			<br> <h3>[타임슬롯 만들기]</h3>
 			<form action="/research/makeTimeslot" method="post">
 				<input type="hidden" name="research.researchId" value="${researchInfo.researchId}">
-				<input type="hidden" name="research.researcher.userId" value="${researchInfo.researcher.userId}">
 				<input type="hidden" name="duration" value="${researchInfo.duration}">
 				<table border="1">
 					<tr>
@@ -88,7 +88,7 @@ textarea{width: 100%; height: 100px;}
 					</tr>
 					<tr>
 						<td>연구 시작 시간</td> <!-- time은 String으로 받아야한다. 컨트롤러가 Time, Date로 받지 못한다. 초 없이 24시간 형식으로 받아짐. 19:40 이런 식으로-->
-						<td id="rightColumn"><input type="time" name="startTime" id="startTime"></td>
+						<td id="rightColumn"><input type="time" name="sTime" id="startTime"></td>
 					</tr>
 					<tr>
 						<td>연구 종료 시간</td>
@@ -97,7 +97,7 @@ textarea{width: 100%; height: 100px;}
 					<tr>
 						<td>연구 장소</td>
 						<td id="rightColumn">
-							<select name="locationName">
+							<select name="place.placeName">
 								<option>=== 장소 선택 ===</option>
 								<c:forEach var="location" items="${locations}">
 								<option value="${location.placeName}">${location.placeName}(최대 수용인원: ${location.maxPeople}명)</option>
@@ -158,4 +158,12 @@ textarea{width: 100%; height: 100px;}
 	if(result != "" && result.length > 0){
 		alert(result);
 	}
+</script>
+
+<script>
+	$(function() { // JQuery 시작
+		
+		$("#start_date")
+		
+	}) // JQuery 끝
 </script>

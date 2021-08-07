@@ -1,5 +1,6 @@
 package com.junhee.EasyResearch;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.junit.Test;
@@ -11,6 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.junhee.EasyResearch.Model.CommentVO;
 import com.junhee.EasyResearch.Model.PlaceVO;
 import com.junhee.EasyResearch.Model.ResearchVO;
+import com.junhee.EasyResearch.Model.TimeslotVO;
 import com.junhee.EasyResearch.Model.UserVO;
 import com.junhee.EasyResearch.Research.Repository.IResearchMapper;
 import com.junhee.EasyResearch.commons.MajorSearchVO;
@@ -135,6 +137,30 @@ public class ResearchMapperTest {
 	@Test
 	public void GetTimeslotsByResearchIdTest() {
 		
+	}
+	
+	@Test
+	public void RegisterTimeslotTest() {
+		TimeslotVO tsvo = new TimeslotVO();
+		tsvo.setStartTime(Timestamp.valueOf("2021-08-12 19:10:00"));
+		tsvo.setEndTime(Timestamp.valueOf("2021-08-12 19:50:00"));
+		
+		PlaceVO pvo = new PlaceVO("율곡관 371호", 4);
+		tsvo.setPlace(pvo);
+		
+		ResearchVO rvo = new ResearchVO();
+		rvo.setResearchId(4);
+		tsvo.setResearch(rvo);
+		
+		mapper.RegisterTimeslot(tsvo);
+	}
+	
+	@Test
+	public void GetTimeslotsAfterTomorrowTest() {
+		List<TimeslotVO> list = mapper.GetTimeslotsAfterTomorrow(Timestamp.valueOf("2021-08-09 00:00:00"));
+		for(TimeslotVO tsvo : list) {
+			System.out.println(tsvo);
+		}
 	}
 	
 }
