@@ -1,6 +1,5 @@
 package com.junhee.EasyResearch.Research.Repository;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import com.junhee.EasyResearch.Model.CommentVO;
@@ -57,6 +56,9 @@ public interface IResearchMapper {
 	
 	// 타임 슬롯 검색, 페이징
 	public List<TimeslotVO> GetTimeslots(TimeslotSearchVO tss);
+	
+	// 장소명을 받아 최대 수용 인원수를 리턴하는 메서드
+	public int GetMaxPeople(String placeName);
 	
 	/*	
 	// 연구 참여 과목 등록

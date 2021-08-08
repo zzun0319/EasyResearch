@@ -52,6 +52,7 @@
 		<result property="startTime" column="start_time"/>
 		<result property="endTime" column="end_time"/>
 		<result property="applyCnt" column="apply_cnt"/>
+		<result property="maxCnt" column="max_cnt"/>
 		<association property="research" column="research_id" javaType="com.junhee.EasyResearch.Model.ResearchVO" resultMap="ResearchMap" />
 		<association property="place" column="place_name" javaType="com.junhee.EasyResearch.Model.PlaceVO" resultMap="PlaceMap" />
 	</resultMap>
@@ -90,8 +91,8 @@
 	</insert>
 	
 	<insert id="RegisterTimeslot">
-		INSERT INTO timeslot (research_id, start_time, end_time, place_name, apply_cnt) 
-		VALUES (#{research.researchId},#{startTime},#{endTime},#{place.placeName},#{applyCnt})
+		INSERT INTO timeslot (research_id, start_time, end_time, place_name, max_cnt) 
+		VALUES (#{research.researchId},#{startTime},#{endTime},#{place.placeName},#{maxCnt})
 	</insert>
 	
 	<select id="GetMyResearch" resultMap="ResearchMap">
@@ -149,15 +150,65 @@
 		]]>
 	</select>
 	
-	<select id="GetTotalTimeslotsCnt" resultType="int">
+	<select id="GetTotalTimeslotsCnt" resultType="int"> <!-- 얘랑 이 아래 리팩토링.. 동적 sql문으로 -->
 		SELECT COUNT(*) FROM timeslot t JOIN research r ON t.research_id = r.research_id
-		WHERE r.research_id=#{researchId}
+		<where>
+			<if test="!isParticipant">
+				r.research_id=#{research.researchId}
+			</if>
+			<if test="isParticipant">
+				<![CDATA[
+				AND TIMESTAMP(t.start_time) >= TIMESTAMP(#{tdt.tomorrow})
+				]]>
+			</if>
+			<if test="research.title != null">
+				AND r.title LIKE CONCAT('%',#{research.title},'%')
+			</if>
+			<if test="tdt.startTimestamp != null">
+				<![CDATA[
+				AND (t.start_time BETWEEN #{tdt.startTimestamp} AND #{tdt.endTimestamp})
+				]]>
+			</if>
+			<if test="tdt.researchPlace != null">
+				AND t.place_name = #{tdt.researchPlace}
+			</if>
+		</where>
 	</select>
 	
 	<select id="GetTimeslots" resultMap="TimeslotMap">
 		SELECT t.*, r.* FROM timeslot t JOIN research r ON t.research_id = r.research_id
-		WHERE r.research_id=#{researchId} ORDER BY t.slot_num DESC
+		<where>
+			<if test="!isParticipant">
+				r.research_id=#{research.researchId}
+			</if>
+			<if test="isParticipant">
+				<![CDATA[
+				AND TIMESTAMP(t.start_time) >= TIMESTAMP(#{tdt.tomorrow})
+				]]>
+			</if>
+			<if test="research.title != null">
+				AND r.title LIKE CONCAT('%',#{research.title},'%')
+			</if>
+			<if test="tdt.startTimestamp != null">
+				<![CDATA[
+				AND (t.start_time BETWEEN #{tdt.startTimestamp} AND #{tdt.endTimestamp})
+				]]>
+			</if>
+			<if test="tdt.researchPlace != null">
+				AND t.place_name = #{tdt.researchPlace}
+			</if>
+			<if test="!isParticipant">
+				ORDER BY t.start_time DESC
+			</if>
+			<if test="isParticipant">
+				ORDER BY t.start_time ASC
+			</if>
+		</where>
 		LIMIT #{cntPerPage} OFFSET #{offset}
+	</select>
+	
+	<select id="GetMaxPeople" resultType="int">
+		SELECT max_people FROM research_place WHERE place_name=#{placeName}
 	</select>
 	
 	<update id="PermitResearch">

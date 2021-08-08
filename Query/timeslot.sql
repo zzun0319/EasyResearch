@@ -9,6 +9,7 @@ CREATE TABLE timeslot(
 );
 
 ALTER TABLE timeslot ADD apply_cnt INT NOT NULL DEFAULT 0;
+ALTER TABLE timeslot ADD max_cnt INT NOT NULL;
 
 DESC timeslot;
 
@@ -32,4 +33,4 @@ SELECT COUNT(*) FROM timeslot WHERE TIMESTAMP(start_time) >= TIMESTAMP("2021-08-
 
 SELECT COUNT(*) FROM timeslot t JOIN research r ON t.research_id = r.research_id WHERE r.research_id=4;
 
-SELECT t.*, r.*, FROM timeslot t JOIN research r ON t.research_id = r.research_id WHERE r.research_id=4	ORDER BY t.slot_num DESC LIMIT 10 OFFSET 0;
+SELECT t.*, r.* FROM timeslot t JOIN research r ON t.research_id = r.research_id WHERE r.research_id=4	ORDER BY t.slot_num DESC LIMIT 10 OFFSET 0;

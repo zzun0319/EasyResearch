@@ -1,36 +1,25 @@
 package com.junhee.EasyResearch.Research.Controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URLEncoder;
-import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
-import java.sql.Date;
-import java.sql.Time;
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriUtils;
@@ -42,7 +31,6 @@ import com.junhee.EasyResearch.Model.TmpDateTimeDTO;
 import com.junhee.EasyResearch.Research.Service.ResearchService;
 import com.junhee.EasyResearch.commons.MajorSearchVO;
 import com.junhee.EasyResearch.commons.PageCreator;
-import com.junhee.EasyResearch.commons.SearchVO;
 import com.junhee.EasyResearch.commons.TimeslotSearchVO;
 
 @Controller
@@ -70,8 +58,8 @@ public class ResearchController {
 		model.addAttribute("comments", service.GetResearchComments(researchId));
 	}
 	
-	@GetMapping("/makeTimeslot/{researchId}")
-	private String MakeTimeslotPage(@PathVariable int researchId, Model model) {
+	@GetMapping("/makeTimeslot")
+	private String MakeTimeslotPage(int researchId, Model model, RedirectAttributes ra) {
 		System.out.println("타임슬롯 만들기 페이지, 연구번호: " + researchId);
 		model.addAttribute("researchInfo", service.GetResearchInfo(researchId));
 		model.addAttribute("locations", service.GetAllLocationInfo());
@@ -80,8 +68,9 @@ public class ResearchController {
 	
 	@GetMapping("/showResearchTimeslots")
 	private void ShowResearchTimeslots(TimeslotSearchVO tss, Model model) {
-		System.out.println(tss.getResearchId() + "번 연구 타임슬롯 리스트 요청");
-
+		
+		System.out.println(tss.getResearch().getResearchId() + "번 연구 타임슬롯 리스트 요청");
+		
 		tss.setCntPerPage(5);
 		
 		PageCreator pc = new PageCreator();
@@ -93,6 +82,7 @@ public class ResearchController {
 	
 	@GetMapping("/acceptResearch")
 	private void AccecptResearchPage(MajorSearchVO msvo, Model model) {
+		
 		System.out.println("대학원생 개설 연구 리스트 페이지로 이동");
 		System.out.println("페이지번호:" + msvo.getPageNum());
 		System.out.println("검색어: " + msvo.getKeyword());
@@ -103,10 +93,7 @@ public class ResearchController {
 		pc.setTotalCnt(service.GetTotalSameMajorResearchCnt(msvo));
 		model.addAttribute("pc", pc);
 		model.addAttribute("registedResearchList", service.GetSameMajorResearch(msvo));
-		List<ResearchVO> list = service.GetSameMajorResearch(msvo);
-		for(ResearchVO rvo : list) {
-			System.out.println(rvo);
-		}
+		
 	}
 	
 	// 이 방법도 되고 
@@ -201,15 +188,35 @@ public class ResearchController {
 		tdt.setResearchTimestamps(); // 시작, 종료 타임스탬프 만들고
 		tdt.setResearchPlace(tsvo.getPlace().getPlaceName()); // 장소명 넣어주기
 		tsvo.setStartTime(tdt.getStartTimestamp()); // 시작시간 넣어주고
-		tsvo.setEndTime(tdt.getEndTimeStamp()); // 종료시간 넣어주고
+		tsvo.setEndTime(tdt.getEndTimestamp()); // 종료시간 넣어주고
+		
+		System.out.println(tsvo);
 		
 		String result = service.RegisterTimeslot(tsvo, tdt);
 		ra.addFlashAttribute("msg", result);
 		if(result.equals("타임슬롯이 생성되었습니다.")) {
-			return "redirect:/user/mypage";
+			return "redirect:/research/showResearchTimeslots?researchId=" + tsvo.getResearch().getResearchId();
 		}
 		else {
-			return "redirect:/research/openResearch";
+			return "redirect:/research/makeTimeslot/" + tsvo.getResearch().getResearchId();
 		}
+	}
+
+	@PostMapping("/inquireTimeslotsByPeriod")
+	public String InquireTimeslots(TimeslotSearchVO tss, RedirectAttributes ra) {
+		System.out.println("타임슬롯 만들기 전 기간, 장소별 사용현황 조회");
+		
+		tss.getTdt().setPeriodForInquiry(); // 타임스탬프 형태로 변환해서 가지고 있게 됨.
+		PageCreator pc = new PageCreator();
+		pc.setPageInfo(tss);
+		pc.setTotalCnt(service.GetTotalTimeslotsCnt(tss));
+		System.out.println(tss);
+		ra.addAttribute("pc", pc);
+		ra.addAttribute("inquireList", service.GetTimeslots(tss));
+		for(TimeslotVO tsvo : service.GetTimeslots(tss)) {
+			System.out.println(tsvo);
+		}
+		
+		return "redirect:/research/makeTimeslot?researchId=" + tss.getResearch().getResearchId();
 	}
 }

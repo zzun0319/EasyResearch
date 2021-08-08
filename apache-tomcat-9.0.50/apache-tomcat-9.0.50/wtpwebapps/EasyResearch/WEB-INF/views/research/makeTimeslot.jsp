@@ -43,10 +43,11 @@ textarea{width: 100%; height: 100px;}
 		<div>
 		<h4>날짜 및 장소 별 예약 현황 조회</h4>
 		<form action="/research/inquireTimeslotsByPeriod" method="post"><!-- 페이징.. 검색.. 구현 -->
-			<input type="hidden" name="researchId" value="${researchInfo.researchId}">
-			언제부터 : <input type="date" name="startDate" id="start_date"> ~ 언제까지: <input type="date" name="endDate" id="end_date"> 
+			<input type="hidden" name="research.researchId" value="${researchInfo.researchId}">
+			<input type="hidden" name="isParticipant" value=true> <!-- 예약하기 위해 24시간 이후 사용 중인 곳을 조회하는 것이라서 true로 보내줌. -->
+			언제부터 : <input type="date" name="tdt.startDate" id="start_date"> ~ 언제까지: <input type="date" name="tdt.endDate" id="end_date"> 
 			장소: 
-				<select name="researchPlace">
+				<select name="tdt.researchPlace">
 					<option>=== 장소 선택 ===</option>
 					<c:forEach var="location" items="${locations}">
 						<option value="${location.placeName}">${location.placeName}(최대 수용인원: ${location.maxPeople}명)</option>
@@ -72,13 +73,35 @@ textarea{width: 100%; height: 100px;}
 			</tr>
 			<c:forEach var="inquiredTimeslot" items="${inquireList}">
 				<tr>
-					<td>${inquiredTimeslot.locationName}</td>
-					<td><fmt:formatDate value="${inquiredTimeslot.researchDate}" pattern="yyyy년 MM월 dd일" /></td>
+					<td>${inquiredTimeslot.place.placeName}</td>
+					<td><fmt:formatDate value="${inquiredTimeslot.startTime}" pattern="yyyy년 MM월 dd일" /></td>
 					<td><fmt:formatDate value="${inquiredTimeslot.startTime}" pattern="HH시 mm분" /> ~ <fmt:formatDate value="${inquiredTimeslot.endTime}" pattern="HH시 mm분" /></td>
 				</tr>
 			</c:forEach>
 			</table>
 		</c:if>
+		</div>
+		<div> <!-- 페이징 처리 -->
+			<ul>
+			<c:if test="${pc.prev}">
+				<li>
+					<a href="/research/makeTimeslot${pc.MakeURI(pc.startPageNum - 1)}&researchId=${timeslotList[0].research.researchId}" style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">이전</a>
+				</li>
+				</c:if>
+					
+				<c:forEach var="pageNum" begin="${pc.startPageNum}" end="${pc.endPageNum}">
+					<li>
+					<a href="/research/makeTimeslot${pc.MakeURI(pageNum)}&researchId=${timeslotList[0].research.researchId}" class="numBtn ${(pc.pageInfo.pageNum == pageNum) ? 'page-active' : ''}" style="margin-top: 0; height: 40px; color: pink; border: 1px solid #643691;">${pageNum}</a>
+					</li>
+				</c:forEach>
+					
+			<c:if test="${pc.next}">	
+				<li>
+					<a href="/research/makeTimeslot${pc.MakeURI(pc.endPageNum + 1)}&researchId=${pageInfo.researchId}" style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">다음</a>
+				</li>
+			</c:if>
+					
+			</ul>
 		</div>
 		
 		<hr style="border: solid 5px green;">
@@ -114,7 +137,7 @@ textarea{width: 100%; height: 100px;}
 					</tr>
 					<tr>
 						<td>참가자 수</td>
-						<td id="rightColumn"><input type="number" name="applyCnt"> 명</td>
+						<td id="rightColumn"><input type="number" name="maxCnt"> 명</td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center">

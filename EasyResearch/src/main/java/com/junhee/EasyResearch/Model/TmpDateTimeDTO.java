@@ -11,7 +11,7 @@ public class TmpDateTimeDTO {
 	private String sTime; // jsp파일에서 넘어오는 time은 String으로 받아야함. 연구 시작 시간
 	private String eTime;
 	private Timestamp startTimestamp;
-	private Timestamp endTimeStamp;
+	private Timestamp endTimestamp;
 	
 	private int duration; // 실험 소요 시간
 	private Timestamp tomorrow; // 현재 시간으로부터 24시간 후 타임스탬프
@@ -31,7 +31,7 @@ public class TmpDateTimeDTO {
 	*/
 	public void setPeriodForInquiry() { // 두 날짜를 입력 받으면 그 날짜들을 타임스탬프 형식으로 만들어주는 메서드
 		startTimestamp = Timestamp.valueOf(startDate + " 00:00:00");
-		endTimeStamp = Timestamp.valueOf(endDate + " 00:00:00");
+		endTimestamp = Timestamp.valueOf(endDate + " 00:00:00");
 	}
 	
 	////////// 연구 타임 슬롯 만들 때 받는 연구날짜, 시작시간, 종료시간 ///////////////////////////////////////////////
@@ -87,7 +87,7 @@ public class TmpDateTimeDTO {
 		}
 		eTime = endHour + ":" + endMinute + ":00";
 		endDate = Date.valueOf(endYear + "-" + endMonth + "-" + endDay);
-		endTimeStamp = Timestamp.valueOf(endDate + " " + eTime);
+		endTimestamp = Timestamp.valueOf(endDate + " " + eTime);
 	}
 	
 	public boolean CalcLeapYear(int year) { // 윤년인지 판별
@@ -122,7 +122,6 @@ public class TmpDateTimeDTO {
 
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
-		//startTimestamp = Timestamp.valueOf(startDate + " 00:00:00");
 	}
 
 	public Date getEndDate() {
@@ -157,12 +156,12 @@ public class TmpDateTimeDTO {
 		this.startTimestamp = startTimestamp;
 	}
 
-	public Timestamp getEndTimeStamp() {
-		return endTimeStamp;
+	public Timestamp getEndTimestamp() {
+		return endTimestamp;
 	}
 
-	public void setEndTimeStamp(Timestamp endTimeStamp) {
-		this.endTimeStamp = endTimeStamp;
+	public void setEndTimestamp(Timestamp endTimeStamp) {
+		this.endTimestamp = endTimeStamp;
 	}
 	
 	public int getDuration() {
@@ -193,7 +192,7 @@ public class TmpDateTimeDTO {
 	public String toString() {
 		return "TmpDateTimeDTO [researchDate=" + researchDate + ", startDate=" + startDate + ", endDate=" + endDate
 				+ ", sTime=" + sTime + ", eTime=" + eTime + ", startTimestamp=" + startTimestamp
-				+ ", endTimeStamp=" + endTimeStamp + ", duration=" + duration + "]";
+				+ ", endTimestamp=" + endTimestamp + ", duration=" + duration + "]";
 	}
 
 }

@@ -137,11 +137,6 @@ public class ResearchMapperTest {
 	}
 	
 	@Test
-	public void GetTimeslotsByResearchIdTest() {
-		
-	}
-	
-	@Test
 	public void RegisterTimeslotTest() {
 		TimeslotVO tsvo = new TimeslotVO();
 		tsvo.setStartTime(Timestamp.valueOf("2021-08-12 19:10:00"));
@@ -162,7 +157,7 @@ public class ResearchMapperTest {
 		
 		TmpDateTimeDTO tdt = new TmpDateTimeDTO();
 		tdt.setStartTimestamp(Timestamp.valueOf("2021-08-11 02:05:00"));
-		tdt.setEndTimeStamp(Timestamp.valueOf("2021-08-11 02:51:00"));
+		tdt.setEndTimestamp(Timestamp.valueOf("2021-08-11 02:51:00"));
 		tdt.setResearchPlace("율곡관 371호");
 		
 		System.out.println(mapper.TimeslotsAfterTomorrowCnt(tdt));
@@ -174,7 +169,11 @@ public class ResearchMapperTest {
 	@Test
 	public void GetTotalTimeslotsCntTest() {
 		TimeslotSearchVO tst = new TimeslotSearchVO();
-		tst.setResearchId(4);
+		
+		tst.getResearch().setResearchId(4);;
+		tst.setIsParticipant(true);
+		tst.getTdt().setStartTimestamp(Timestamp.valueOf("2021-08-09 10:00:00"));
+		tst.getTdt().setEndTimestamp(Timestamp.valueOf("2021-08-19 10:00:00"));
 		System.out.println(tst);
 		System.out.println(mapper.GetTotalTimeslotsCnt(tst));
 	}
@@ -182,11 +181,24 @@ public class ResearchMapperTest {
 	@Test
 	public void GetTimeslotsTest() {
 		TimeslotSearchVO tst = new TimeslotSearchVO();
-		tst.setResearchId(4);
+		ResearchVO rvo = new ResearchVO();
+		rvo.setResearchId(4);
+		rvo.setTitle("1");
+		tst.setResearch(rvo);
+		tst.setIsParticipant(false);
+		tst.getTdt().setStartTimestamp(Timestamp.valueOf("2021-08-09 10:00:00"));
+		tst.getTdt().setEndTimestamp(Timestamp.valueOf("2021-08-19 10:00:00"));
 		System.out.println(tst);
 		for(TimeslotVO tsv : mapper.GetTimeslots(tst)) {
 			System.out.println(tsv);
 		}
+	}
+	
+	@Test
+	public void GetMaxPeopleTest() {
+		System.out.println(mapper.GetMaxPeople("율곡관 371호"));
+		System.out.println(mapper.GetMaxPeople("율곡관 412호"));
+		System.out.println(mapper.GetMaxPeople("종합관 101호"));
 	}
 	
 }

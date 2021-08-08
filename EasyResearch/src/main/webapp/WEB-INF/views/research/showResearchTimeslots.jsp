@@ -67,7 +67,7 @@ li {
 						<td><fmt:formatDate value="${timeslot.startTime}" pattern="yyyy년 MM월 dd일 HH시 mm분"/>~<fmt:formatDate value="${timeslot.endTime}" pattern="HH시 mm분" /></td>
 						<td>${timeslot.applyCnt}명 / ${timeslot.place.maxPeople}명</td>
 						<td>${timeslot.place.placeName}</td>
-						<td><a href="/research">상태변경</a></td>
+						<td><a href="#">상태변경</a></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -76,19 +76,19 @@ li {
 				<ul>
 				<c:if test="${pc.prev}">
 					<li>
-					<a href="/research/showResearchTimeslots${pc.MakeURI(pc.startPageNum - 1)}&researchId=${timeslotList[0].research.researchId}" style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">이전</a>
+					<a href="/research/showResearchTimeslots${pc.MakeURI(pc.startPageNum - 1)}&research.researchId=${timeslotList[0].research.researchId}" style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">이전</a>
 					</li>
 				</c:if>
 					
 					<c:forEach var="pageNum" begin="${pc.startPageNum}" end="${pc.endPageNum}">
 						<li>
-						<a href="/research/showResearchTimeslots${pc.MakeURI(pageNum)}&researchId=${timeslotList[0].research.researchId}" class="numBtn ${(pc.pageInfo.pageNum == pageNum) ? 'page-active' : ''}" style="margin-top: 0; height: 40px; color: pink; border: 1px solid #643691;">${pageNum}</a>
+						<a href="/research/showResearchTimeslots${pc.MakeURI(pageNum)}&research.researchId=${timeslotList[0].research.researchId}" class="numBtn ${(pc.pageInfo.pageNum == pageNum) ? 'page-active' : ''}" style="margin-top: 0; height: 40px; color: pink; border: 1px solid #643691;">${pageNum}</a>
 						</li>
 					</c:forEach>
 					
 				<c:if test="${pc.next}">	
 					<li>
-					<a href="/research/showResearchTimeslots${pc.MakeURI(pc.endPageNum + 1)}&researchId=${pageInfo.researchId}" style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">다음</a>
+					<a href="/research/showResearchTimeslots${pc.MakeURI(pc.endPageNum + 1)}&research.researchId=${pageInfo.researchId}" style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">다음</a>
 					</li>
 				</c:if>
 					
@@ -99,7 +99,7 @@ li {
 		</c:if>
 		
 		<div style="position: absolute; left: 700px; top: 300px;">
-			<input type="button" value="타임슬롯 만들기" onclick="location.href='/research/makeTimeslot/${timeslotList[0].research.researchId}'">
+			<input type="button" value="타임슬롯 만들기" onclick="location.href='/research/makeTimeslot?researchId=${timeslotList[0].research.researchId}'">
 		</div>
 		
 	<jsp:include page="../include/footer.jsp" />
