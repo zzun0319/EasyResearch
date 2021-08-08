@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;EasyResearch/src/main/webapp/WEB-INF/views/research/showTimeslots.jsp&apos; to &apos;showResearchTimeslots.jsp&apos;" description="Rename resource &apos;showTimeslots.jsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/WEB-INF/views/research/showTimeslots.jsp" name="showResearchTimeslots.jsp" stamp="1628396346740" updateReferences="true"/>
+</session>

@@ -12,6 +12,7 @@ import com.junhee.EasyResearch.Model.ResearchVO;
 import com.junhee.EasyResearch.Model.TimeslotVO;
 import com.junhee.EasyResearch.Model.TmpDateTimeDTO;
 import com.junhee.EasyResearch.commons.MajorSearchVO;
+import com.junhee.EasyResearch.commons.TimeslotSearchVO;
 
 public interface IResearchService {
 	
@@ -50,4 +51,10 @@ public interface IResearchService {
 	
 	// 연구 타임슬롯 등록하기
 	public String RegisterTimeslot(TimeslotVO tsvo, TmpDateTimeDTO tdt);
+	
+	// 연구 번호, 페이징
+	public int GetTotalTimeslotsCnt(TimeslotSearchVO tss);
+	
+	// 타임 슬롯 검색, 페이징
+	public List<TimeslotVO> GetTimeslots(TimeslotSearchVO tss);
 }

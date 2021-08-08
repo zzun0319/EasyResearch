@@ -59,6 +59,9 @@
 	<!-- /////////////////////////////////////////////////////////////////////////////////////// -->
 	
 	<sql id="search">
+		<if test="condition == 'myResearch'">
+			AND r.researchId = #{researchId}
+		</if>
 		<if test="condition == 'title'">
 			AND r.title LIKE CONCAT('%',#{keyword},'%')
 		</if>
@@ -146,6 +149,16 @@
 		]]>
 	</select>
 	
+	<select id="GetTotalTimeslotsCnt" resultType="int">
+		SELECT COUNT(*) FROM timeslot t JOIN research r ON t.research_id = r.research_id
+		WHERE r.research_id=#{researchId}
+	</select>
+	
+	<select id="GetTimeslots" resultMap="TimeslotMap">
+		SELECT t.*, r.* FROM timeslot t JOIN research r ON t.research_id = r.research_id
+		WHERE r.research_id=#{researchId} ORDER BY t.slot_num DESC
+		LIMIT #{cntPerPage} OFFSET #{offset}
+	</select>
 	
 	<update id="PermitResearch">
 		UPDATE research SET permission=#{permission} WHERE research_id=#{researchId}

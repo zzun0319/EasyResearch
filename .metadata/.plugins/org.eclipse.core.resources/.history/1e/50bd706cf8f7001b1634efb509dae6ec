@@ -1,0 +1,11 @@
+package com.junhee.EasyResearch.commons;
+
+import com.junhee.EasyResearch.Model.TmpDateTimeDTO;
+
+public class TimeslotSearchVO extends SearchVO {
+
+	private int researchId;
+	private TmpDateTimeDTO tdt;
+	
+	
+}

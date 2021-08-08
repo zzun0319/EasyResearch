@@ -9,6 +9,7 @@ import com.junhee.EasyResearch.Model.ResearchVO;
 import com.junhee.EasyResearch.Model.TimeslotVO;
 import com.junhee.EasyResearch.Model.TmpDateTimeDTO;
 import com.junhee.EasyResearch.commons.MajorSearchVO;
+import com.junhee.EasyResearch.commons.TimeslotSearchVO;
 
 public interface IResearchMapper {
 	
@@ -51,7 +52,11 @@ public interface IResearchMapper {
 	// 24시간 이후의 해당 장소에 내가 삽입하려는 타임슬롯과 겹치는 타임슬롯을 제외한 개수
 	public int NotOvelapCnt(TmpDateTimeDTO tdt);
 	
+	// 연구 번호, 페이징
+	public int GetTotalTimeslotsCnt(TimeslotSearchVO tss);
+	
 	// 타임 슬롯 검색, 페이징
+	public List<TimeslotVO> GetTimeslots(TimeslotSearchVO tss);
 	
 	/*	
 	// 연구 참여 과목 등록
@@ -78,9 +83,6 @@ public interface IResearchMapper {
 	
 	// 장소 최대인원 불러오기
 	int GetMaxLimitPeople(String locationName);
-	
-	// 날짜 기간 사이에 예약된 타임슬롯 리스트 가져오기
-	List<TimeSlotVO> GetTimeslotListsByPeriod(Map<String, String> periods);
 	
 	// 타임슬롯 예약하기
 	void ReserveTimeslot(TsReserveVO tsvo);

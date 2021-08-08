@@ -34,10 +34,18 @@ public class PageVO {
 	public void setCntPerPage(int cntPerPage) {
 		this.cntPerPage = cntPerPage;
 	}
+	
+	public int getOffset() {
+		return offset;
+	}
+	
+	public void setOffset(int offset) {
+		this.offset = offset;
+	}
 
 	@Override
 	public String toString() {
-		return "PageVO [pageNum=" + pageNum + ", cntPerPage=" + cntPerPage + "]";
+		return "PageVO [pageNum=" + pageNum + ", cntPerPage=" + cntPerPage + ", offset=" + offset + "]";
 	}
 	
 }

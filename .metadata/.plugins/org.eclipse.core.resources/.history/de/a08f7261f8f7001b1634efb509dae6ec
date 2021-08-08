@@ -1,0 +1,5 @@
+package com.junhee.EasyResearch.commons;
+
+public class TimeslotSearchVO extends SearchVO {
+
+}

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.junhee.EasyResearch.Model.UnivMemberVO"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Param"/>
     <fullyQualifiedTypeName name="com.junhee.EasyResearch.util.SHA256"/>
     <fullyQualifiedTypeName name="java.util.Properties"/>
@@ -42,11 +41,9 @@
     <fullyQualifiedTypeName name="java.net.URLEncoder"/>
     <fullyQualifiedTypeName name="com.junhee.EasyResearch.Model.CommentVO"/>
     <fullyQualifiedTypeName name="com.junhee.EasyResearch.commons.SearchVO"/>
-    <fullyQualifiedTypeName name="com.junhee.EasyResearch.commons.PageCreator"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
     <fullyQualifiedTypeName name="com.junhee.EasyResearch.commons.MajorSearchVO"/>
     <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
@@ -57,7 +54,10 @@
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="com.junhee.EasyResearch.Model.TimeslotVO"/>
     <fullyQualifiedTypeName name="java.sql.Timestamp"/>
-    <fullyQualifiedTypeName name="org.junit.Test"/>
-    <fullyQualifiedTypeName name="com.junhee.EasyResearch.Model.TmpDateTimeDTO"/>
     <fullyQualifiedTypeName name="org.springframework.web.servlet.mvc.support.RedirectAttributes"/>
+    <fullyQualifiedTypeName name="com.junhee.EasyResearch.Model.TmpDateTimeDTO"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="com.junhee.EasyResearch.commons.PageCreator"/>
+    <fullyQualifiedTypeName name="com.junhee.EasyResearch.commons.TimeslotSearchVO"/>
+    <fullyQualifiedTypeName name="org.junit.Test"/>
 </qualifiedTypeNameHistroy>

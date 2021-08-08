@@ -52,7 +52,7 @@
                         	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </c:if>
                         <c:if test="${user.permissionRight}">
-                        	<input type="button" value="개설 연구 승인하기" onclick="location.href='/research/permitResearch'">
+                        	<input type="button" value="개설 연구 승인하기" onclick="location.href='/research/acceptResearch?major=${user.major}'">
                         </c:if>
                 </c:if>
             </div>

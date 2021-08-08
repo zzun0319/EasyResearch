@@ -43,6 +43,7 @@ import com.junhee.EasyResearch.Research.Service.ResearchService;
 import com.junhee.EasyResearch.commons.MajorSearchVO;
 import com.junhee.EasyResearch.commons.PageCreator;
 import com.junhee.EasyResearch.commons.SearchVO;
+import com.junhee.EasyResearch.commons.TimeslotSearchVO;
 
 @Controller
 @RequestMapping("/research")
@@ -77,6 +78,19 @@ public class ResearchController {
 		return "research/makeTimeslot";
 	}
 	
+	@GetMapping("/showResearchTimeslots")
+	private void ShowResearchTimeslots(TimeslotSearchVO tss, Model model) {
+		System.out.println(tss.getResearchId() + "번 연구 타임슬롯 리스트 요청");
+
+		tss.setCntPerPage(5);
+		
+		PageCreator pc = new PageCreator();
+		pc.setPageInfo(tss);
+		pc.setTotalCnt(service.GetTotalTimeslotsCnt(tss));
+		model.addAttribute("pc", pc);
+		model.addAttribute("timeslotList", service.GetTimeslots(tss));
+	}
+	
 	@GetMapping("/acceptResearch")
 	private void AccecptResearchPage(MajorSearchVO msvo, Model model) {
 		System.out.println("대학원생 개설 연구 리스트 페이지로 이동");
@@ -90,7 +104,6 @@ public class ResearchController {
 		model.addAttribute("pc", pc);
 		model.addAttribute("registedResearchList", service.GetSameMajorResearch(msvo));
 		List<ResearchVO> list = service.GetSameMajorResearch(msvo);
-		System.out.println("리스트 사이즈: " + list.size());
 		for(ResearchVO rvo : list) {
 			System.out.println(rvo);
 		}

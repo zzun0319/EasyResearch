@@ -17,6 +17,7 @@ import com.junhee.EasyResearch.Model.TimeslotVO;
 import com.junhee.EasyResearch.Model.TmpDateTimeDTO;
 import com.junhee.EasyResearch.Research.Repository.IResearchMapper;
 import com.junhee.EasyResearch.commons.MajorSearchVO;
+import com.junhee.EasyResearch.commons.TimeslotSearchVO;
 import com.junhee.EasyResearch.util.FileProcessor;
 
 @Service
@@ -139,9 +140,19 @@ public class ResearchService implements IResearchService {
 			result = "타임슬롯이 생성되었습니다.";
 		}
 		
-		//if() 최대수용가능인원 넘으면 타임슬롯 생성안되도록
+		//if() 최대수용가능인원 넘으면 타임슬롯 생성안되도록 
 		
 		return result;
+	}
+
+	@Override
+	public int GetTotalTimeslotsCnt(TimeslotSearchVO tss) {
+		return mapper.GetTotalTimeslotsCnt(tss);
+	}
+
+	@Override
+	public List<TimeslotVO> GetTimeslots(TimeslotSearchVO tss) {
+		return mapper.GetTimeslots(tss);
 	}
 	
 

@@ -45,6 +45,13 @@ textarea{width: 100%; height: 100px;}
 		<form action="/research/inquireTimeslotsByPeriod" method="post"><!-- 페이징.. 검색.. 구현 -->
 			<input type="hidden" name="researchId" value="${researchInfo.researchId}">
 			언제부터 : <input type="date" name="startDate" id="start_date"> ~ 언제까지: <input type="date" name="endDate" id="end_date"> 
+			장소: 
+				<select name="researchPlace">
+					<option>=== 장소 선택 ===</option>
+					<c:forEach var="location" items="${locations}">
+						<option value="${location.placeName}">${location.placeName}(최대 수용인원: ${location.maxPeople}명)</option>
+					</c:forEach>
+				</select>
 			<input type="submit" value="조회하기">
 		</form>
 		</div>
@@ -126,28 +133,6 @@ textarea{width: 100%; height: 100px;}
 		
 		<hr style="border: solid 5px black;">
 		
-		<div>
-			<h3>[${researchInfo.title}의 타임슬롯]</h3>
-			<table border="1">
-				<tr>
-					<td>날짜 및 시간</td>
-					<td>참가인원</td>
-					<td>신청 인원</td>
-					<td>연구 장소</td>
-					<td>상태변경</td>
-				</tr>
-				<c:forEach var="timeslot" items="${timeslotList}">
-					<tr>
-						<td><fmt:formatDate value="${timeslot.startTime}" pattern="yyyy년 MM월 dd일 HH시 mm분"/>~<fmt:formatDate value="${timeslot.endTime}" pattern="HH시 mm분" /></td>
-						<td>${timeslot.applyCnt}명 / ${timeslot.place.maxPeople}명</td>
-						<td>아직 구현 안 됨</td>
-						<td>${timeslot.locationName}</td>
-						<td>상태변경(버튼 구현 안 됨)</td>
-					</tr>
-				</c:forEach>
-			</table>
-		</div>
-		
 	<jsp:include page="../include/footer.jsp" />
 
 </body>
@@ -158,12 +143,4 @@ textarea{width: 100%; height: 100px;}
 	if(result != "" && result.length > 0){
 		alert(result);
 	}
-</script>
-
-<script>
-	$(function() { // JQuery 시작
-		
-		$("#start_date")
-		
-	}) // JQuery 끝
 </script>

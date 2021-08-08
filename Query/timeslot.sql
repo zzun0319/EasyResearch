@@ -29,3 +29,7 @@ SELECT COUNT(*) FROM
 )ts;
 
 SELECT COUNT(*) FROM timeslot WHERE TIMESTAMP(start_time) >= TIMESTAMP("2021-08-09 03:07:00") AND place_name = '율곡관 371호';
+
+SELECT COUNT(*) FROM timeslot t JOIN research r ON t.research_id = r.research_id WHERE r.research_id=4;
+
+SELECT t.*, r.*, FROM timeslot t JOIN research r ON t.research_id = r.research_id WHERE r.research_id=4	ORDER BY t.slot_num DESC LIMIT 10 OFFSET 0;

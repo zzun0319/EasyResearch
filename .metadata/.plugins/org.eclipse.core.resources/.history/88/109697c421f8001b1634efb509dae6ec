@@ -1,0 +1,42 @@
+package com.junhee.EasyResearch.commons;
+
+import com.junhee.EasyResearch.Model.TmpDateTimeDTO;
+
+public class TimeslotSearchVO extends SearchVO {
+
+	private int researchId;
+	private TmpDateTimeDTO tdt;
+	
+	public TimeslotSearchVO() {
+		super();
+		tdt = new TmpDateTimeDTO();
+	}
+
+	public TimeslotSearchVO(int researchId, TmpDateTimeDTO tdt) {
+		super();
+		this.researchId = researchId;
+		this.tdt = tdt;
+	}
+
+	public int getResearchId() {
+		return researchId;
+	}
+
+	public void setResearchId(int researchId) {
+		this.researchId = researchId;
+	}
+
+	public TmpDateTimeDTO getTdt() {
+		return tdt;
+	}
+
+	public void setTdt(TmpDateTimeDTO tdt) {
+		this.tdt = tdt;
+	}
+
+	@Override
+	public String toString() {
+		return "TimeslotSearchVO [researchId=" + researchId + ", tdt=" + tdt + "]" + getCntPerPage() + getPageNum() + getOffset();
+	}
+	
+}

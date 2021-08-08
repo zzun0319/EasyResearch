@@ -17,6 +17,7 @@ import com.junhee.EasyResearch.Model.TmpDateTimeDTO;
 import com.junhee.EasyResearch.Model.UserVO;
 import com.junhee.EasyResearch.Research.Repository.IResearchMapper;
 import com.junhee.EasyResearch.commons.MajorSearchVO;
+import com.junhee.EasyResearch.commons.TimeslotSearchVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
@@ -170,5 +171,22 @@ public class ResearchMapperTest {
 		System.out.println();
 	}
 	
+	@Test
+	public void GetTotalTimeslotsCntTest() {
+		TimeslotSearchVO tst = new TimeslotSearchVO();
+		tst.setResearchId(4);
+		System.out.println(tst);
+		System.out.println(mapper.GetTotalTimeslotsCnt(tst));
+	}
+	
+	@Test
+	public void GetTimeslotsTest() {
+		TimeslotSearchVO tst = new TimeslotSearchVO();
+		tst.setResearchId(4);
+		System.out.println(tst);
+		for(TimeslotVO tsv : mapper.GetTimeslots(tst)) {
+			System.out.println(tsv);
+		}
+	}
 	
 }
