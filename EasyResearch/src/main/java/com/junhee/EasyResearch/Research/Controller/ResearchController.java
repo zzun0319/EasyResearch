@@ -59,7 +59,10 @@ public class ResearchController {
 	}
 	
 	@GetMapping("/makeTimeslot")
-	private String MakeTimeslotPage(int researchId, Model model, RedirectAttributes ra) {
+	private String MakeTimeslotPage(TimeslotSearchVO tss, Model model, RedirectAttributes ra) {
+		
+		int researchId = tss.getResearch().getResearchId();
+		
 		System.out.println("타임슬롯 만들기 페이지, 연구번호: " + researchId);
 		model.addAttribute("researchInfo", service.GetResearchInfo(researchId));
 		model.addAttribute("locations", service.GetAllLocationInfo());
@@ -202,21 +205,29 @@ public class ResearchController {
 		}
 	}
 
-	@PostMapping("/inquireTimeslotsByPeriod")
+	@GetMapping("/inquireTimeslotsByPeriod")
 	public String InquireTimeslots(TimeslotSearchVO tss, RedirectAttributes ra) {
 		System.out.println("타임슬롯 만들기 전 기간, 장소별 사용현황 조회");
+		
+		System.out.println("1: " + tss);
 		
 		tss.getTdt().setPeriodForInquiry(); // 타임스탬프 형태로 변환해서 가지고 있게 됨.
 		PageCreator pc = new PageCreator();
 		pc.setPageInfo(tss);
 		pc.setTotalCnt(service.GetTotalTimeslotsCnt(tss));
-		System.out.println(tss);
-		ra.addAttribute("pc", pc);
-		ra.addAttribute("inquireList", service.GetTimeslots(tss));
-		for(TimeslotVO tsvo : service.GetTimeslots(tss)) {
+		System.out.println("조회된 타임슬롯 개수: " + service.GetTotalTimeslotsCnt(tss));
+		System.out.println("2: " + tss);
+		System.out.println("페이지 크리에이터: " + pc);
+		ra.addFlashAttribute("pc", pc);
+		ra.addFlashAttribute("inquireList", service.GetTimeslots(tss));
+		
+		List<TimeslotVO> list = service.GetTimeslots(tss);
+		System.out.println("list사이즈: " + list.size());
+		
+		for(TimeslotVO tsvo : list) {
 			System.out.println(tsvo);
 		}
 		
-		return "redirect:/research/makeTimeslot?researchId=" + tss.getResearch().getResearchId();
+		return "redirect:/research/makeTimeslot?research.researchId=" + tss.getResearch().getResearchId();
 	}
 }

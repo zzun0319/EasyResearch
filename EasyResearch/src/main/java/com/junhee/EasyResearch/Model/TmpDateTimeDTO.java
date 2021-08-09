@@ -31,7 +31,7 @@ public class TmpDateTimeDTO {
 	*/
 	public void setPeriodForInquiry() { // 두 날짜를 입력 받으면 그 날짜들을 타임스탬프 형식으로 만들어주는 메서드
 		startTimestamp = Timestamp.valueOf(startDate + " 00:00:00");
-		endTimestamp = Timestamp.valueOf(endDate + " 00:00:00");
+		endTimestamp = Timestamp.valueOf(endDate + " 23:59:59");
 	}
 	
 	////////// 연구 타임 슬롯 만들 때 받는 연구날짜, 시작시간, 종료시간 ///////////////////////////////////////////////
@@ -192,7 +192,7 @@ public class TmpDateTimeDTO {
 	public String toString() {
 		return "TmpDateTimeDTO [researchDate=" + researchDate + ", startDate=" + startDate + ", endDate=" + endDate
 				+ ", sTime=" + sTime + ", eTime=" + eTime + ", startTimestamp=" + startTimestamp
-				+ ", endTimestamp=" + endTimestamp + ", duration=" + duration + "]";
+				+ ", endTimestamp=" + endTimestamp + ", duration=" + duration + ", tomorrow=" + tomorrow + ", researchPlace=" + researchPlace + "]";
 	}
 
 }

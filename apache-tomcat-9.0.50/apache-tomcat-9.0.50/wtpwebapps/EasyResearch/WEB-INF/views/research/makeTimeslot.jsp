@@ -21,6 +21,13 @@
 
 textarea{width: 100%; height: 100px;}
 
+li {
+	list-style: none;
+	display: inline;
+}
+
+.page-active{background-color: #643691;}
+
 </style>
 
 </head>
@@ -42,13 +49,13 @@ textarea{width: 100%; height: 100px;}
 	<jsp:include page="../include/header.jsp" />
 		<div>
 		<h4>날짜 및 장소 별 예약 현황 조회</h4>
-		<form action="/research/inquireTimeslotsByPeriod" method="post"><!-- 페이징.. 검색.. 구현 -->
+		<form action="/research/inquireTimeslotsByPeriod?${pc.MakeURI(param.pageNum)}" method="get"><!-- 페이징.. 검색.. 구현 -->
 			<input type="hidden" name="research.researchId" value="${researchInfo.researchId}">
 			<input type="hidden" name="isParticipant" value=true> <!-- 예약하기 위해 24시간 이후 사용 중인 곳을 조회하는 것이라서 true로 보내줌. -->
 			언제부터 : <input type="date" name="tdt.startDate" id="start_date"> ~ 언제까지: <input type="date" name="tdt.endDate" id="end_date"> 
 			장소: 
 				<select name="tdt.researchPlace">
-					<option>=== 장소 선택 ===</option>
+					<option value="X">=== 장소 선택 ===</option>
 					<c:forEach var="location" items="${locations}">
 						<option value="${location.placeName}">${location.placeName}(최대 수용인원: ${location.maxPeople}명)</option>
 					</c:forEach>
@@ -81,28 +88,28 @@ textarea{width: 100%; height: 100px;}
 			</table>
 		</c:if>
 		</div>
-		<div> <!-- 페이징 처리 -->
+		<div> <!-- 페이징 처리 시작 -->
 			<ul>
 			<c:if test="${pc.prev}">
 				<li>
-					<a href="/research/makeTimeslot${pc.MakeURI(pc.startPageNum - 1)}&researchId=${timeslotList[0].research.researchId}" style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">이전</a>
+					<a href="/research/makeTimeslot${pc.MakeURI(pc.startPageNum - 1)}&research.researchId=${timeslotList[0].research.researchId}" style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">이전</a>
 				</li>
 				</c:if>
 					
 				<c:forEach var="pageNum" begin="${pc.startPageNum}" end="${pc.endPageNum}">
 					<li>
-					<a href="/research/makeTimeslot${pc.MakeURI(pageNum)}&researchId=${timeslotList[0].research.researchId}" class="numBtn ${(pc.pageInfo.pageNum == pageNum) ? 'page-active' : ''}" style="margin-top: 0; height: 40px; color: pink; border: 1px solid #643691;">${pageNum}</a>
+					<a href="/research/makeTimeslot${pc.MakeURI(pageNum)}&research.researchId=${timeslotList[0].research.researchId}" class="numBtn ${(pc.pageInfo.pageNum == pageNum) ? 'page-active' : ''}" style="margin-top: 0; height: 40px; color: pink; border: 1px solid #643691;">${pageNum}</a>
 					</li>
 				</c:forEach>
 					
 			<c:if test="${pc.next}">	
 				<li>
-					<a href="/research/makeTimeslot${pc.MakeURI(pc.endPageNum + 1)}&researchId=${pageInfo.researchId}" style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">다음</a>
+					<a href="/research/makeTimeslot${pc.MakeURI(pc.endPageNum + 1)}&research.researchId=${pageInfo.researchId}" style="background-color: #643691; margin-top: 0; height: 40px; color: white; border: 0px solid #f78f24; opacity: 0.8">다음</a>
 				</li>
 			</c:if>
 					
 			</ul>
-		</div>
+		</div> <!-- 페이징 처리 끝 -->
 		
 		<hr style="border: solid 5px green;">
 		

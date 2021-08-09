@@ -99,7 +99,7 @@ li {
 		</c:if>
 		
 		<div style="position: absolute; left: 700px; top: 300px;">
-			<input type="button" value="타임슬롯 만들기" onclick="location.href='/research/makeTimeslot?researchId=${timeslotList[0].research.researchId}'">
+			<input type="button" value="타임슬롯 만들기" onclick="location.href='/research/makeTimeslot?research.researchId=${timeslotList[0].research.researchId}'">
 		</div>
 		
 	<jsp:include page="../include/footer.jsp" />

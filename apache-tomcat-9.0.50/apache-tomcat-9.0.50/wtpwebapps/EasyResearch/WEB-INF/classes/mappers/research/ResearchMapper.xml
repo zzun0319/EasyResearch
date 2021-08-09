@@ -169,7 +169,7 @@
 				AND (t.start_time BETWEEN #{tdt.startTimestamp} AND #{tdt.endTimestamp})
 				]]>
 			</if>
-			<if test="tdt.researchPlace != null">
+			<if test='tdt.researchPlace != null and (!((tdt.researchPlace).equals("X")))'>
 				AND t.place_name = #{tdt.researchPlace}
 			</if>
 		</where>
@@ -194,7 +194,7 @@
 				AND (t.start_time BETWEEN #{tdt.startTimestamp} AND #{tdt.endTimestamp})
 				]]>
 			</if>
-			<if test="tdt.researchPlace != null">
+			<if test='tdt.researchPlace != null and (!((tdt.researchPlace).equals("X")))'>
 				AND t.place_name = #{tdt.researchPlace}
 			</if>
 			<if test="!isParticipant">

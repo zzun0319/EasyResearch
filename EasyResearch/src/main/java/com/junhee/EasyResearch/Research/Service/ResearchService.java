@@ -147,11 +147,15 @@ public class ResearchService implements IResearchService {
 
 	@Override
 	public int GetTotalTimeslotsCnt(TimeslotSearchVO tss) {
+		System.out.println("서비스 타임슬롯개수:" + mapper.GetTotalTimeslotsCnt(tss));
+		 System.out.println(tss);
 		return mapper.GetTotalTimeslotsCnt(tss);
 	}
 
 	@Override
 	public List<TimeslotVO> GetTimeslots(TimeslotSearchVO tss) {
+		System.out.println("서비스 타임슬롯 사이즈:" + mapper.GetTimeslots(tss).size());
+		System.out.println(tss);
 		return mapper.GetTimeslots(tss);
 	}
 	
