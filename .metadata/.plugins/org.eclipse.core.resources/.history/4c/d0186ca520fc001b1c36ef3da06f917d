@@ -1,0 +1,13 @@
+package com.junhee.EasyResearch.Class.Service;
+
+import com.junhee.EasyResearch.Model.ClassVO;
+
+public interface IClassService {
+
+	
+	// 클래스를 연구과목으로 등록하는 메서드
+	public void RegisterClassForResearch(ClassVO cvo);
+	
+	
+	
+}

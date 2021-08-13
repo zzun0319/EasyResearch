@@ -49,7 +49,7 @@ li {
 	<jsp:include page="../include/header.jsp" />
 		<div>
 		<h4>날짜 및 장소 별 예약 현황 조회</h4>
-		<form action="/research/inquireTimeslotsByPeriod?${pc.MakeURI(param.pageNum)}" method="get"><!-- 페이징.. 검색.. 구현 -->
+		<form action="/research/inquireTimeslots?${pc.MakeURI(param.pageNum)}" method="get"><!-- 페이징.. 검색.. 구현 -->
 			<input type="hidden" name="research.researchId" value="${researchInfo.researchId}">
 			<input type="hidden" name="isParticipant" value=true> <!-- 예약하기 위해 24시간 이후 사용 중인 곳을 조회하는 것이라서 true로 보내줌. -->
 			언제부터 : <input type="date" name="tdt.startDate" id="start_date"> ~ 언제까지: <input type="date" name="tdt.endDate" id="end_date"> 

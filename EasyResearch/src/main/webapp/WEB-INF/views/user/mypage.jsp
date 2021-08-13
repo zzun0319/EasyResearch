@@ -28,7 +28,7 @@
 	<br><br><br>
 	<c:if test="${user.emailVerification}"> <!-- 메일 인증 받은 상태 -->
 		<c:if test="${user.participationRight}">
-			<input type="button" value="수강 중인 과목 체크하기" onclick="location.href='/research/studentAddClass?studentId=${user.userId}'"><br><br>
+			<input type="button" value="수강 중인 강의 보기" onclick="location.href='/class/addTakingClasses?studentId=${user.userId}'"><br><br>
 			<input type="button" value="나의 연구 참여 신청 현황" onclick="location.href='/research/showMyApply?studentId=${user.userId}'"><br>
 		<br><br>
 		</c:if>
@@ -38,7 +38,7 @@
 		<br><br>
 		</c:if>
 		<c:if test="${user.classRegiRight}">
-			<input type="button" value="연구 참여 중인 과목 보기" onclick="location.href='/research/showMyClasses?instructorId=${user.userId}'"><br>
+			<input type="button" value="연구 참여 중인 과목 보기" onclick="location.href='/class/showMyClasses?instructorId=${user.userId}'"><br>
 		<br><br>
 		</c:if>
 		<c:if test="${user.permissionRight}">

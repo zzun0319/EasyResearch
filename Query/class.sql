@@ -11,3 +11,5 @@ CREATE TABLE class (
 -- DROP TABLE class;
 
 SELECT * FROM class;
+
+DESC class;

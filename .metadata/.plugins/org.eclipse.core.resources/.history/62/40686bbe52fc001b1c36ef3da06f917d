@@ -1,0 +1,14 @@
+package com.junhee.EasyResearch.Class.Repository;
+
+import java.util.List;
+
+import com.junhee.EasyResearch.Model.ClassVO;
+
+public interface IClassMapper {
+
+	// 클래스를 연구참여과목으로 등록하는 메서드
+	public void RegisterClassForResearch(ClassVO cvo);
+	
+	// 연구참여과목으로 등록한 수업 리스트 보기
+	public List<ClassVO> GetClassesList(String instructorId);
+}

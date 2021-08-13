@@ -1,0 +1,7 @@
+package com.junhee.EasyResearch.commons;
+
+public class MajorPageCreator extends PageCreator {
+
+	private String major;
+	
+}

@@ -80,7 +80,10 @@ public class ResearchController {
 		pc.setPageInfo(tss);
 		pc.setTotalCnt(service.GetTotalTimeslotsCnt(tss));
 		model.addAttribute("pc", pc);
-		model.addAttribute("timeslotList", service.GetTimeslots(tss));
+		
+		List<TimeslotVO> list = service.GetTimeslots(tss);
+		model.addAttribute("timeslotList", list);
+		model.addAttribute("rId", tss.getResearch().getResearchId());
 	}
 	
 	@GetMapping("/acceptResearch")
@@ -205,7 +208,7 @@ public class ResearchController {
 		}
 	}
 
-	@GetMapping("/inquireTimeslotsByPeriod")
+	@GetMapping("/inquireTimeslots")
 	public String InquireTimeslots(TimeslotSearchVO tss, RedirectAttributes ra) {
 		System.out.println("타임슬롯 만들기 전 기간, 장소별 사용현황 조회");
 		

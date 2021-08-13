@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.junhee.EasyResearch.Class.Repository.IClassMapper">
+
+	<resultMap id="ClassMap" type="com.junhee.EasyResearch.Model.ClassVO">
+		<id property="classId" column="class_id" />
+		<result property="instructorName" column="instructor_name" />
+		<result property="instructorId" column="instructor_id" />
+		<result property="className" column="class_name" />
+		<result property="classSchedule" column="class_schedule" />
+		<result property="researchCredit" column="research_credit" />
+	</resultMap>
+
+	<insert id="RegisterClassForResearch">
+		INSERT INTO class (instructor_name, instructor_id, class_name, class_schedule, research_credit) 
+		VALUES (#{instructorName}, #{instructorId}, #{className}, #{classSchedule}, #{researchCredit})
+	</insert>
+	
+	<select id="GetClassesList" resultMap="ClassMap">
+		SELECT * FROM class
+		<where>
+			<if test='instructorId != null'>
+				instructor_id = #{instructorId}
+			</if>
+		</where>
+	</select>
+	
+	<delete id="DeleteClass">
+		DELETE FROM class WHERE class_id=#{classId}
+	</delete>
+
+</mapper>

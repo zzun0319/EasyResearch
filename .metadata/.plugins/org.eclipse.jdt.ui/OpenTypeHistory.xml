@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
     <typeInfo handle="=EasyResearch/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.junhee.EasyResearch.commons{SearchVO.java[SearchVO" modifiers="1" timestamp="1628243031894"/>
+    <typeInfo handle="=EasyResearch/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.junhee.EasyResearch.commons{PageCreator.java[PageCreator" modifiers="1" timestamp="1628517753157"/>
+    <typeInfo handle="=EasyResearch/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.junhee.EasyResearch.Class.Service{IClassService.java[IClassService" modifiers="513" timestamp="1628726148326"/>
 </typeInfoHistroy>

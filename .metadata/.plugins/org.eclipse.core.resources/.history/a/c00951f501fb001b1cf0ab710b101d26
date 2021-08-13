@@ -1,0 +1,14 @@
+package com.junhee.EasyResearch.Class.Controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.junhee.EasyResearch.Class.Service.ClassService;
+
+@Controller
+public class ClassController {
+
+	@Autowired
+	private ClassService service;
+	
+}

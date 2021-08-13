@@ -1,0 +1,20 @@
+package com.junhee.EasyResearch.Class.Service;
+
+import org.springframework.stereotype.Service;
+
+import com.junhee.EasyResearch.Class.Repository.IClassMapper;
+import com.junhee.EasyResearch.Model.ClassVO;
+
+@Service
+public class ClassService implements IClassService {
+
+	private IClassMapper mapper;
+	
+	@Override
+	public String RegisterClassForResearch(ClassVO cvo) {
+
+		mapper.RegisterClassForResearch(cvo);
+		return cvo.getClassName() + "을 연구참여과목으로 등록하였습니다.";
+	}
+
+}

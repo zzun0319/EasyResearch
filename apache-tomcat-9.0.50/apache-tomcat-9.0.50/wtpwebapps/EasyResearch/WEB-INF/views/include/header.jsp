@@ -23,6 +23,7 @@
                         	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/user/register_checkUnivMember">회원가입</a></li>
                         </c:if>
                         <c:if test="${user != null}">
+                        	<div style="position: relative; right: 100px; top:10px; color: white;">${user.userName}님(${user.userType})</div>
                         	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/user/logout">로그아웃</a></li>
                         	<li class="nav-item"><a class="nav-link js-scroll-trigger" href="/user/mypage">마이페이지</a></li>
                         </c:if>
@@ -36,7 +37,7 @@
                 	<h1>EasyResearch에 방문해주셔서 감사합니다.</h1>
                 	<p class="lead">EasyResearch는 연구자, 연구참여자 모두 간편하게 사용할 수 있는 연구 서포트 웹입니다.</p>
                 </c:if>
-                <c:if test="${user != null}">
+                <c:if test="${user != null && user.emailVerification}">
                         <c:if test="${user.participationRight}">
                         	<input type="button" value="연구 참여 신청하기" onclick="location.href='/research/searchResearch'">
                         	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -46,7 +47,7 @@
                         	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </c:if>
                         <c:if test="${user.classRegiRight}">
-                        	<input type="button" value="연구 참여 과목 설정하기" onclick="location.href='/class/searchResearch'">
+                        	<input type="button" value="연구 참여 과목 설정하기" onclick="location.href='/class/registerClassForResearch'">
                         	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         	<input type="button" value="연구 참여 점수 파일 다운로드" onclick="location.href='/class/downloadCreditFile'">
                         	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

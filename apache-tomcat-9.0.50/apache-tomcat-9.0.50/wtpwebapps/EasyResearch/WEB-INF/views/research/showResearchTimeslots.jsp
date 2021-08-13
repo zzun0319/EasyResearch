@@ -47,12 +47,13 @@ li {
 	</c:if>
 
 	<jsp:include page="../include/header.jsp" />
+	<br><br><br><br><br><br><br><br><br><br><br>
 		
 		<c:if test="${timeslotList == null || timeslotList.size() == 0}">
 			생성한 타임슬롯이 없습니다.
 		</c:if>
 		
-		<c:if test="${timeslotList != null || timeslotList.size() != 0}">
+		<c:if test="${timeslotList != null && timeslotList.size() != 0}">
 		<div>
 			<h3>[${timeslotList[0].research.title}의 타임슬롯]</h3>
 			<table border="1">
@@ -99,9 +100,9 @@ li {
 		</c:if>
 		
 		<div style="position: absolute; left: 700px; top: 300px;">
-			<input type="button" value="타임슬롯 만들기" onclick="location.href='/research/makeTimeslot?research.researchId=${timeslotList[0].research.researchId}'">
+			<input type="button" value="타임슬롯 만들기" onclick="location.href='/research/makeTimeslot?research.researchId=${rId}'">
 		</div>
-		
+	<br><br><br><br><br><br><br><br><br><br><br>
 	<jsp:include page="../include/footer.jsp" />
 
 </body>

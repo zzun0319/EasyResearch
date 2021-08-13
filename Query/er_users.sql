@@ -19,7 +19,7 @@ ALTER TABLE er_users ADD user_name VARCHAR(5) NOT NULL;
 
 ALTER TABLE er_users DROP userName;
 
-TRUNCATE TABLE er_users;
+-- TRUNCATE TABLE er_users;
 
 -- DROP TABLE er_users;
 

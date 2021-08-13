@@ -1,0 +1,5 @@
+package com.junhee.EasyResearch.Class.Repository;
+
+public interface IClassMapper {
+
+}

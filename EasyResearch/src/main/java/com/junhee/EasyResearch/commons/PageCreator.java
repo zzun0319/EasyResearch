@@ -5,14 +5,14 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 public class PageCreator {
 
-	private PageVO pageInfo; // 몇 페이지인지, 페이지 당 보여줄 연구 or 타임슬롯의 개수
-	private int totalCnt; // 뷰에 보여줄 연구 or 타임슬롯의 전체 개수
-	private int endPageNum; // 뷰에 보여질 페이지 숫자들 중 마지막 숫자
-	private int startPageNum; // 뷰에 보여질 페이지 숫자들 중 첫번째 숫자
-	private boolean prev; // '이전' 버튼 활성화 여부
-	private boolean next; // '다음' 버튼 활성화 여부
+	protected PageVO pageInfo; // 몇 페이지인지, 페이지 당 보여줄 연구 or 타임슬롯의 개수
+	protected int totalCnt; // 뷰에 보여줄 연구 or 타임슬롯의 전체 개수
+	protected int endPageNum; // 뷰에 보여질 페이지 숫자들 중 마지막 숫자
+	protected int startPageNum; // 뷰에 보여질 페이지 숫자들 중 첫번째 숫자
+	protected boolean prev; // '이전' 버튼 활성화 여부
+	protected boolean next; // '다음' 버튼 활성화 여부
 	
-	private final int displayPageNumCnt = 10; // 뷰에 보여지는 페이지 숫자들의 개수 (10개로 고정)
+	protected final int displayPageNumCnt = 10; // 뷰에 보여지는 페이지 숫자들의 개수 (10개로 고정)
 
 	public void SetAllData() {
 		

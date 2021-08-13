@@ -64,7 +64,7 @@ td{width:40%;}
 	 		</form>
 	 </c:if>
 	 <c:if test="${user.userId == selectedResearch.researcher.userId}">
-	 		<form action="/research/permitResearch" method="post">
+	 		<form action="/research/permitResearch" method="post"><!-- 이거 받는 부분도 페이징해서 넘겨야해.. -->
 	 			<input type="hidden" name="researchId" value="${selectedResearch.researchId}">
 	 			<input type="hidden" name="major" value="${user.major}">
 	 			<input type="hidden" name="userType" value="${user.userType}">

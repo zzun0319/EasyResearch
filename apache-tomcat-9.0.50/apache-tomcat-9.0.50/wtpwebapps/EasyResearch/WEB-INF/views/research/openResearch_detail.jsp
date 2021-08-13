@@ -13,11 +13,13 @@
 <script type="text/javascript" src="<c:url value="/js/jQuery.form.min.js" />"></script>
 
 <style type="text/css">
+
 #rightColumn{width: 80%;}
 
 *{padding:0; margin:0}
 
 textarea{width: 100%; height: 100px;}
+
 </style>
 
 </head>

@@ -1,0 +1,5 @@
+package com.junhee.EasyResearch.Class.Service;
+
+public class ClassService implements IClassService {
+
+}

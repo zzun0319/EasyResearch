@@ -1,0 +1,16 @@
+127.0.0.1 - - [10/Aug/2021:18:13:20 +0900] "GET / HTTP/1.1" 200 4358
+0:0:0:0:0:0:0:1 - - [10/Aug/2021:18:13:21 +0900] "GET / HTTP/1.1" 200 4358
+0:0:0:0:0:0:0:1 - - [10/Aug/2021:18:13:21 +0900] "GET /css/styles.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [10/Aug/2021:18:13:21 +0900] "GET /css/styles.css;jsessionid=D4A9607F36698A4E5DE3B121689AE82E HTTP/1.1" 200 182945
+0:0:0:0:0:0:0:1 - - [10/Aug/2021:18:25:09 +0900] "GET /user/login HTTP/1.1" 200 3195
+0:0:0:0:0:0:0:1 - - [10/Aug/2021:18:25:22 +0900] "POST /user/login HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [10/Aug/2021:18:25:22 +0900] "GET /user/mypage HTTP/1.1" 200 4256
+0:0:0:0:0:0:0:1 - - [10/Aug/2021:18:25:25 +0900] "GET /research/acceptResearch?major=%EC%9D%91%EC%9A%A9%EC%9D%B8%EC%A7%80%EC%8B%AC%EB%A6%AC HTTP/1.1" 200 8492
+0:0:0:0:0:0:0:1 - - [10/Aug/2021:18:25:46 +0900] "GET /research/acceptResearch?keyword=5&condition=title&major=%EC%9D%91%EC%9A%A9%EC%9D%B8%EC%A7%80%EC%8B%AC%EB%A6%AC HTTP/1.1" 200 7600
+0:0:0:0:0:0:0:1 - - [10/Aug/2021:18:25:49 +0900] "GET /research/acceptResearch?pageNum=2&cntPerPage=10&keyword=5&condition=title&major=%EC%9D%91%EC%9A%A9%EC%9D%B8%EC%A7%80%EC%8B%AC%EB%A6%AC HTTP/1.1" 200 6174
+0:0:0:0:0:0:0:1 - - [10/Aug/2021:18:25:51 +0900] "GET /research/acceptResearch?pageNum=1&cntPerPage=10&keyword=5&condition=title&major=%EC%9D%91%EC%9A%A9%EC%9D%B8%EC%A7%80%EC%8B%AC%EB%A6%AC HTTP/1.1" 200 7600
+0:0:0:0:0:0:0:1 - - [10/Aug/2021:18:26:01 +0900] "GET / HTTP/1.1" 200 5048
+0:0:0:0:0:0:0:1 - - [10/Aug/2021:18:26:04 +0900] "GET /user/mypage HTTP/1.1" 200 4240
+0:0:0:0:0:0:0:1 - - [10/Aug/2021:18:26:05 +0900] "GET /research/acceptResearch?major=%EC%9D%91%EC%9A%A9%EC%9D%B8%EC%A7%80%EC%8B%AC%EB%A6%AC HTTP/1.1" 200 8492
+0:0:0:0:0:0:0:1 - - [10/Aug/2021:18:26:52 +0900] "GET /research/acceptResearch?pageNum=4&cntPerPage=10&keyword=&condition=&major=%EC%9D%91%EC%9A%A9%EC%9D%B8%EC%A7%80%EC%8B%AC%EB%A6%AC HTTP/1.1" 200 8498
+0:0:0:0:0:0:0:1 - - [10/Aug/2021:18:27:44 +0900] "GET /research/acceptResearch?keyword=%EB%B0%95%EC%82%AC&condition=title&major=%EC%9D%91%EC%9A%A9%EC%9D%B8%EC%A7%80%EC%8B%AC%EB%A6%AC HTTP/1.1" 200 5228

@@ -1,5 +1,0 @@
-package com.junhee.EasyResearch.commons;
-
-public class MajorSearchVO extends SearchVO {
-
-}
